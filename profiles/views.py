@@ -4,7 +4,7 @@ from .forms import UserProfileForm
 
 
 def profile(request):
-    profile = get_object_or_404(UserProfile)
+    profile = get_object_or_404(UserProfile, user=request.user)
 
     template = "profiles/profile.html"
     context = {
