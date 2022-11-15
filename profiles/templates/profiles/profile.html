@@ -1,0 +1,12 @@
+{% load cloudinary %}
+
+<title>{{ page_title }}</title>
+
+<body>
+    <h1>Profile Page</h1>
+   
+    <p>{{ profile.user }}</p>
+    <img src="{{ profile.profile_image.url }}" alt="">
+    <P>{{ profile.bio }}</P>
+
+</body>
