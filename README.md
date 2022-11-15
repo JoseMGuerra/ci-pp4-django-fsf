@@ -1,107 +1,108 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+## User Stories and Epics
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- View post list: As a `Site User` I want be able to `view a list of posts` so that `I can select one to read`
+- Open a post: As a `Site User` I want be able to `click on a post` so that `I can read the full text`
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+- View comments: As a `Site User / Admin` I want be able to `view comments on an individual post` so that `I can read the conversation`
+- Comment on a post: As a `Site User` I want be able to `leave comments on a post` so that `I can be involved in the conversation`
+- Update a comment: As a `Site User` I want be able to `update a comment I made` so that `I can make changes or delete a comment`
 
-## Gitpod Reminders
+- Account registration: As a `Site User` I want be able to `register an account` so that `I can create, comment and like`
+- Profile picture: As a `Site User` I want be able to `upload a profile picture` so that `I can see it  when I comment on a post`
+- Manage posts: As a `Site User / Admin` given that `Ì am registered` I want be able to `create, read, update and delete posts` so that `I can manage my posts`
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- Create a post: As a `Site User / Admin` given that `I am registered` I want be able to `create a post` so that `I can add content to the blog`
+- Update a post: As a `Site User / Admin` I want be able to `update a post I created` so that `I can make changes or delete a post`
+- Delete a post: As a `Site User / Admin` I want be able to `update a post I created` so that `I can make changes or delete a post` 
+- Create drafts: As a `Site User / Admin` I want be able to `create draft posts` so that `I can finish writing the content later`
+- Add picture to post: As as `Site User` I want be able to `upload a picture` so that `I can add a visual representation of my post`
 
-`python3 -m http.server`
+- View likes: As a `Site User / Admin` I want be able to `view the number of likes on each post` so that `I can see which is the most popular or viral`
+- Like / Unlike: As a `Site User` I want be able to `like or unlike a post` so that `I can interact with the content`
+- Vote posts: As a `Site User` I want be able to `up/downvote a post` so that `I can interact with the content`
 
-A blue button should appear to click: _Make Public_,
+- Approve comments: As a `Site Admin` I want be able to `approve or disapprove comments` so that `I can filter out objectionable comments`
+- Create drafts: As a `Site Admin` I want be able to `create draft posts` so that `I can finish writing the content later`
 
-Another blue button should appear to click: _Open Browser_.
+## Technologies Used
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Languages Used:
 
-A blue button should appear to click: _Make Public_,
+- HTML5
+- CSS3
+- JavaScript
+- Python
 
-Another blue button should appear to click: _Open Browser_.
+### Frameworks and Libraries Used:
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- [Bootstrap:](https://getbootstrap.com/) Bootstrap CSS Framework used for styling and to build responsive web pages.
+- [Cloudinary:](https://cloudinary.com/) Used to store all blog images and uploaded images.
+<!-- - [Coverage:](https://coverage.readthedocs.io/en/latest/index.html) Used for measuring code coverage of Python test files. -->
+- [Django:](https://www.djangoproject.com/) Main Python framework used in the development.
+- [Django Allauth:](https://django-allauth.readthedocs.io/en/latest/index.html) Used for authentication and account registration.
+- [Django Crispy Forms:](https://django-crispy-forms.readthedocs.io/en/latest/) Used to simplify the rendering of Django forms.
+- [dj_database_url:](https://pypi.org/project/dj-database-url/) Used to allow database urls to connect to the postgres database.
+- [Gunicorn:](https://gunicorn.org/) Green Unicorn, used as the Web Server to run Django on Heroku.
+<!-- - [Jest:](https://jestjs.io/) A delightful JavaScript Testing Framework, used for automated tests. -->
+- [psycopg2:](https://pypi.org/project/psycopg2/) Used PostgreSQL database adapter.
+- [Summernote:](https://github.com/summernote/django-summernote) To provide a WYSIWYG editor for customizing new blog content and add images.
 
-To log into the Heroku toolbelt CLI:
+### Software and Web Applications Used:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- [Am I Responsive:](http://ami.responsivedesign.is) Checking the responsive.
+- [Balsamiq:](https://balsamiq.com/) Used to create the wireframes.
+- [Chrome DevTools:](https://developer.chrome.com/docs/devtools/) Used to test the response on different screen sizes, debugging and to generate a Lighthouse report to analyze page load.
+- [Font Awesome:](https://fontawesome.com/) Used throughout the site to add icons for aesthetic and UX purposes.
+<!-- - [Gauger:](https://gauger.io/fonticon/) To create the favicon, create beautiful favicon with ease. -->
+- [Git:](https://git-scm.com/) Git open source software for distributed version control.
+- [GitHub:](https://github.com/) Internet hosting service for software development and version control using Git.
+- [Google Fonts:](https://fonts.google.com/) To import font family ’Cabin Sketch’ which is used throughout the site. Added fallback font sans-serif.
+<!-- - [Google Maps:](https://mapsplatform.google.com/) Google Maps Embed API used in footer section -->
+- [Heroku:](https://www.heroku.com/) For deployment and hosting of the application.
+- [Heroku PostgreSQL:](https://www.heroku.com/postgres) The database used for this application.
+- [HTML Validator:](https://validator.w3.org/) Check your code for HTML validation.
+- [JSHint:](https://jshint.com/) Check code for JavaScript validation.
+- [Lucidchart:](https://www.lucidchart.com/pages/) Used to create the site map.
+<!-- - [Materialize Colors:](https://materializecss.com/color.html) Used to create the main colour palette. -->
+<!-- - [SVG Backgrounds:](https://svgbackgrounds.com/) Scalable Vector Graphic used in the featurette section. Should the background image fail there is a fallback background colour set so the page still functions. -->
+<!-- - [SVG Wave Generator:](https://softr.io/tools/svg-wave-generator/) Used to generate a gradient SVG wave used in the hero section. -->
+- [Tiny PNG:](https://tinypng.com/) Compressing images to smaller sizes.
+- [Unsplash:](https://unsplash.com/photos/NtkCemIfaiU) Hero image, Man fishing on river at daytime, Chris Sarsgard.
+- [W3 CSS Validator:](https://jigsaw.w3.org/css-validator/) Check your code for CSS validation.
+<!-- - [Writer:](https://writer.com/grammar-checker/) Free Grammar Check. -->
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## DEPLOY TO HEROKU
 
-------
+- On Heroku create an account and log in.
+- Click `new` and `create new app`.
+- Choose a unique name for your app, select region and click on `Create App`
+- Located in the `Resources` Tab, Add-ons, search and add  e.g. `Heroku PostgresSql` and select the `Hobby Dev - Free`.
+- Under the `Settings` click `Reveal Config Vars` and set IP to 0.0.0.0 and the PORT to 8000
+- In the terminal if you haven't do so:
+  - Pip install dependencies.
+  - Create `requirements.txt` ($ pip3 freeze --local > requirements.txt)
+  - Create a `Procfile` (`$ echo web: gunicorn <app_name>.wsgi > Procfile`)
+  - Create an evn.py file and add all your environment variables.
+  - Create a .gitignore file and add your env.py files
+- In the Heroku app dashboard, under `Settings` click on `Reveal Config Vars`:
+  - Set "DATABASE_URL", CLOUDINARY_URL", "HEROKU_HOSTNAME" and "SECRET_KEY"
+- Back in Gitpod push you changes to Github.
+- In Heroku `Deploy` Tab, the `deployment method` select Github,
+  scroll down to Manual deploy and deploy branch.
+- Once the build is complete, go back to Heroku and click on `Open App`
 
-## Release History
+## Clone the repository
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- Open your termninal and enter this command:
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+      git clone <url> <where to clone>
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## DEBUGING
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+- problem: Heroku couldn't find static files.
+  - solution: pip3 install `whitenoise` and add to settings.py
 
 ---
 
