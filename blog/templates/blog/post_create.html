@@ -10,9 +10,17 @@
 <body>           
     <div class="contatiner">
         <div class="row">
-            <div class="col-md-6 mt-5 offset-md-3"></div>
+            <div class="col-md-6 mt-5 offset-md-3">
+                {% if user.is_authenticated %}
+                <form method="POST" action="." enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <button class="btn btn-outline-secondary" type="submit">{{ form_type }}</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
     </div>
-</div>
 
 </body>
 

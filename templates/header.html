@@ -12,13 +12,13 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Posts</a>
+                <a class="nav-link" href="{% url 'post-list' %}">Posts</a>
             </li>
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                     <a href="#" class="nav-link">Blog Management</a>
                 {% endif %}
-                <li class="nav-item"><a href="#" class="nav-link ">Create</a>
+                <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
