@@ -15,7 +15,7 @@ def post_list(request):
     """
     post_list = Post.objects.all()
 
-    template = ["blog/post_detail.html"]
+    template = ["blog/post_list.html"]
     context = {
         "page_title": "Posts",
         "post_list": post_list,
@@ -24,8 +24,15 @@ def post_list(request):
     pass
 
 
-def post_detail(request):
-    pass
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    template = "blog/post_detail.html"
+    context = {
+        "page_title": "Post",
+        "post": post,
+    }
+    return render(request, template, context)
 
 
 def post_create(request):
@@ -39,7 +46,7 @@ def post_create(request):
             form.instance.author = author
             post = form.save(commit=False)
             post.save()
-            return redirect(reverse("post-list", kwargs={
+            return redirect(reverse("post-detail", kwargs={
                 "slug": form.instance.slug
             }))
         else:

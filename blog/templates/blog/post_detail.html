@@ -10,10 +10,24 @@
 <body>           
     <div class="contatiner">
         <div class="row">
-            <div class="col-md-6 mt-5 offset-md-3"></div>
-    </div>
-</div>
-
+            <div class="col-md-6 mt-3 offset-md-2">
+                <h1>Post Detail</h1>
+                <h3>{{ post.title }}</h3>
+                <p>By {{ post.author }} on {{ post.created_on }}</p>
+                    <img class="img-fluid img-thumbnail" src="{{ post.featured_image.url }}" alt="">
+                <p>{{ post.content}}</p>
+    
+                {% if request.user == post.author or user.is_superuser %}
+                    <a class="btn btn-outline-primary" role="button" href="#">Update
+                    </a>
+                        
+                    <a class="btn btn-outline-danger" role="button" href="#">Delete
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>  
+    
 </body>
 
 {% endblock content %}
