@@ -1,5 +1,7 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+# Work in progress
+
 ## User Stories and Epics
 
 - View post list: As a `Site User` I want be able to `view a list of posts` so that `I can select one to read`
@@ -10,6 +12,7 @@
 - Update a comment: As a `Site User` I want be able to `update a comment I made` so that `I can make changes or delete a comment`
 
 - Account registration: As a `Site User` I want be able to `register an account` so that `I can create, comment and like`
+- Social account sign in : As a `Site User` I want be able to `Sign In with my social account` so that `Sign In quicker`
 - Profile picture: As a `Site User` I want be able to `upload a profile picture` so that `I can see it  when I comment on a post`
 - Manage posts: As a `Site User / Admin` given that `Ì am registered` I want be able to `create, read, update and delete posts` so that `I can manage my posts`
 
