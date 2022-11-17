@@ -7,6 +7,7 @@ from django.shortcuts import (
 from django.utils.text import slugify
 from .models import Post
 from .forms import PostForm
+from django.http import HttpResponseRedirect
 
 
 def post_list(request):
@@ -26,10 +27,13 @@ def post_list(request):
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
-
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        liked = True
     template = "blog/post_detail.html"
     context = {
         "page_title": "Post",
+        "liked": liked,
         "post": post,
     }
     return render(request, template, context)
@@ -89,6 +93,19 @@ def post_update(request, slug):
 
 
 def post_delete(request, slug):
+    """ Delete a post """
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect("post-list")
+
+
+def post_like(request, slug, *args, **kwargs):
+    """ LKes a post """
+    post = get_object_or_404(Post, slug=slug)
+
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse("post-detail", args=[slug]))

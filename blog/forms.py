@@ -14,7 +14,5 @@ class PostForm(ModelForm):
             'title',
             'content',
             'featured_image',
-            'approved',
-            'featured',
             'status',
             ]
