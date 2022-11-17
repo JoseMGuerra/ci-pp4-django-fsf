@@ -61,9 +61,34 @@ def post_create(request):
     return render(request, template, context)
 
 
-def post_update(request):
-    pass
+def post_update(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    form = PostForm(
+        request.POST or None,
+        request.FILES or None,
+        instance=post
+        )
+    author = request.user
+    if request.method == "POST":
+        if form.is_valid():
+            form.instance.author = author
+            form.save()
+            return redirect(reverse("post-detail", kwargs={
+                "slug": form.instance.slug
+            }))
+        else:
+            form = PostForm(instance=post)
+
+    template = "blog/post_create.html"
+    context = {
+        "page_title": "Update",
+        "form_type": "Update",
+        "form": form,
+    }
+    return render(request, template, context)
 
 
-def post_delete(request):
-    pass
+def post_delete(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.delete()
+    return redirect("post-list")

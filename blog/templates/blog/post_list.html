@@ -17,13 +17,6 @@
                     <h3><a href="{% url 'post-detail' slug=post.slug %}">{{ post.title }}</a></h3>
                     <div><img src="{{ post.featured_image.url }}" alt="default_image"></div>
                     <p>{{ post.content}}</p>
-                    {% if user.is_superuser %}
-                        <a class="btn btn-outline-primary" role="button" href="#">Update
-                        </a>
-                            
-                        <a class="btn btn-outline-danger" role="button" href="#">Delete
-                        </a>
-                    {% endif %}
                 {% endfor %}
             </div>
     </div>
