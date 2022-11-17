@@ -13,7 +13,7 @@ def post_list(request):
     """
     Display all posts
     """
-    post_list = Post.objects.all()
+    post_list = Post.objects.filter(status=1, approved=True)
 
     template = ["blog/post_list.html"]
     context = {

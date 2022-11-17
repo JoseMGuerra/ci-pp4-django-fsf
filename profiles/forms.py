@@ -11,5 +11,3 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['profile_image', 'bio']
-        # Cloudinary's upload options goes here
-        profile_image = CloudinaryFileField()

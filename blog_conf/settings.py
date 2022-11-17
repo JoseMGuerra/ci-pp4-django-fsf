@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'blog.apps.BlogConfig',
     'profiles.apps.ProfilesConfig',
     'django.contrib.admin',

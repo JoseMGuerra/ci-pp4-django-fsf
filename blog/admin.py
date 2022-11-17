@@ -11,15 +11,39 @@ class PostAdmin(admin.ModelAdmin):
     Post model in admin panel
     """
     list_display = (
-        'title', 'slug', 'status', 'created_on',
-        'updated_on', 'approved', 'featured')
+        'title',
+        'status',
+        'created_on',
+        'updated_on',
+        'approved',
+        'featured'
+        )
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
-    actions = ['select_as_featured', 'deselect_as_featured']
+    actions = [
+        'published',
+        'draft',
+        'featured',
+        'unfeatured',
+        'approved',
+        'disapproved',
+        ]
 
-    def select_as_featured(self, request, queryset):
+    def published(self, request, queryset):
+        queryset.update(status=1)
+
+    def draft(self, request, queryset):
+        queryset.update(status=0)
+
+    def featured(self, request, queryset):
         queryset.update(featured=True)
 
-    def deselect_as_featured(self, request, queryset):
+    def unfeatured(self, request, queryset):
         queryset.update(featured=False)
+
+    def approved(self, request, queryset):
+        queryset.update(approved=True)
+
+    def disapproved(self, request, queryset):
+        queryset.update(approved=False)

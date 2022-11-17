@@ -2,7 +2,7 @@
 
 <head>
     {% if page_title %}
-    <title>Blog | {% block extra_title %}{% endblock %}</title>
+    <title>Blog | {% block extra_title %} {{ page_title }} {% endblock %}</title>
     {% else %}
     <title>Blog</title>
     {% endif %}

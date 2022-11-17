@@ -4,25 +4,31 @@
 {% load cloudinary %}
 
 
-{% block extra_title %}{{ page_title }}{% endblock %}
+{% block extra_title %} {{ page_title }} {% endblock %}
 
 {% block content %}
         
 <div class="contatiner">
     <div class="row">
-        <div class="col-md-6 mt-3 offset-md-2">
-            <h1>Post Detail</h1>
+        <div class="col-md-8 mt-3 offset-md-2">
+            <h1 class="mt-5 mb-4">Post Detail</h1>
             <h3>{{ post.title }}</h3>
-            <p>By {{ post.author }} on {{ post.created_on }}</p>
-                <img class="img-fluid img-thumbnail" src="{{ post.featured_image.url }}" alt="">
+            <p>By {{ post.author }} on {{ post.created_on | date:'F, m Y' }}</p>
+            <p>
+                <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
+                </small>
+            </p>
+                <img class="img-fluid" src="{{ post.featured_image.url }}" alt="">
             <p>{{ post.content}}</p>
+            
             {% if request.user == post.author or user.is_superuser %}
                 <a class="btn btn-outline-primary" role="button" href="{% url 'post-update' slug=post.slug %}">Update
                 </a>
-                    
+                
                 <a class="btn btn-outline-danger" role="button" data-toggle="modal" data-target="#mymodal">Delete
                 </a>
             {% endif %}
+           
         </div>
         <div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -47,9 +53,10 @@
         </div> 
     </div>
 </div>
+
 <script>
     $('#myModal').modal('show') 
-    </script>
+</script>
             
 
 {% endblock content %}
