@@ -5,16 +5,43 @@
 {% load cloudinary %}
 
 {% block extra_title %} {{ page_title }} {% endblock %}
-
+<!-- https://stackoverflow.com/questions/27219078/bootstrap-carousel-implementation-in-django-->
 {% block content %}
-
-<main>
-
-    
-
-<!-- Footer -->
-{% include 'footer.html' %}
-</main>
+<div class="container h-100">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 mb-2">
+            <div id="carouselHero" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for post in featured_post_list %}
+                    {% if forloop.first %}
+                        <div class="carousel-item active">                   
+                    {% else %}
+                        <div class="carousel-item">
+                    {% endif %}               
+                    <img src="{{ post.featured_image.url }}" class="d-block w-100 mx-auto" alt="featured image">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="display-4 bg-info rounded-bottom"><strong>{{ post.title }}</strong></h5>
+                        <p class="text-info">Author: {{ post.author }}</p>
+                      </div>
+                    </div>
+                    {% endfor %}
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">Latests posts here maybe</div>
+        <div class="col-md-6">Featured posts goes here</div>
+        <div class="col">Categories here?</div>
+    </div>
+</div>
+<script>
+    $('.carousel').carousel({
+  interval: 2000,
+})
+</script>
 
 
 {% endblock content %} 

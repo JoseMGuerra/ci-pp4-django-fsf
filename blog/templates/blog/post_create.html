@@ -11,7 +11,8 @@
           
     <div class="contatiner">
         <div class="row">
-            <div class="col-md-6 mt-5 offset-md-3">
+            <div class="col-md-6 mb-3 offset-md-3">
+                <h1 class="mb-4"> {{ form_type }} Post</h1>
                 {% if user.is_authenticated %}
                 <form method="POST" action="." enctype="multipart/form-data">
                     {% csrf_token %}

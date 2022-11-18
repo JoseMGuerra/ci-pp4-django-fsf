@@ -2,8 +2,8 @@ html {
     height: 100%;
 }
 
-.bg-lightgray {
-    background-color: #eaeaea;
+body {
+    padding-top: 4.5rem;
 }
 
 
@@ -15,16 +15,6 @@ html {
     background-color: rgb(234, 234, 234);
 }
 
-.overlay {
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: rgb(234, 234, 234);
-    z-index: -1;
-}
-
 .opaque-overlay {
     position: absolute;
     height: 100%;
@@ -32,4 +22,62 @@ html {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* allauth forms formatting */
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+    /* mt-4 */
+    color: #6c757d;
+    /* text-secondary */
+}
+
+.allauth-form-inner-content input {
+    border-color: #000;
+    border-radius: 0;
+}
+
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+    /* btn */
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #17a2b8;
+    border: 1px solid #17a2b8;
+    padding: .75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.allauth-form-inner-content a {
+    color: #17a2b8;
+    /* text-info */
 }

@@ -4,16 +4,54 @@
 {% block extra_title %}{{ page_title }}{% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
-<div class="container mt-5">
+<div class="container">
     <div class="row">
         <div class="col-md-4">
+            <h1 class="display-4">My Profile</h1>
             <img class="img-thumbnail" src="{{ profile.profile_image.url }}" alt="user image">
         </div>
-        <div class="col-md-8">
-            <p>{{ profile.user }}</p>
+        <div class="col-md-8 mt-4">
+            <p class="h1">{{ profile.user }}</p>
             <P>{{ profile.bio }}</P>
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <table class="table mt-4">
+                <thead class="thead bg-info">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date created</th>
+                        <th scope="col">Likes</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if request.user.is_authenticated %}
+                        {% for post in my_posts %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'post-detail' slug=post.slug %}">
+                        {{ post.title }}</a></td>
+                        <td>{{ post.created_on | date:'F, m Y' }}</td>
+                        <td>{{ post.number_of_likes }}</td>
+                        <td><a class="btn btn-outline-primary btn-sm" role="button" href="{% url 'post-update' slug=post.slug %}">Update
+                        </a></td>
+                        <td><a class="btn btn-outline-danger btn-sm" role="button" data-toggle="modal" data-target="#mymodal">Delete
+                        </a></td>
+                    </tr>
+                  {% endfor %}
+                  {% endif %}
+                </tbody>
+
+              </table>
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}

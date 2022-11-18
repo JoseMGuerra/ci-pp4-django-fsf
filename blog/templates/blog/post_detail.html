@@ -10,47 +10,47 @@
         
 <div class="contatiner">
     <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+        <div class="col-md-8 offset-md-2">
             <div>
-                <h1 class="mt-5 mb-4">Post Detail</h1>
-                <p>{{ post.title }}</p>
-                <p>By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</p>
-                <p>
+                <h1>Post Detail</h1>
+                <h2>{{ post.title }}</h2>
+
+                <span>By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</span><br>
                     <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
                     </small>
-                </p>
-                    <img class="img-fluid" src="{{ post.featured_image.url }}" alt="">
+
+                    <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="">
                 <p>{{ post.content|safe }}</p>
 
             </div>
             <div>
                 <strong>
                 {% if user.is_authenticated %}
-                <form class="" action="{% url 'post-like' post.slug %}" method="POST">
-                    {% csrf_token %}
-                    {% if liked %}
-                    <button type="submit" name="post_id" value="{{ post.slug }}" class="btn  btn-sm"><i class="fas fa-heart"></i></button>
-                    {% else %}
-                    <button type="submit" name="post_id" value="{{ post.slug }}" class="btn  btn-sm"><i class="far fa-heart"></i></button>
-                    {% endif %}
-                    <span class="text-secondary">
-                        {{ post.number_of_likes }}  Like{{ post.number_of_likes|pluralize }}
-                    </span>
-                </form>
+                    <form class="" action="{% url 'post-like' post.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if liked %}
+                        <button type="submit" name="post_id" value="{{ post.slug }}" class="btn  btn-sm"><i class="fas fa-heart"></i></button>
+                        {% else %}
+                        <button type="submit" name="post_id" value="{{ post.slug }}" class="btn  btn-sm"><i class="far fa-heart"></i></button>
+                        {% endif %}
+                        <span class="text-secondary">
+                            {{ post.number_of_likes }}  Like{{ post.number_of_likes|pluralize }}
+                        </span>
+                    </form>
                 {% endif %}
-            </strong>
-        </div>
+                </strong>
+            </div>
 
-        <div>
-            {% if request.user == post.author or user.is_superuser %}
-                <a class="btn btn-outline-primary" role="button" href="{% url 'post-update' slug=post.slug %}">Update
-                </a>
-                
-                <a class="btn btn-outline-danger" role="button" data-toggle="modal" data-target="#mymodal">Delete
-                </a>
-            {% endif %}          
+            <div class="mt-4">
+                {% if request.user == post.author or user.is_superuser %}
+                    <a class="btn btn-outline-primary" role="button" href="{% url 'post-update' slug=post.slug %}">Update
+                    </a>
+                    
+                    <a class="btn btn-outline-danger" role="button" data-toggle="modal" data-target="#mymodal">Delete
+                    </a>
+                {% endif %}          
+            </div>
         </div>
-    </div>
 
         
         <div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="staticBackdropLabel" aria-hidden="true">
