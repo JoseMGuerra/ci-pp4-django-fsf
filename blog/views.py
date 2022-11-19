@@ -8,6 +8,8 @@ from django.utils.text import slugify
 from .models import Post
 from .forms import PostForm
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+from django.contrib import messages
 
 
 def post_list(request):
@@ -30,6 +32,7 @@ def post_detail(request, slug):
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         liked = True
+
     template = "blog/post_detail.html"
     context = {
         "page_title": "Post",
@@ -45,11 +48,15 @@ def post_create(request):
     """
     form = PostForm(request.POST or None, request.FILES or None)
     author = request.user
+
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author
             post = form.save(commit=False)
             post.save()
+            messages.success(
+                request, "Your post is being reviewed.")
+
             return redirect(reverse("post-detail", kwargs={
                 "slug": form.instance.slug
             }))
@@ -73,10 +80,13 @@ def post_update(request, slug):
         instance=post
         )
     author = request.user
+    
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author
             form.save()
+            messages.success(
+                request, "Your post has been updated successfully.")
             return redirect(reverse("post-detail", kwargs={
                 "slug": form.instance.slug
             }))
@@ -96,6 +106,9 @@ def post_delete(request, slug):
     """ Delete a post """
     post = get_object_or_404(Post, slug=slug)
     post.delete()
+    messages.success(
+        request, "You post has been deleted.")
+
     return redirect("post-list")
 
 
@@ -105,7 +118,10 @@ def post_like(request, slug, *args, **kwargs):
 
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
+
     else:
         post.likes.add(request.user)
+        messages.success(
+            request, 'Thank you for liking the post.')
 
     return HttpResponseRedirect(reverse("post-detail", args=[slug]))

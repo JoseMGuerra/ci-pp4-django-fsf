@@ -14,24 +14,24 @@
             <div>
                 <h1>Post Detail</h1>
                 <h2>{{ post.title }}</h2>
-
+                <p>
                 <span>By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</span><br>
                     <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
                     </small>
-
                     <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="">
+                </p>
                 <p>{{ post.content|safe }}</p>
 
             </div>
             <div>
                 <strong>
                 {% if user.is_authenticated %}
-                    <form class="" action="{% url 'post-like' post.slug %}" method="POST">
+                    <form class="" id="like_form" action="{% url 'post-like' post.slug %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
-                        <button type="submit" name="post_id" value="{{ post.slug }}" class="btn  btn-sm"><i class="fas fa-heart"></i></button>
+                        <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="fas fa-heart"></i></button>
                         {% else %}
-                        <button type="submit" name="post_id" value="{{ post.slug }}" class="btn  btn-sm"><i class="far fa-heart"></i></button>
+                        <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="far fa-heart"></i></button>
                         {% endif %}
                         <span class="text-secondary">
                             {{ post.number_of_likes }}  Like{{ post.number_of_likes|pluralize }}
@@ -76,10 +76,11 @@
         </div> 
     </div>
 </div>
-
+{% block postloadjs %}
 <script>
     $('#myModal').modal('show') 
 </script>
+{% endblock %}
             
 
 {% endblock content %}
