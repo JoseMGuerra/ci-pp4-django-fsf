@@ -26,7 +26,8 @@ class Post(models.Model):
     featured_image = CloudinaryField("image", default="placeholder")
     approved = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
-    likes = models.ManyToManyField(User, related_name='blogpost_likes', blank=True)
+    likes = models.ManyToManyField(
+        User, related_name='blogpost_likes', blank=True)
 
     class Meta:
         """Set the order of posts by descending date """
@@ -44,3 +45,25 @@ class Post(models.Model):
     def number_of_likes(self):
         """ Count number of likes """
         return self.likes.count()
+
+
+class Comment(models.Model):
+    """
+    Database model for comments
+    """
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="blog_comments")
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        """Sets the order of comments by date ascending"""
+        ordering = ["created_on"]
+
+    def __str__(self):
+        """Returns comment with body and name"""
+        return self.user.username

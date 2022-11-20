@@ -5,11 +5,10 @@ from django.shortcuts import (
     reverse,
     )
 from django.utils.text import slugify
-from .models import Post
-from .forms import PostForm
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 def post_list(request):
@@ -17,11 +16,13 @@ def post_list(request):
     Display all posts
     """
     post_list = Post.objects.filter(status=1, approved=True)
+    most_recent = Post.objects.order_by('-created_on')[:3]
 
     template = ["blog/post_list.html"]
     context = {
         "page_title": "Posts",
         "post_list": post_list,
+        "most_recent": most_recent,
     }
     return render(request, template, context)
     pass
@@ -29,15 +30,37 @@ def post_list(request):
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
+    comments = post.comments.filter(approved=True)
+    new_comment = None
+
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         liked = True
 
+    comment_form = CommentForm(data=request.POST)
+    if request.method == 'POST':
+        if comment_form.is_valid():
+            comment_form.instance.user = request.user
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+            messages.success(request, "Your comment is being reviewed.")
+
+            return redirect(reverse("post-detail", kwargs={
+                "slug": post.slug
+            }))
+    else:
+        comment_form = CommentForm()
+
     template = "blog/post_detail.html"
     context = {
         "page_title": "Post",
-        "liked": liked,
+        "form_type": "Comment",
         "post": post,
+        "liked": liked,
+        "comments": comments,
+        "new_comment": new_comment,
+        "comment_form": comment_form,
     }
     return render(request, template, context)
 
@@ -80,7 +103,7 @@ def post_update(request, slug):
         instance=post
         )
     author = request.user
-    
+
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author

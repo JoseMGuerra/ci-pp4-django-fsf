@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.decorators import login_required
 
 admin.site.login = login_required(admin.site.login)
@@ -41,6 +41,28 @@ class PostAdmin(admin.ModelAdmin):
 
     def unfeatured(self, request, queryset):
         queryset.update(featured=False)
+
+    def approved(self, request, queryset):
+        queryset.update(approved=True)
+
+    def disapproved(self, request, queryset):
+        queryset.update(approved=False)
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    """
+    Comment model in admin panel
+    """
+    list_display = [
+        'post',
+        'user',
+        'email',
+        'created_on',
+        'approved',
+    ]
+
+    actions = ['approved', 'disapproved']
 
     def approved(self, request, queryset):
         queryset.update(approved=True)

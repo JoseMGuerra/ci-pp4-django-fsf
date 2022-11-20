@@ -11,76 +11,126 @@
 <div class="contatiner">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div>
-                <h1>Post Detail</h1>
-                <h2>{{ post.title }}</h2>
-                <p>
-                <span>By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</span><br>
-                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
-                    </small>
-                    <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="">
-                </p>
-                <p>{{ post.content|safe }}</p>
-
-            </div>
-            <div>
-                <strong>
-                {% if user.is_authenticated %}
-                    <form class="" id="like_form" action="{% url 'post-like' post.slug %}" method="POST">
-                        {% csrf_token %}
-                        {% if liked %}
-                        <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="fas fa-heart"></i></button>
-                        {% else %}
-                        <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="far fa-heart"></i></button>
-                        {% endif %}
-                        <span class="text-secondary">
-                            {{ post.number_of_likes }}  Like{{ post.number_of_likes|pluralize }}
-                        </span>
-                    </form>
-                {% endif %}
-                </strong>
-            </div>
-
-            <div class="mt-4">
-                {% if request.user == post.author or user.is_superuser %}
+            <h1>Post Detail</h1>
+            <div class="card">
+                <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="featured image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|safe }}</p>
+                    <span class="card-text text-muted">By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</span>
+                    <p class="card-text text-muted">Last updated {{ post.updated_on | timesince }} ago</p>
+                    <strong>
+                    {% if user.is_authenticated %}
+                        <form class="mb-3" id="like-form" action="{% url 'post-like' post.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if liked %}
+                            <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="fas fa-heart"></i></button>
+                            {% else %}
+                            <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="far fa-heart"></i></button>
+                            {% endif %}
+                            <span class="text-secondary">
+                                {{ post.number_of_likes }}  Like{{ post.number_of_likes | pluralize }}
+                            </span>
+                        </form>
+                    {% endif %}
+                    </strong>
+                    {% if request.user == post.author or user.is_superuser %}
                     <a class="btn btn-outline-primary" role="button" href="{% url 'post-update' slug=post.slug %}">Update
                     </a>
-                    
                     <a class="btn btn-outline-danger" role="button" data-toggle="modal" data-target="#mymodal">Delete
                     </a>
-                {% endif %}          
+                    {% endif %}
+                </div>
             </div>
         </div>
-
-        
-        <div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h4>Are you sure you want to delete this post?</h4>
-                    <p>This action cannot be undone.</p>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-outline-danger" role="button" href="{% url 'post-delete' slug=post.slug %}">Delete
-                    </a>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-            </div> 
-        </div> 
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-4 ">
+            <h3>Comments:</h3>
+            <div class="card-body">  
+                {% for comment in comments %}
+                <div class="comments shadow-sm p-3 mb-3 bg-white rounded" style="padding: 10px;">
+                    <p class="font-weight-bold">  
+                        {{ comment.user }} on
+                        <span class=" text-muted font-weight-normal">
+                            {{ comment.created_on | date:'F, d Y'}}
+                        </span> wrote:
+                    </p>
+                    {{ comment.body | linebreaks }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4 mt-3 ">
+            <div class="card-body">
+                <!-- For later -->
+                {% if commented %}
+                <div class="alert alert-success" role="alert" id="msg" aria-label="Success">
+                    SUCCESS!
+                    Your comment is awaiting approval
+                </div>
+                {% else %}
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="POST" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to delete this post?</h4>
+                <p>This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-outline-danger" role="button" href="{% url 'post-delete' slug=post.slug %}">Delete
+                </a>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div> 
+</div> 
+
 {% block postloadjs %}
 <script>
     $('#myModal').modal('show') 
 </script>
+<script>
+    $(document).on('submit', '#like-form', function(e) {
+         e.preventDefault();
+         $.ajax({
+            type: "POST",
+            url: "blog/post/<slug>",
+            data: {
+                post: $('{{ post.slug }}').val(),
+                post_id: $('#post_id').val(),
+                crfmiddlewaretoken: $('input[name=crfmiddlewaretoken]').val(),
+            },
+            success: function(data) {
+                $('#msg').html(post_id);
+            },
+         })
+    })
+</script>
 {% endblock %}
             
-
 {% endblock content %}
