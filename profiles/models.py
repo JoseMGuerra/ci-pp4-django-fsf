@@ -11,7 +11,6 @@ class UserProfile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = CloudinaryField('image', default='placeholder')
-    bio = models.TextField()
 
     def __str__(self):
         return self.user.username
@@ -24,5 +23,4 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
     if created:
         UserProfile.objects.create(user=instance)
-    # Existing users: just save the profile
     instance.userprofile.save()

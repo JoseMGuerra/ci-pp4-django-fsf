@@ -1,0 +1,11 @@
+
+{% load crispy_forms_tags %}
+
+<h3 class="thin">Leave a comment:</h3>
+<p>Posting as: {{ user.username }}</p>
+
+<form  action="{% url 'post-comment' slug=post.slug %}" method="POST">
+    {{ form | crispy }}
+    {% csrf_token %}
+    <button type="submit" class="btn form-btn">Add Comment</button>
+</form>

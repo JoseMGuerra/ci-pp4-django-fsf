@@ -9,21 +9,19 @@
 {% block content %}
 
           
-    <div class="contatiner">
+    <div class="contatiner h-100">
         <div class="row">
-            <div class="col-md-6 mb-3 offset-md-3">
-                <h1 class="mb-4"> {{ form_type }} Post</h1>
+            <div class="col-md-6 offset-md-3">
+                <h1 class="mb-4 text-center"> {{ form_type }} Post</h1>
                 {% if user.is_authenticated %}
                 <form method="POST" action="." enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <button class="btn btn-secondary" type="submit">{{ form_type }}</button>
+                    <button class="btn form-btn btn-sm" type="submit">{{ form_type }} Post</button> 
                 </form>
                 {% endif %}
             </div>
         </div>
     </div>
-
-
 
 {% endblock content %}

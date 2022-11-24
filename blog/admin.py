@@ -55,11 +55,20 @@ class CommentAdmin(admin.ModelAdmin):
     Comment model in admin panel
     """
     list_display = [
-        'post',
         'user',
         'email',
+        'post',
         'created_on',
         'approved',
+    ]
+    list_filter = [
+        'approved',
+        'created_on',
+    ]
+    search_fields = [
+        'user',
+        'email',
+        'body',
     ]
 
     actions = ['approved', 'disapproved']

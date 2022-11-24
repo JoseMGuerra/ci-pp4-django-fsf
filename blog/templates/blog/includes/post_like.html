@@ -1,0 +1,16 @@
+{% load crispy_forms_tags %}
+
+<form class="mb-3" id="like-form" action="{% url 'post-like' post.slug %}" method="POST">
+    {% csrf_token %}
+    {% if liked %}
+    <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="fas fa-heart"></i></button>
+    {% else %}
+    <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="far fa-heart"></i></button>
+    {% endif %}
+    <span class="text-secondary">
+        {{ post.number_of_likes }}  Like{{ post.number_of_likes | pluralize }}
+    </span>
+    <span class="text-secondary ml-2">
+        <i class="fa-regular fa-comments"></i> {{ post.comments.count }}  Comment{{ post.comments.count | pluralize }}
+    </span>
+</form>

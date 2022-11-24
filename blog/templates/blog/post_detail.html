@@ -10,34 +10,26 @@
         
 <div class="contatiner">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h1>Post Detail</h1>
+        <div class="col-md-6 offset-md-3">
+            <h1 class="thin text-center">Post Detail</h1>
             <div class="card">
                 <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="featured image">
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content|safe }}</p>
+                    <p class="card-text">{{ post.content | linebreaks | safe }}</p>
                     <span class="card-text text-muted">By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</span>
                     <p class="card-text text-muted">Last updated {{ post.updated_on | timesince }} ago</p>
+                    <p><strong><a class="text-black" href="{% url 'post-list' %}"><< Back</a></strong></p>
                     <strong>
                     {% if user.is_authenticated %}
-                        <form class="mb-3" id="like-form" action="{% url 'post-like' post.slug %}" method="POST">
-                            {% csrf_token %}
-                            {% if liked %}
-                            <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="fas fa-heart"></i></button>
-                            {% else %}
-                            <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="far fa-heart"></i></button>
-                            {% endif %}
-                            <span class="text-secondary">
-                                {{ post.number_of_likes }}  Like{{ post.number_of_likes | pluralize }}
-                            </span>
-                        </form>
+                        {% include 'blog/includes/post_like.html' %}
                     {% endif %}
                     </strong>
                     {% if request.user == post.author or user.is_superuser %}
-                    <a class="btn btn-outline-primary" role="button" href="{% url 'post-update' slug=post.slug %}">Update
+                    <a class="btn btn-update btn-sm" role="button" href="{% url 'post-update' slug=post.slug %}">Update
                     </a>
-                    <a class="btn btn-outline-danger" role="button" data-toggle="modal" data-target="#mymodal">Delete
+                    <a class="btn btn-outline-danger btn-sm" role="button" 
+                    data-toggle="modal" data-target="#mymodal" >Delete
                     </a>
                     {% endif %}
                 </div>
@@ -48,8 +40,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 card mb-4 mt-4 ">
-            <h3>Comments:</h3>
-            <div class="card-body">  
+            <h3 class="thin">Comments: {{ comments.count }}</h3>
+            <div class="card-body"> 
                 {% for comment in comments %}
                 <div class="comments shadow-sm p-3 mb-3 bg-white rounded" style="padding: 10px;">
                     <p class="font-weight-bold">  
@@ -59,78 +51,45 @@
                         </span> wrote:
                     </p>
                     {{ comment.body | linebreaks }}
+                   
                 </div>
                 {% endfor %}
             </div>
         </div>
         <div class="col-md-4 card mb-4 mt-3 ">
             <div class="card-body">
-                <!-- For later -->
-                {% if commented %}
+                {% if comment %}
                 <div class="alert alert-success" role="alert" id="msg" aria-label="Success">
-                    SUCCESS!
-                    Your comment is awaiting approval
+                    Thank you for your comment.
                 </div>
-                {% else %}
-                {% if user.is_authenticated %}
+                {% else%}
 
-                <h3>Leave a comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form method="POST" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
-                </form>
-                {% endif %}
+                    {% if user.is_authenticated %}
+                        {% include 'blog/includes/comment_form.html' %}
+                    {% else %}
+
+                    <p>
+                        <strong>Would you like to leave a comment?.</strong> Already have an account? Then please
+                        <a href="{% url 'account_login' %}">
+                        <strong class="second-color h5">Sign In</strong>
+                        </a>
+                    </p>
+                    <p>
+                    If you don't have an account please 
+                    <a href="{% url 'account_signup' %}">
+                        <strong class="second-color h5">Sign Up</strong>
+                    </a> to create one.
+                    </p>
+
+                    {% endif %}
+                    
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h4>Are you sure you want to delete this post?</h4>
-                <p>This action cannot be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-outline-danger" role="button" href="{% url 'post-delete' slug=post.slug %}">Delete
-                </a>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div> 
-</div> 
+{% include 'blog/includes/delete_modal.html' %}
 
-{% block postloadjs %}
-<script>
-    $('#myModal').modal('show') 
-</script>
-<script>
-    $(document).on('submit', '#like-form', function(e) {
-         e.preventDefault();
-         $.ajax({
-            type: "POST",
-            url: "blog/post/<slug>",
-            data: {
-                post: $('{{ post.slug }}').val(),
-                post_id: $('#post_id').val(),
-                crfmiddlewaretoken: $('input[name=crfmiddlewaretoken]').val(),
-            },
-            success: function(data) {
-                $('#msg').html(post_id);
-            },
-         })
-    })
-</script>
-{% endblock %}
             
 {% endblock content %}

@@ -1,9 +1,9 @@
 {% load static %}
 
 <header>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light mb-4">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'homepage' %}"><strong class="text-warning h2">D</strong>jango <strong class="text-info h2">B</strong>log</a>
+      <a class="navbar-brand brand" href="{% url 'homepage' %}"><strong class="h2 prime-color">D</strong>jango <strong class="h2 second-color">B</strong>log</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>     
@@ -13,16 +13,16 @@
             <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'post-list' %}">Posts</a>
+              <a class="nav-link" href="{% url 'post-list' %}">Blog</a>
           </li>
           {% if request.user.is_authenticated %}
               {% if request.user.is_superuser %}
                   <a href="#" class="nav-link">Blog Management</a>
               {% endif %}
-              <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
+              <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Add Post</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+                  <a class="nav-link" href="{% url 'profile' %}">Profile</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
@@ -36,10 +36,12 @@
               </li>
           {% endif %}
         </ul>
-        <form class="form-inline nav-search-form my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        {% if user.is_authenticated %}
+        <span class="navbar-text">
+            <i class="far fa-user"></i>
+            {{ user.username }}
+        </span>
+        {% endif %}
       </div>
     </div>
   </nav>

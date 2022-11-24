@@ -1,0 +1,30 @@
+
+{% load crispy_forms_tags %}
+
+<div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="deleteConfirmationModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModal">Delete Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to delete "{{ post.title }}"?</h4>
+                <p>This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-update btn-sm" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'post-delete' slug=post.slug %}">Delete
+                </a>   
+            </div>
+        </div>
+    </div> 
+</div> 
+
+{% block postloadjs %}
+<script>
+    $('#myModal').modal('show') 
+</script>
+{% endblock %}
