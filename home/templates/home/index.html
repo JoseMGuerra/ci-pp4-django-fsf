@@ -5,7 +5,7 @@
 {% load cloudinary %}
 
 {% block extra_title %} {{ page_title }} {% endblock %}
-<!-- https://stackoverflow.com/questions/27219078/bootstrap-carousel-implementation-in-django-->
+
 {% block content %}
 
 <main>
@@ -23,6 +23,7 @@
                         </ul>
 
                         <div class="carousel-inner">
+                            <!-- https://stackoverflow.com/questions/27219078/bootstrap-carousel-implementation-in-django-->
                             {% for post in featured_post_list %}
                             {% if forloop.first %}
 
@@ -90,7 +91,7 @@
             </div>
         </div>
     </section>
-    <section class="container-wrappert">
+    <section class="container-wrapper">
         <div class="container mt-5">
             <div class="third-row">
                 <div class="col">
