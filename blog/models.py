@@ -5,16 +5,15 @@ from django.utils.text import slugify
 
 User = get_user_model()
 
-STATUS = (
-    (0, 'Draft'),
-    (1, 'Published')
-)
-
 
 class Post(models.Model):
     """
     Database model for Posts
     """
+    class Status(models.TextChoices):
+        DRAFT = "DF", "Draft"
+        PUBLISHED = "PB", "Published"
+
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -22,7 +21,8 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.CharField(
+        max_length=2, choices=Status.choices, default=Status.DRAFT)
     featured_image = CloudinaryField("image", default="placeholder")
     approved = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)

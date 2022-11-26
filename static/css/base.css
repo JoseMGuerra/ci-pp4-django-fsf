@@ -40,20 +40,22 @@ html {
     color: #B30000;
 }
 
-.brand-gradient {
-    background: linear-gradient(to right, #00b3b3 0%, #2220b3 100%);
+
+.bg-gradient-primary-to-secondary {
+    background-color: #0061f2 !important;
+    background-image: linear-gradient(135deg, #2220b3 0%, rgba(0, 179, 179, 0.796) 100%) !important;
 }
 
 .bg-prime {
-    background-color: rgba(34, 32, 179, 0.737) !important;
+    background-color: rgba(34, 32, 179, 0.50) !important;
 }
 
 .bg-second {
-    background-color: rgba(0, 179, 179, 0.737) !important;
+    background-color: rgba(0, 179, 179, 0.50) !important;
 }
 
 .bg-light {
-    background-color: rgba(240, 164, 0, 0.739) !important;
+    background-color: rgba(240, 164, 0, 0.749) !important;
 }
 
 
@@ -62,7 +64,6 @@ body {
     color: #1e1e24;
     padding-top: 4.5rem;
 }
-
 
 
 h1,
@@ -84,20 +85,6 @@ h6,
 .nav-link:hover {
     text-decoration: none;
     color: #00b3b3 !important;
-}
-
-footer,
-footer a,
-footer h5,
-footer i {
-    text-align: center;
-    color: rgba(30, 30, 36, 0.50);
-}
-
-footer i {
-    padding: 1rem 0.5rem;
-    font-size: 2rem;
-
 }
 
 footer a:hover,
@@ -123,9 +110,10 @@ footer i:hover {
     background-color: transparent;
 }
 
-.second-row {
-    padding-top: 4rem;
-    margin-bottom: 4rem;
+.first-row,
+.second-row,
+.third-row {
+    padding: 6rem 0;
 }
 
 .second-row h4,
@@ -135,7 +123,21 @@ footer i:hover {
 }
 
 .second-row i {
-    font-size: 5rem;
+    font-size: 4rem;
+
+}
+
+footer,
+footer a,
+footer h5,
+footer i {
+    text-align: center;
+    color: rgba(30, 30, 36, 0.50);
+}
+
+footer i {
+    padding: 1rem 0.5rem;
+    font-size: 2rem;
 
 }
 

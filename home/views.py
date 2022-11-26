@@ -4,7 +4,7 @@ from blog.models import Post
 
 def home_view(request):
     featured_post_list = Post.objects.filter(
-        approved=True, featured=True, status=1
+        approved=True, featured=True, status="PB"
         )
     template = ["home/index.html"]
     context = {

@@ -31,10 +31,10 @@ class PostAdmin(admin.ModelAdmin):
         ]
 
     def published(self, request, queryset):
-        queryset.update(status=1)
+        queryset.update(status="PB")
 
     def draft(self, request, queryset):
-        queryset.update(status=0)
+        queryset.update(status="DF")
 
     def featured(self, request, queryset):
         queryset.update(featured=True)

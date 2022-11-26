@@ -16,7 +16,7 @@ def post_list(request):
     """
     Display all posts
     """
-    post_list = Post.objects.filter(status=1, approved=True)
+    post_list = Post.objects.filter(status="PB", approved=True)
     most_recent = Post.objects.order_by("-created_on")[:3]
 
     template = ["blog/post_list.html"]
@@ -145,7 +145,7 @@ def post_comment(request, slug):
     """
     Create a new comment
     """
-    post = get_object_or_404(Post, slug=slug, status=1, approved=True)
+    post = get_object_or_404(Post, slug=slug, status="PB", approved=True)
     comment = None
 
     form = CommentForm(data=request.POST or None)
