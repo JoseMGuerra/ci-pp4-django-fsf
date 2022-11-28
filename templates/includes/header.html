@@ -21,12 +21,6 @@
               {% endif %}
               <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Add Post</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
-              </li>
               {% else %}
               <li class="nav-item">
                   <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
@@ -37,10 +31,20 @@
           {% endif %}
         </ul>
         {% if user.is_authenticated %}
-        <span class="navbar-text">
-            <i class="far fa-user"></i>
-            {{ user.username }}
-        </span>
+        <ul class="navbar-nav justify-content-end">
+          <li class="nav-item">
+            <span class="navbar-text">
+              <i class="far fa-user"></i>
+              {{ user.username }}
+          </span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text" href="{% url 'profile' %}">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text" href="{% url 'account_logout' %}">Log Out</a>
+          </li>
+        </ul>
         {% endif %}
       </div>
     </div>
