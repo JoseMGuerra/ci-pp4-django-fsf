@@ -16,9 +16,6 @@
               <a class="nav-link" href="{% url 'post-list' %}">Blog</a>
           </li>
           {% if request.user.is_authenticated %}
-              {% if request.user.is_superuser %}
-                  <a href="#" class="nav-link">Blog Management</a>
-              {% endif %}
               <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Add Post</a>
               </li>
               {% else %}
@@ -38,6 +35,11 @@
               {{ user.username }}
           </span>
           </li>
+          {% if request.user.is_superuser %}
+          <li>
+            <a class="nav-link navbar-text" href="{% url 'posts-management' %}" >Blog Management</a>
+          </li>
+            {% endif %}
           <li class="nav-item">
             <a class="nav-link navbar-text" href="{% url 'profile' %}">My Profile</a>
           </li>

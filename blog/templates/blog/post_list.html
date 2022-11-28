@@ -15,10 +15,12 @@
             {% for post in post_list %}
                 {% if forloop.counter|divisibleby:2 %}  
 
-                <div class="contatiner card mb-3">
+                <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{ post.featured_image.url }}" alt="default_image" style="width:100%">
+                            {% if post.featured_image %}
+                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                            {% endif %}
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -28,7 +30,7 @@
                                     </a>
                                 </h3>
                                 <p class="card-text">
-                                    {{ post.content |truncatewords:80 | safe }}  
+                                    {{ post.content |truncatewords:40 | safe }}  
                                     <a class="post-link " href="{% url 'post-detail' slug=post.slug %}"><strong>Read more</strong>
                                 </a>
                                 </p>
@@ -37,7 +39,7 @@
                                     </small>
                                 </p>
                                 <p class="card-text text-muted h6">Created by {{ post.author }} on
-                                    {{ post.created_on | date:'F, m Y' }}
+                                    {{ post.created_on|date:"D d M Y" }}
                                     <i class="far fa-heart"></i>  
                                     {{ post.number_of_likes }}
                                     <span class="text-secondary ml-2">
@@ -59,7 +61,7 @@
                                         {{ post.title }}
                                     </a>
                                 </h3>
-                                <p class="card-text">{{ post.content | linebreaks | truncatewords:80 | safe }}  
+                                <p class="card-text">{{ post.content | linebreaks | truncatewords:40 | safe }}  
                                     <a class="post-link" href="{% url 'post-detail' slug=post.slug %}"><strong>Read more</strong>
                                     </a>
                                 </p>
@@ -67,7 +69,7 @@
                                     <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago</small>
                                 </p>
                                 <p class="card-text text-muted h6">Created by {{ post.author }} on
-                                    {{ post.created_on | date:'F, m Y' }}
+                                    {{ post.created_on|date:"D d M Y" }}
                                     <i class="far fa-heart"></i>  
                                     {{ post.number_of_likes }}
                                     <span class="text-secondary ml-2">
@@ -78,7 +80,9 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="{{ post.featured_image.url }}" alt="default_image" style="width:100%">
+                            {% if post.featured_image %}
+                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                            {% endif %}
                         </div>
                     </div>
                 </div>

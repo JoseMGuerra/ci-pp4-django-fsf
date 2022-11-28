@@ -10,14 +10,16 @@
         
 <div class="container">
     <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-8 offset-md-2">
             <h1 class="thin text-center">Post Detail</h1>
             <div class="card">
+                {% if post.featured_image %}
                 <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="featured image">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content | linebreaks | safe }}</p>
-                    <span class="card-text text-muted">By {{ post.author }} on {{ post.created_on|date:'F, m Y' }}</span>
+                    <span class="card-text text-muted">By {{ post.author }} on {{ post.created_on|date:"D d M Y" }}</span>
                     <p class="card-text text-muted">Last updated {{ post.updated_on | timesince }} ago</p>
                     <p><strong><a class="text-black" href="{% url 'post-list' %}"><< Back</a></strong></p>
                     <strong>
@@ -26,9 +28,9 @@
                     {% endif %}
                     </strong>
                     {% if request.user == post.author or user.is_superuser %}
-                    <a class="btn btn-update btn-sm" role="button" href="{% url 'post-update' slug=post.slug %}">Update
+                    <a class="btn btn-update btn-lg btn-block" role="button" href="{% url 'post-update' slug=post.slug %}">Update
                     </a>
-                    <a class="btn btn-outline-danger btn-sm" role="button" 
+                    <a class="btn btn-outline-danger btn-lg btn-block" role="button" 
                     data-toggle="modal" data-target="#mymodal" >Delete
                     </a>
                     {% endif %}
@@ -47,7 +49,7 @@
                     <p class="font-weight-bold">  
                         {{ comment.user }} on
                         <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on | date:'F, d Y'}}
+                            {{ comment.created_on|date:"D d M Y" }}
                         </span> wrote:
                     </p>
                     {{ comment.body | linebreaks }}

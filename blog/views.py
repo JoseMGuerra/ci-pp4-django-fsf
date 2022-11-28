@@ -16,7 +16,7 @@ def post_list(request):
     """
     Display all posts
     """
-    post_list = Post.objects.filter(status="PB", approved=True)
+    post_list = Post.objects.filter(status="Published", approved=True)
     most_recent = Post.objects.order_by("-created_on")[:3]
 
     template = ["blog/post_list.html"]
@@ -145,7 +145,7 @@ def post_comment(request, slug):
     """
     Create a new comment
     """
-    post = get_object_or_404(Post, slug=slug, status="PB", approved=True)
+    post = get_object_or_404(Post, slug=slug, status="Published", approved=True)
     comment = None
 
     form = CommentForm(data=request.POST or None)
@@ -172,3 +172,18 @@ def post_comment(request, slug):
 
     return render(request, template, context)
 
+
+def posts_management(request):
+    """
+    Display all posts
+    """
+    post_list = Post.objects.all()
+    most_recent = Post.objects.order_by("-created_on")
+
+    template = ["blog/posts_management.html"]
+    context = {
+        "page_title": "Posts Management",
+        "post_list": post_list,
+        "most_recent": most_recent,
+    }
+    return render(request, template, context)

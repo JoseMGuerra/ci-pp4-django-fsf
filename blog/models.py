@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 
 User = get_user_model()
@@ -11,8 +10,8 @@ class Post(models.Model):
     Database model for Posts
     """
     class Status(models.TextChoices):
-        DRAFT = "DF", "Draft"
-        PUBLISHED = "PB", "Published"
+        DRAFT = "Draft", "Draft"
+        PUBLISHED = "Published", "Published"
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -22,8 +21,9 @@ class Post(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
-        max_length=2, choices=Status.choices, default=Status.DRAFT)
-    featured_image = CloudinaryField("image", default="placeholder")
+        max_length=10, choices=Status.choices, default=Status.DRAFT)
+    featured_image = models.ImageField(
+        upload_to="media/images/", blank=True, null=True, default="placeholder")
     approved = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(

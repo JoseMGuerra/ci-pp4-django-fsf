@@ -87,11 +87,6 @@ h6,
     color: #00b3b3 !important;
 }
 
-footer a:hover,
-footer i:hover {
-    text-decoration: none;
-    color: #00b3b3 !important;
-}
 
 
 .post-link {
@@ -101,7 +96,7 @@ footer i:hover {
 
 .post-link:hover,
 .page-link {
-    text-decoration: none;
+    text-decoration: underline;
     color: #B30000;
 }
 
@@ -129,10 +124,20 @@ footer i:hover {
 
 footer,
 footer a,
-footer h5,
+footer h6,
 footer i {
     text-align: center;
     color: rgba(30, 30, 36, 0.50);
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #00b3b3 !important;
+}
+
+footer i:hover {
+    text-decoration: none;
+    color: #00b3b3 !important;
 }
 
 footer i {
@@ -140,6 +145,7 @@ footer i {
     font-size: 1.5rem;
 
 }
+
 
 /* ------------------------------------------- Wrappers */
 

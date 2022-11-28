@@ -31,9 +31,10 @@
                             {% else %}
                                 <div class="carousel-item">
                             {% endif %} 
-
+                            {% if post.featured_image %}
                             <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
-
+                            {% endif %}
+                             
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="display-4 bg-light text-red pr-1 rounded">
                                     <strong>{{ post.title }}</strong>
@@ -98,11 +99,12 @@
                     <div class="card-deck">
                         {% for post in featured_post_list %}
                         <div class="card mt-4 mb-4">
-                            <a class="post-link" href="{% url 'post-detail' slug=post.slug %}">
+                            <a href="{% url 'post-detail' slug=post.slug %}">
+                            {% if post.featured_image %}
                             <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
-                        
+                            {% endif %}                      
                         <div class="card-body">
-                            <h5 class="card-title">{{ post.title }}</h5>
+                            <h5 class="card-title post-link">{{ post.title }}</h5>
                             </a>
                             <p class="card-text">
                                 {{ post.content | linebreaks | truncatewords:20 | safe }}
