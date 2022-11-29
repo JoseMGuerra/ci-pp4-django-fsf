@@ -1,8 +1,36 @@
 from django.db import models
+from django.utils import timezone
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 
 User = get_user_model()
+
+
+class Category(models.Model):
+    """
+    Database model for Category
+    """
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(
+        max_length=200, unique=True)
+
+    class Meta:
+        """
+        Set the order of categories by ascending order 
+        Set the plural name for category
+        """
+        ordering = ["name"]
+        verbose_name = "category"
+        verbose_name_plural = "categories"
+
+    def get_absolute_url(self):
+        """ Get the post category absolute url """
+        return reverse("blog:posts-by-category", args=[self.slug])
+
+    def __str__(self):
+        """Returns category name"""
+        return self.name
 
 
 class Post(models.Model):
@@ -10,16 +38,18 @@ class Post(models.Model):
     Database model for Posts
     """
     class Status(models.TextChoices):
-        DRAFT = "Draft", "Draft"
-        PUBLISHED = "Published", "Published"
+        DRAFT = "draft", "Draft"
+        PUBLISHED = "published", "Published"
 
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts")
-    updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
+    published = models.DateTimeField(default=timezone.now)
     created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     status = models.CharField(
         max_length=10, choices=Status.choices, default=Status.DRAFT)
     featured_image = models.ImageField(
@@ -46,6 +76,10 @@ class Post(models.Model):
         """ Count number of likes """
         return self.likes.count()
 
+    def get_absolute_url(self):
+        """ Get the post detail absolute url """
+        return reverse("blog:post-detail", args=[self.slug])
+
 
 class Comment(models.Model):
     """
@@ -65,5 +99,5 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        """Returns comment with body and name"""
+        """Returns comment username"""
         return self.user.username

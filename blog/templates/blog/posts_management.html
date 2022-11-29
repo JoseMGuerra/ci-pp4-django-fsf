@@ -40,7 +40,7 @@
                         <th scope="row">{{ forloop.counter }}</th>
                         <th scope="row">{{ post.author }}</th>
                         <td>
-                            <a href="{% url 'post-detail' slug=post.slug %}" class="post-link">
+                            <a href="{{ post.get_absolute_url }}" class="post-link">
                                 {{ post.title }}
                             </a>
                         </td>
@@ -50,13 +50,15 @@
                         <td>{{ post.status }}</td>
                         <td>{{ post.approved }}</td>
                         <td>
-                            <a class="btn btn-update btn-sm" role="button" href="{% url 'post-update' slug=post.slug %}">Update
+                            <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-outline-danger btn-sm disabled" role="button" 
-                            data-toggle="modal" data-target="#mymodal" >Delete
-                            </a>
+                            <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-delete' slug=post.slug %}">Delete
+                            </a> 
+                            <!-- <a class="btn btn-outline-danger btn-sm" role="button" 
+                            data-toggle="modal" data-target="blog/includes/#mymodal" >Delete
+                            </a> -->
                         </td>
                     </tr>
                   {% endfor %}
@@ -66,6 +68,5 @@
         </div>
     </div>
 </div>
-
 
 {% endblock %}

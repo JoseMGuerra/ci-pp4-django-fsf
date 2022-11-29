@@ -13,10 +13,10 @@
             <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'post-list' %}">Blog</a>
+              <a class="nav-link" href="{% url 'blog:post-list' %}">Blog</a>
           </li>
           {% if request.user.is_authenticated %}
-              <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Add Post</a>
+              <li class="nav-item"><a href="{% url 'blog:post-create' %}" class="nav-link ">Add Post</a>
               </li>
               {% else %}
               <li class="nav-item">
@@ -37,7 +37,7 @@
           </li>
           {% if request.user.is_superuser %}
           <li>
-            <a class="nav-link navbar-text" href="{% url 'posts-management' %}" >Blog Management</a>
+            <a class="nav-link navbar-text" href="{% url 'blog:posts-management' %}" >Blog Management</a>
           </li>
             {% endif %}
           <li class="nav-item">

@@ -1,8 +1,17 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from django.contrib.auth.decorators import login_required
 
 admin.site.login = login_required(admin.site.login)
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    """
+    Category model in admin panel
+    """
+    list_display = ('name', 'slug',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Post)

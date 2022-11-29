@@ -99,7 +99,7 @@
                     <div class="card-deck">
                         {% for post in featured_post_list %}
                         <div class="card mt-4 mb-4">
-                            <a href="{% url 'post-detail' slug=post.slug %}">
+                            <a href="{{ post.get_absolute_url }}">
                             {% if post.featured_image %}
                             <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
                             {% endif %}                      
@@ -107,7 +107,7 @@
                             <h5 class="card-title post-link">{{ post.title }}</h5>
                             </a>
                             <p class="card-text">
-                                {{ post.content | linebreaks | truncatewords:20 | safe }}
+                                {{ post.content | linebreaks | truncatewords:15 | safe }}
                             </p>
                         </div>
                         <div class="card-footer bg-light">

@@ -21,15 +21,19 @@
                     <p class="card-text">{{ post.content | linebreaks | safe }}</p>
                     <span class="card-text text-muted">By {{ post.author }} on {{ post.created_on|date:"D d M Y" }}</span>
                     <p class="card-text text-muted">Last updated {{ post.updated_on | timesince }} ago</p>
-                    <p><strong><a class="text-black" href="{% url 'post-list' %}"><< Back</a></strong></p>
+                    <p><strong><a class="text-black" href="{% url 'blog:post-list' %}"><< Back</a></strong></p>
                     <strong>
                     {% if user.is_authenticated %}
                         {% include 'blog/includes/post_like.html' %}
                     {% endif %}
                     </strong>
                     {% if request.user == post.author or user.is_superuser %}
-                    <a class="btn btn-update btn-lg btn-block" role="button" href="{% url 'post-update' slug=post.slug %}">Update
+                    <a class="btn btn-update btn-lg btn-block" role="button" href="{% url 'blog:post-update' slug=post.slug %}">Update
                     </a>
+    
+                    <!-- <a class="btn btn-outline-danger btn-lg btn-block mt-2" role="button" href="{% url 'blog:post-delete' slug=post.slug %}">Delete
+                    </a>  -->
+                    
                     <a class="btn btn-outline-danger btn-lg btn-block" role="button" 
                     data-toggle="modal" data-target="#mymodal" >Delete
                     </a>
@@ -65,10 +69,12 @@
                     Thank you for your comment.
                 </div>
                 {% else%}
-
                     {% if user.is_authenticated %}
+                        {% if post.approved == True %}
                         {% include 'blog/includes/comment_form.html' %}
+                        {% endif %}
                     {% else %}
+                    
 
                     <p>
                         <strong>Would you like to leave a comment?.</strong> Already have an account? Then please

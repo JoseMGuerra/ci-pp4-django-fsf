@@ -37,7 +37,7 @@
                         {% for post in my_posts %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="{% url 'post-detail' slug=post.slug %}" class="post-link">
+                        <td><a href="{{ post.get_absolute_url }}" class="post-link">
                         {{ post.title }}</a></td>
                         <td>{{ post.created_on|date:"D d M Y" }}</td>
                         <td>{{ post.number_of_likes }}</td>

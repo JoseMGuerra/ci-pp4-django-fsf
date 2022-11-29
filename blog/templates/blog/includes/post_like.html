@@ -1,6 +1,6 @@
 {% load crispy_forms_tags %}
 
-<form class="mb-3" id="like-form" action="{% url 'post-like' post.slug %}" method="POST">
+<form class="mb-3" id="like-form" action="{% url 'blog:post-like' post.slug %}" method="POST">
     {% csrf_token %}
     {% if liked %}
     <button type="submit" id="post_id" name="post_id" value="{{ post.slug }}" class="btn  btn-like btn-sm"><i class="fas fa-heart"></i></button>

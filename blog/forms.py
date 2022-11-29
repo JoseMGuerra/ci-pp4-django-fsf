@@ -13,6 +13,7 @@ class PostForm(ModelForm):
         fields = [
             'title',
             'content',
+            'category',
             'featured_image',
             'status',
             ]

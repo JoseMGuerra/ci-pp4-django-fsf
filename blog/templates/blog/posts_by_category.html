@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% load cloudinary %}
+
+{% block extra_title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <h1 class="mb-4 thin text-center">{{ category.name }}</h1>
+
+            {% for post in posts %}
+                
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            {% if post.featured_image %}
+                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <a class="post-link" href="{{ post.get_absolute_url }}">
+                                        {{ post.title }}
+                                    </a>
+                                </h3>
+                                <p class="card-text">
+                                    {{ post.content |truncatewords:40 | safe }}  
+                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>Read more</strong>
+                                </a>
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
+                                    </small>
+                                </p>
+                                <p class="card-text text-muted h6">Created by {{ post.author }} on
+                                    {{ post.created_on|date:"D d M Y" }}
+                                    <i class="far fa-heart"></i>  
+                                    {{ post.number_of_likes }}
+                                    <span class="text-secondary ml-2">
+                                        <i class="fa-regular fa-comments"></i> 
+                                         {{ post.comments.count }}  
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

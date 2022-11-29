@@ -10,7 +10,8 @@ class UserProfile(models.Model):
     User profile model
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = CloudinaryField('image', default='placeholder')
+    profile_image = models.ImageField(
+        upload_to='media/profile_images', default='placeholder')
 
     def __str__(self):
         return self.user.username

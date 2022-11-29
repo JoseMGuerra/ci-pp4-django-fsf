@@ -6,17 +6,33 @@ from django.shortcuts import (
     )
 from django.views.decorators.http import require_POST
 from django.utils.text import slugify
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+
+
+def posts_by_category(request, category_slug):
+    categories = Category.objects.all()
+    posts = Post.objects.filter(status="published", approved=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        posts = posts.filter(category=category)
+
+    template = "blog/posts_by_category.html"
+    context = {
+        "categories": categories,
+        "posts": posts,
+        "category": category,
+    }
+    return render(request, template, context)
 
 
 def post_list(request):
     """
     Display all posts
     """
-    post_list = Post.objects.filter(status="Published", approved=True)
+    post_list = Post.objects.filter(status="published", approved=True)
     most_recent = Post.objects.order_by("-created_on")[:3]
 
     template = ["blog/post_list.html"]
@@ -63,7 +79,7 @@ def post_create(request):
             messages.success(
                 request, "Your post is being reviewed.")
 
-            return redirect(reverse("post-detail", kwargs={
+            return redirect(reverse("blog:post-detail", kwargs={
                 "slug": form.instance.slug
             }))
         else:
@@ -96,7 +112,7 @@ def post_update(request, slug):
             form.save()
             messages.success(
                 request, "Your post has been successfully updated.")
-            return redirect(reverse("post-detail", kwargs={
+            return redirect(reverse("blog:post-detail", kwargs={
                 "slug": form.instance.slug
             }))
         else:
@@ -116,11 +132,23 @@ def post_delete(request, slug):
     Delete a post
     """
     post = get_object_or_404(Post, slug=slug)
-    post.delete()
-    messages.success(
-        request, "You post has been deleted.")
 
-    return redirect("post-list")
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        post.delete()
+        messages.success(
+            request, "You post has been deleted.")
+        return redirect(reverse("blog:post-list"))
+    else:
+        form = PostForm(instance=post)
+
+    template = "blog/includes/delete_modal.html"
+    context = {
+        "form_type": "Delete",
+        "post": post,
+        "form": form,
+    }
+    return render(request, template, context)
 
 
 def post_like(request, slug, *args, **kwargs):
@@ -137,7 +165,7 @@ def post_like(request, slug, *args, **kwargs):
         messages.success(
             request, "Thank you for liking the post.")
 
-    return HttpResponseRedirect(reverse("post-detail", args=[slug]))
+    return HttpResponseRedirect(reverse("blog:post-detail", args=[slug]))
 
 
 @require_POST
@@ -145,7 +173,8 @@ def post_comment(request, slug):
     """
     Create a new comment
     """
-    post = get_object_or_404(Post, slug=slug, status="Published", approved=True)
+    post = get_object_or_404(
+        Post, slug=slug, status="published", approved=True)
     comment = None
 
     form = CommentForm(data=request.POST or None)
@@ -156,7 +185,7 @@ def post_comment(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            return redirect(reverse("post-detail", kwargs={
+            return redirect(reverse("blog:post-detail", kwargs={
                 "slug": post.slug
             }))
 
@@ -169,7 +198,6 @@ def post_comment(request, slug):
         "comment": comment,
         "form": form,
     }
-
     return render(request, template, context)
 
 

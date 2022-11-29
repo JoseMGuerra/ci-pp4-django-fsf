@@ -1,6 +1,7 @@
 
 {% load crispy_forms_tags %}
 
+{% block content %}
 <div class="modal fade" id="mymodal" data-backdrop="static"            labelledby="deleteConfirmationModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -16,13 +17,17 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-update btn-sm" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'post-delete' slug=post.slug %}">Delete
-                </a>   
+                <form method="POST" action="{% url 'blog:post-delete' slug=post.slug %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button> 
+                </form>
+                <!-- <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-delete' slug=post.slug %}">Delete
+                </a>    -->
             </div>
         </div>
     </div> 
 </div> 
-
+{% endblock %}
 {% block postloadjs %}
 <script>
     $('#myModal').modal('show') 

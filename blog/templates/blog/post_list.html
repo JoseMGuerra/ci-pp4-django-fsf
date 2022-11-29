@@ -25,13 +25,13 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    <a class="post-link" href="{% url 'post-detail' slug=post.slug %}">
+                                    <a class="post-link" href="{{ post.get_absolute_url }}">
                                         {{ post.title }}
                                     </a>
                                 </h3>
                                 <p class="card-text">
-                                    {{ post.content |truncatewords:40 | safe }}  
-                                    <a class="post-link " href="{% url 'post-detail' slug=post.slug %}"><strong>Read more</strong>
+                                    {{ post.content |truncatewords:15 | safe }}  
+                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>Read more</strong>
                                 </a>
                                 </p>
                                 <p class="card-text">
@@ -46,6 +46,7 @@
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
                                     </span>
+                                    <span>in <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
                                 </p>
                             </div>
                         </div>
@@ -57,12 +58,12 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    <a class="post-link" href="{% url 'post-detail' slug=post.slug %}">
+                                    <a class="post-link" href="{{ post.get_absolute_url }}">
                                         {{ post.title }}
                                     </a>
                                 </h3>
-                                <p class="card-text">{{ post.content | linebreaks | truncatewords:40 | safe }}  
-                                    <a class="post-link" href="{% url 'post-detail' slug=post.slug %}"><strong>Read more</strong>
+                                <p class="card-text">{{ post.content | linebreaks | truncatewords:15 | safe }}  
+                                    <a class="post-link" href="{{ post.get_absolute_url }}"><strong>Read more</strong>
                                     </a>
                                 </p>
                                 <p class="card-text">
@@ -76,6 +77,7 @@
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
                                     </span>
+                                    <span>in <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
                                 </p>
                             </div>
                         </div>
