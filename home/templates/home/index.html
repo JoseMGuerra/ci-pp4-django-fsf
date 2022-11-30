@@ -11,9 +11,8 @@
 <main>
     <section class="container-wrapper">
         <div class="container">
-            <div class="first-row">
+            <div class="row first-row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 class="thin mb-2 text-center">Featured Posts</h1>
                     <div id="carouselHero" class="carousel slide mt-4 mb-4" data-ride="carousel">
 
                         <ul class="carousel-indicators">
@@ -66,7 +65,7 @@
     </section>
     <section class="container-wrapper">
         <div class="container">
-            <div class="second-row">
+            <div class="row second-row">
                 <div class="col">
                     <div class="card-deck">
                         <div class="card">
@@ -94,7 +93,10 @@
     </section>
     <section class="container-wrapper">
         <div class="container mt-5">
-            <div class="third-row">
+            <div>
+                <h1 class="thin mb-2 text-center">Featured Posts</h1>
+            </div>
+            <div class="row third-row">
                 <div class="col">
                     <div class="card-deck">
                         {% for post in featured_post_list %}

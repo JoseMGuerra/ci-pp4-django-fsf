@@ -29,7 +29,7 @@ class PostAdmin(admin.ModelAdmin):
         )
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on')
+    list_filter = ('status', 'created_on', 'category')
     actions = [
         'published',
         'draft',

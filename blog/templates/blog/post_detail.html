@@ -46,7 +46,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 card mb-4 mt-4 ">
-            <h3 class="thin">Comments: {{ comments.count }}</h3>
+            <h5 class="thin">Comments: <small>{{ comments.count }}</small></h5>
             <div class="card-body"> 
                 {% for comment in comments %}
                 <div class="comments shadow-sm p-3 mb-3 bg-white rounded" style="padding: 10px;">
@@ -56,9 +56,10 @@
                             {{ comment.created_on|date:"D d M Y" }}
                         </span> wrote:
                     </p>
-                    {{ comment.body | linebreaks }}
-                   
+                    {{ comment.body | linebreaks }}                  
                 </div>
+                {% empty %}
+                    <P>There is no comments</P>
                 {% endfor %}
             </div>
         </div>
@@ -74,8 +75,6 @@
                         {% include 'blog/includes/comment_form.html' %}
                         {% endif %}
                     {% else %}
-                    
-
                     <p>
                         <strong>Would you like to leave a comment?.</strong> Already have an account? Then please
                         <a href="{% url 'account_login' %}">

@@ -6,8 +6,11 @@ def home_view(request):
     featured_post_list = Post.objects.filter(
         approved=True, featured=True, status="published"
         )
+    most_recent = Post.objects.order_by("-created_on")[:3]
+
     template = ["home/index.html"]
     context = {
         "featured_post_list": featured_post_list,
+        "most_recent": most_recent,
     }
     return render(request, template, context)

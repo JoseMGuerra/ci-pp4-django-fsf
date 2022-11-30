@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     {% if request.user.is_staff %}
-                        {% for post in post_list %}
+                        {% for post in posts %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <th scope="row">{{ post.author }}</th>
@@ -67,6 +67,7 @@
               </table>
         </div>
     </div>
+    {% include 'blog/includes/paginator.html' with page=posts %}
 </div>
 
 {% endblock %}

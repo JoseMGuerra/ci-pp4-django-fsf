@@ -4,8 +4,7 @@ from django.shortcuts import (
     redirect,
     reverse,
     )
-from django.views.decorators.http import require_POST
-from django.utils.text import slugify
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.contrib import messages
@@ -33,13 +32,20 @@ def post_list(request):
     Display all posts
     """
     post_list = Post.objects.filter(status="published", approved=True)
-    most_recent = Post.objects.order_by("-created_on")[:3]
+    paginator = Paginator(post_list, 3)
+    page = request.GET.get("page")
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     template = ["blog/post_list.html"]
     context = {
         "page_title": "Posts",
-        "post_list": post_list,
-        "most_recent": most_recent,
+        "posts": posts,
+        "page": page,
     }
     return render(request, template, context)
 
@@ -168,7 +174,6 @@ def post_like(request, slug, *args, **kwargs):
     return HttpResponseRedirect(reverse("blog:post-detail", args=[slug]))
 
 
-@require_POST
 def post_comment(request, slug):
     """
     Create a new comment
@@ -188,7 +193,6 @@ def post_comment(request, slug):
             return redirect(reverse("blog:post-detail", kwargs={
                 "slug": post.slug
             }))
-
     else:
         form = CommentForm()
 
@@ -207,11 +211,20 @@ def posts_management(request):
     """
     post_list = Post.objects.all()
     most_recent = Post.objects.order_by("-created_on")
+    paginator = Paginator(post_list, 5)
+    page = request.GET.get("page")
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     template = ["blog/posts_management.html"]
     context = {
         "page_title": "Posts Management",
-        "post_list": post_list,
         "most_recent": most_recent,
+        "posts": posts,
+        "page": page,
     }
     return render(request, template, context)

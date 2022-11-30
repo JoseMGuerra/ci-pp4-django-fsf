@@ -63,6 +63,7 @@ body {
     font-family: Montserrat, sans-serif;
     color: #1e1e24;
     padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
 }
 
 
@@ -87,15 +88,25 @@ h6,
     color: #00b3b3 !important;
 }
 
+.page-link {
+    color: #00B3B3
+}
 
+.page-link:hover {
+    color: #2220B3
+}
+
+.page-active {
+    background-color: #f0a400 !important;
+    border-color: #f0a400 !important;
+}
 
 .post-link {
     text-decoration: none;
     color: #1e1e24;
 }
 
-.post-link:hover,
-.page-link {
+.post-link:hover {
     text-decoration: underline;
     color: #B30000;
 }

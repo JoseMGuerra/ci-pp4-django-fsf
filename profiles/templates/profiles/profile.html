@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                     {% if request.user.is_authenticated %}
-                        {% for post in my_posts %}
+                        {% for post in posts %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td><a href="{{ post.get_absolute_url }}" class="post-link">
@@ -51,6 +51,7 @@
               </table>
         </div>
     </div>
+    {% include 'blog/includes/paginator.html' with page=posts %}
 </div>
 
 {% endblock %}
