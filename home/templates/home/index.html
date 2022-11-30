@@ -31,13 +31,14 @@
                                 <div class="carousel-item">
                             {% endif %} 
                             {% if post.featured_image %}
+                            <a href="{{ post.get_absolute_url }}">
                             <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
+                            </a>
                             {% endif %}
                              
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="display-4 bg-light text-red pr-1 rounded">
-                                    <strong>{{ post.title }}</strong>
-                                </h5>
+                                    <strong>{{ post.title }}</strong></h5>
                                 <p>
                                     <span class="badge bg-light text-red">Author: {{ post.author }}</span>
                                 </p>
@@ -64,8 +65,43 @@
         </div>
     </section>
     <section class="container-wrapper">
-        <div class="container">
+        <div class="container mt-5">
+            <div>
+                <h1 class="thin mb-2 text-center">Featured Posts</h1>
+            </div>
             <div class="row second-row">
+                <div class="col">
+                    <div class="card-deck">
+                        {% for post in featured_post_list %}
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded mt-4 mb-4">
+                            <a href="{{ post.get_absolute_url }}">
+                            {% if post.featured_image %}
+                            <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
+                            {% endif %}                      
+                        <div class="card-body">
+                            <h5 class="card-title post-link">{{ post.title }}</h5>
+                            </a>
+                            <p class="card-text">
+                                {{ post.content | linebreaks | truncatewords:15 | safe }}
+                                <a class="post-link" href="{{ post.get_absolute_url }}"><strong>more</strong></a>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <p class="card-text">
+                                <small class="text-red">
+                                Updated: {{ post.updated_on | timesince }} ago
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container-wrapper">
+        <div class="container">
+            <div class="row third-row">
                 <div class="col">
                     <div class="card-deck">
                         <div class="card">
@@ -94,37 +130,34 @@
     <section class="container-wrapper">
         <div class="container mt-5">
             <div>
-                <h1 class="thin mb-2 text-center">Featured Posts</h1>
+                <h1 class="thin mb-2 text-center">Most Recent</h1>
             </div>
-            <div class="row third-row">
+            <div class="row fourth-row">
                 <div class="col">
-                    <div class="card-deck">
-                        {% for post in featured_post_list %}
-                        <div class="card mt-4 mb-4">
-                            <a href="{{ post.get_absolute_url }}">
-                            {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
-                            {% endif %}                      
-                        <div class="card-body">
-                            <h5 class="card-title post-link">{{ post.title }}</h5>
-                            </a>
-                            <p class="card-text">
-                                {{ post.content | linebreaks | truncatewords:15 | safe }}
-                            </p>
+                    {% for post in most_recent %}
+                    <div class="card shadow p-3 mb-5 bg-white rounded mb-2">
+                        <div class="row no-gutters">
+                            <div class="col-md-2">
+                                {% if post.featured_image %}
+                                <a href="{{ post.get_absolute_url }}">
+                                <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image"></a>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-9">
+                            <div class="card-body">
+                                <a href="{{ post.get_absolute_url }}">
+                              <h5 class="card-title post-link text-center">{{ post.title }}</h5></a>
+                              <p class="card-text"><small class="text-black50">{{ post.created_on | timesince}} ago</small></p>
+                            </div>
+                          </div>
                         </div>
-                        <div class="card-footer bg-light">
-                            <p class="card-text">
-                                <small class="text-red">
-                                Updated: {{ post.updated_on | timesince }} ago
-                                </small>
-                            </p>
-                        </div>
-                    </div>
-                        {% endfor %}
+                      </div>
+                    {% endfor %}
                 </div>
             </div>
+            
         </div>
-    </section>  
+    </section> 
 </main>
 <script>
     $('.carousel').carousel({

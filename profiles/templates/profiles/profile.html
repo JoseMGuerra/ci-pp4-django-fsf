@@ -6,11 +6,19 @@
 {% block extra_title %}{{ page_title }}{% endblock %}
 
 {% block content %}
-<div class="container">
+
+<div class="container h-100">
     <div class="row">
         <div class="col-md-4">
             <h1 class="display-4 text-center">My Profile</h1>
-            <img class="mx-auto d-block img-fluid rounded-circle" src="{{ profile.profile_image.url }}" width="300" alt="user image">
+            {% if "placeholder" in profile.profile_image.url %}
+            <img class="mx-auto d-block img-fluid rounded-circle" src="#" width="250">
+            {% else %}
+            <img class="mx-auto d-block img-fluid rounded-circle" src="{{ profile.profile_image.url }}" width="250">
+            {% endif %}
+            <p class="text-center"><a class="btn btn-update  mt-2" role="button" href="{% url 'change-image' %}">Change Image
+            </a>
+            </p>
         </div>
         <div class="col-md-8 mt-4">
             <p class="h1 text-center">{{ profile.user }}</p>
@@ -19,36 +27,51 @@
 </div>
 <div class="container h-100">
     <div class="row">
-        <div class="col-md-10 offset-md-1">
-            <table class="table mt-4 text-center">
-                <thead class="thead second-color">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Date created</th>
-                        <th scope="col">Likes</th>
-                        <th scope="col">Comments</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Approved</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if request.user.is_authenticated %}
-                        {% for post in posts %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="{{ post.get_absolute_url }}" class="post-link">
-                        {{ post.title }}</a></td>
-                        <td>{{ post.created_on|date:"D d M Y" }}</td>
-                        <td>{{ post.number_of_likes }}</td>
-                        <td>{{ post.comments.count }}</td>
-                        <td>{{ post.status }}</td>
-                        <td>{{ post.approved }}</td>
-                    </tr>
-                  {% endfor %}
-                  {% endif %}
-                </tbody>
-              </table>
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-hover text-center">
+                    <thead class="thead prime-color bg-second">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Date created</th>
+                            <th scope="col">Likes</th>
+                            <th scope="col">Comments</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Approved</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if request.user.is_authenticated %}
+                            {% for post in posts %}
+                            {% if post.status == 'draft' %}
+                            <tr class="table-danger">
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td><a href="{{ post.get_absolute_url }}" class="post-link">
+                                {{ post.title }}</a></td>
+                                <td>{{ post.created_on|date:"D d M Y" }}</td>
+                                <td>{{ post.number_of_likes }}</td>
+                                <td>{{ post.comments.count }}</td>
+                                <td>{{ post.status }}</td>
+                                <td>{{ post.approved }}</td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td><a href="{{ post.get_absolute_url }}" class="post-link">
+                                {{ post.title }}</a></td>
+                                <td>{{ post.created_on|date:"D d M Y" }}</td>
+                                <td>{{ post.number_of_likes }}</td>
+                                <td>{{ post.comments.count }}</td>
+                                <td>{{ post.status }}</td>
+                                <td>{{ post.approved }}</td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     {% include 'blog/includes/paginator.html' with page=posts %}

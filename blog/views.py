@@ -9,6 +9,7 @@ from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from profiles.models import UserProfile
 
 
 def posts_by_category(request, category_slug):
@@ -210,7 +211,6 @@ def posts_management(request):
     Display all posts
     """
     post_list = Post.objects.all()
-    most_recent = Post.objects.order_by("-created_on")
     paginator = Paginator(post_list, 5)
     page = request.GET.get("page")
     try:
@@ -223,8 +223,31 @@ def posts_management(request):
     template = ["blog/posts_management.html"]
     context = {
         "page_title": "Posts Management",
-        "most_recent": most_recent,
         "posts": posts,
         "page": page,
+    }
+    return render(request, template, context)
+
+
+def post_backend_delete(request, slug):
+    """
+    Delete a post
+    """
+    post = get_object_or_404(Post, slug=slug)
+
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        post.delete()
+        messages.success(
+            request, "You post has been deleted.")
+        return redirect("blog:posts-management")
+    else:
+        form = PostForm(instance=post)
+
+    template = "blog/post_backend_delete.html"
+    context = {
+        "form_type": "Delete",
+        "post": post,
+        "form": form,
     }
     return render(request, template, context)

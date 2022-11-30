@@ -19,9 +19,14 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content | linebreaks | safe }}</p>
-                    <span class="card-text text-muted">By {{ post.author }} on {{ post.created_on|date:"D d M Y" }}</span>
-                    <p class="card-text text-muted">Last updated {{ post.updated_on | timesince }} ago</p>
-                    <p><strong><a class="text-black" href="{% url 'blog:post-list' %}"><< Back</a></strong></p>
+                    <span class="card-text text-black50">By {{ post.author }} on {{ post.created_on|date:"D d M Y" }}</span>
+                    <p class="card-text text-black50">Last updated {{ post.updated_on | timesince }} ago<br>
+                    <span> Category: <a class="prime-color" href="{{ post.category.get_absolute_url }}">{{ post.category }}</a>
+                    </span>
+                    </p>   
+                    <p>                
+                    <a class="text-black75" href="{% url 'blog:post-list' %}"><i class="fas fa-hand-point-left prime-color" style="font-size: 1.5rem;"></i> Back to Posts</a>
+                   </p>
                     <strong>
                     {% if user.is_authenticated %}
                         {% include 'blog/includes/post_like.html' %}
@@ -30,12 +35,8 @@
                     {% if request.user == post.author or user.is_superuser %}
                     <a class="btn btn-update btn-lg btn-block" role="button" href="{% url 'blog:post-update' slug=post.slug %}">Update
                     </a>
-    
-                    <!-- <a class="btn btn-outline-danger btn-lg btn-block mt-2" role="button" href="{% url 'blog:post-delete' slug=post.slug %}">Delete
-                    </a>  -->
-                    
                     <a class="btn btn-outline-danger btn-lg btn-block" role="button" 
-                    data-toggle="modal" data-target="#mymodal" >Delete
+                    data-toggle="modal" data-target="#deleteModal" >Delete
                     </a>
                     {% endif %}
                 </div>

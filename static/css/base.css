@@ -40,7 +40,6 @@ html {
     color: #B30000;
 }
 
-
 .bg-gradient-primary-to-secondary {
     background-color: #0061f2 !important;
     background-image: linear-gradient(135deg, #2220b3 0%, rgba(0, 179, 179, 0.796) 100%) !important;
@@ -58,14 +57,11 @@ html {
     background-color: rgba(240, 164, 0, 0.749) !important;
 }
 
-
 body {
     font-family: Montserrat, sans-serif;
     color: #1e1e24;
     padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
 }
-
 
 h1,
 h2,
@@ -118,17 +114,18 @@ h6,
 
 .first-row,
 .second-row,
-.third-row {
+.third-row,
+.fourth-row {
     padding: 4rem 0;
 }
 
-.second-row h4,
-.second-row i {
+.third-row h4,
+.third-row i {
     text-align: center;
     color: rgba(30, 30, 36, 0.50);
 }
 
-.second-row i {
+.third-row i {
     font-size: 3rem;
 
 }
@@ -161,7 +158,6 @@ footer i {
 /* ------------------------------------------- Wrappers */
 
 .container-wrapper {}
-
 
 .opaque-overlay {
     position: absolute;

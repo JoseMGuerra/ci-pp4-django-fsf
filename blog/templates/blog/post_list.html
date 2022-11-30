@@ -19,7 +19,12 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                                {% if "placeholder" in post.featured_image.url %}
+                                <img src="#" width="100%">
+                                {% else %}
+                                <a href="{{ post.get_absolute_url }}">
+                                <img src="{{ post.featured_image.url }}" alt="default_image" width="100%"></a>
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="col-md-8">
@@ -31,7 +36,7 @@
                                 </h3>
                                 <p class="card-text">
                                     {{ post.content | linebreaks | truncatewords:15 | safe  }}  
-                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>Read more</strong>
+                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>more</strong>
                                 </a>
                                 </p>
                                 <p class="card-text">
@@ -45,8 +50,8 @@
                                     <span class="text-secondary ml-2">
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
-                                    </span>
-                                    <span>in <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
+                                    </span><br>
+                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
                                 </p>
                             </div>
                         </div>
@@ -63,7 +68,7 @@
                                     </a>
                                 </h3>
                                 <p class="card-text">{{ post.content | linebreaks | truncatewords:15 | safe }}  
-                                    <a class="post-link" href="{{ post.get_absolute_url }}"><strong>Read more</strong>
+                                    <a class="post-link" href="{{ post.get_absolute_url }}"><strong>more</strong>
                                     </a>
                                 </p>
                                 <p class="card-text">
@@ -76,14 +81,19 @@
                                     <span class="text-secondary ml-2">
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
-                                    </span>
-                                    <span>in <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
+                                    </span><br>
+                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
                                 </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                                {% if "placeholder" in post.featured_image.url %}
+                                <img src="#" width="100%">
+                                {% else %}
+                                <a href="{{ post.get_absolute_url }}">
+                                <img src="{{ post.featured_image.url }}" width="100%"></a>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
