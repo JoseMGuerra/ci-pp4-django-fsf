@@ -23,7 +23,8 @@
                                 <img src="#" width="100%">
                                 {% else %}
                                 <a href="{{ post.get_absolute_url }}">
-                                <img src="{{ post.featured_image.url }}" alt="default_image" width="100%"></a>
+                                <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                                </a>
                                 {% endif %}
                             {% endif %}
                         </div>
@@ -51,7 +52,11 @@
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
                                     </span><br>
-                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
+                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">
+                                        <span class="badge badge-info ">
+                                            {{ post.category }}
+                                        </span>
+                                    </a></span>
                                 </p>
                             </div>
                         </div>
@@ -72,7 +77,8 @@
                                     </a>
                                 </p>
                                 <p class="card-text">
-                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago</small>
+                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
+                                    </small>
                                 </p>
                                 <p class="card-text text-muted h6">Created by {{ post.author }} on
                                     {{ post.created_on|date:"D d M Y" }}
@@ -82,7 +88,11 @@
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
                                     </span><br>
-                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></span>
+                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">
+                                    <span class="badge badge-info ">
+                                        {{ post.category }}
+                                    </span>
+                                    </a></span>
                                 </p>
                             </div>
                         </div>
@@ -92,7 +102,8 @@
                                 <img src="#" width="100%">
                                 {% else %}
                                 <a href="{{ post.get_absolute_url }}">
-                                <img src="{{ post.featured_image.url }}" width="100%"></a>
+                                <img src="{{ post.featured_image.url }}" width="100%">
+                                </a>
                                 {% endif %}
                             {% endif %}
                         </div>

@@ -39,6 +39,8 @@
                             <th scope="col">Comments</th>
                             <th scope="col">Status</th>
                             <th scope="col">Approved</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +56,14 @@
                                 <td>{{ post.comments.count }}</td>
                                 <td>{{ post.status }}</td>
                                 <td>{{ post.approved }}</td>
+                                <td>
+                                    <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-backend-delete' slug=post.slug %}">Delete
+                                    </a>
+                            </td>
                             </tr>
                             {% else %}
                             <tr>
@@ -65,6 +75,14 @@
                                 <td>{{ post.comments.count }}</td>
                                 <td>{{ post.status }}</td>
                                 <td>{{ post.approved }}</td>
+                                <td>
+                                    <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update
+                                    </a>
+                                </td>
+                                <td> 
+                                    <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-backend-delete' slug=post.slug %}">Delete
+                                    </a>
+                                </td>
                             </tr>
                             {% endif %}
                         {% endfor %}

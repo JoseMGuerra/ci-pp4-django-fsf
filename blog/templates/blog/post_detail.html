@@ -21,7 +21,7 @@
                     <p class="card-text">{{ post.content | linebreaks | safe }}</p>
                     <span class="card-text text-black50">By {{ post.author }} on {{ post.created_on|date:"D d M Y" }}</span>
                     <p class="card-text text-black50">Last updated {{ post.updated_on | timesince }} ago<br>
-                    <span> Category: <a class="prime-color" href="{{ post.category.get_absolute_url }}">{{ post.category }}</a>
+                    <span> Category: <a class="prime-color" href="{{ post.category.get_absolute_url }}"><span class="badge badge-info ">{{ post.category }}</span></a>
                     </span>
                     </p>   
                     <p>                
@@ -32,7 +32,7 @@
                         {% include 'blog/includes/post_like.html' %}
                     {% endif %}
                     </strong>
-                    {% if request.user == post.author or user.is_superuser %}
+                    {% if request.user == post.author or user.is_staff %}
                     <a class="btn btn-update btn-lg btn-block" role="button" href="{% url 'blog:post-update' slug=post.slug %}">Update
                     </a>
                     <a class="btn btn-outline-danger btn-lg btn-block" role="button" 

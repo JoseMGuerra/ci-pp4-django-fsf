@@ -16,7 +16,11 @@
                             <h4>Are you sure you want to delete "{{ post.title }}"?</h4>
                                     <p>This action cannot be undone.</p>
                             {% if user.is_authenticated %}
-                            <a type="button" class="btn btn-update btn-lg btn-block mb-2" href="{% url 'blog:posts-management' %}">Cancel</a>
+                                {% if user.is_staff %}
+                                <a type="button" class="btn btn-update btn-lg btn-block mb-2" href="{% url 'blog:posts-management' %}">Cancel</a>
+                                {% else %}
+                                <a type="button" class="btn btn-update btn-lg btn-block mb-2" href="{% url 'profile' %}">Cancel</a>
+                                {% endif %}
 
                             <form method="POST" action="." enctype="multipart/form-data">
                                 {% csrf_token %}

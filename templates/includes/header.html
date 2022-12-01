@@ -35,7 +35,7 @@
               {{ user.username }}
           </span>
           </li>
-          {% if request.user.is_superuser %}
+          {% if request.user.is_staff %}
           <li>
             <a class="nav-link navbar-text" href="{% url 'blog:posts-management' %}" >Blog Management</a>
           </li>

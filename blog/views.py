@@ -9,7 +9,6 @@ from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from profiles.models import UserProfile
 
 
 def posts_by_category(request, category_slug):
@@ -240,7 +239,10 @@ def post_backend_delete(request, slug):
         post.delete()
         messages.success(
             request, "You post has been deleted.")
-        return redirect("blog:posts-management")
+        if not request.user.is_staff:
+            return redirect('profile')
+        else:
+            return redirect("blog:posts-management")
     else:
         form = PostForm(instance=post)
 

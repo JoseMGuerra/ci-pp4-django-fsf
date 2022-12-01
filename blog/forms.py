@@ -1,12 +1,10 @@
-from django.forms import ModelForm
-from cloudinary.forms import CloudinaryFileField
-
+from django import forms
 from .models import Post, Comment
 
 
-class PostForm(ModelForm):
+class PostForm(forms.ModelForm):
     """
-    Form for comments
+    Form for posts
     """
     class Meta:
         model = Post
@@ -15,13 +13,14 @@ class PostForm(ModelForm):
             'content',
             'category',
             'featured_image',
+            'approved',
             'status',
             ]
 
 
-class CommentForm(ModelForm):
+class CommentForm(forms.ModelForm):
     """
-    Form for posts
+    Form for comment
     """
     class Meta:
         model = Comment
