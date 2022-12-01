@@ -70,21 +70,21 @@
                 <h2 class="thin mb-2 text-center">Featured Posts</h2>
             </div>
             <div class="row second-row">
-                <div class="col">
+                <div class="col-md-12">
                     <div class="card-deck">
                         {% for post in featured_post_list %}
                         <div class="card shadow-sm p-3 mb-5 bg-white rounded mt-4 mb-4 hvr-float">
                             <div class="image-container">
-                            <a href="{{ post.get_absolute_url }}">
-                            {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg" alt="featured image">
-                            {% endif %}
-                            <div class="image-flash">
-                                <p class="category">
-                                     {{ post.category }}
-                                </p>
-                            </div>
-                        </div>                      
+                                <a href="{{ post.get_absolute_url }}">
+                                {% if post.featured_image %}
+                                <img src="{{ post.featured_image.url }}" class="img-fluid rounded-lg card-img-top" alt="featured image">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="category">
+                                        {{ post.category }}
+                                    </p>
+                                </div>
+                            </div>                      
                         <div class="card-body">
                             <h5 class="card-title post-link">{{ post.title }}</h5>
                             </a>
@@ -102,6 +102,7 @@
                         </div>
                     </div>
                         {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

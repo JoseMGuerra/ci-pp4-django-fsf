@@ -1,1 +1,1 @@
-web: gunicorn cms_settings.wsgi
+web: gunicorn blog_settings.wsgi

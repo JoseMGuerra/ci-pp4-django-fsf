@@ -18,7 +18,7 @@ def posts_by_category(request, category_slug):
         category = get_object_or_404(Category, slug=category_slug)
         posts = posts.filter(category=category)
 
-    template = "blog/posts_by_category.html"
+    template = "blog/category/posts_by_category.html"
     context = {
         "categories": categories,
         "posts": posts,
@@ -41,7 +41,7 @@ def post_list(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    template = ["blog/post_list.html"]
+    template = ["blog/post/post_list.html"]
     context = {
         "page_title": "Posts",
         "posts": posts,
@@ -59,7 +59,7 @@ def post_detail(request, slug):
     if post.likes.filter(id=request.user.id).exists():
         liked = True
 
-    template = "blog/post_detail.html"
+    template = "blog/post/post_detail.html"
     context = {
         "page_title": "Post",
         "comments": comments,
@@ -91,7 +91,7 @@ def post_create(request):
         else:
             form = PostForm()
 
-    template = "blog/post_create.html"
+    template = "blog/post/post_create.html"
     context = {
         "page_title": "Add",
         "form_type": "Add",
@@ -124,7 +124,7 @@ def post_update(request, slug):
         else:
             form = PostForm(instance=post)
 
-    template = "blog/post_create.html"
+    template = "blog/post/post_create.html"
     context = {
         "page_title": "Update",
         "form_type": "Update",
@@ -196,7 +196,7 @@ def post_comment(request, slug):
     else:
         form = CommentForm()
 
-    template = 'blog/post_detail.html'
+    template = 'blog/post/post_detail.html'
     context = {
         "post": post,
         "comment": comment,
@@ -219,7 +219,7 @@ def posts_management(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    template = ["blog/posts_management.html"]
+    template = ["blog/backend/posts_management.html"]
     context = {
         "page_title": "Posts Management",
         "posts": posts,
@@ -246,7 +246,7 @@ def post_backend_delete(request, slug):
     else:
         form = PostForm(instance=post)
 
-    template = "blog/post_backend_delete.html"
+    template = "blog/backend/post_backend_delete.html"
     context = {
         "form_type": "Delete",
         "post": post,
