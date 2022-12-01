@@ -5,8 +5,10 @@ from blog.models import Post
 def home_view(request):
     featured_post_list = Post.objects.filter(
         approved=True, featured=True, status="published"
-        )
-    most_recent = Post.objects.order_by("-created_on")[:3]
+        )[:3]
+    most_recent = Post.objects.filter(
+        approved=True, status="published"
+        ).order_by("-created_on")[:3]
 
     template = ["home/index.html"]
     context = {

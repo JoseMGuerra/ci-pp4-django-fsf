@@ -135,7 +135,7 @@
             <div class="row fourth-row">
                 <div class="col">
                     {% for post in most_recent %}
-                    <div class="card shadow p-3 mb-5 bg-white rounded mb-2">
+                    <div class="card shadow p-3 mb-5 bg-white rounded mb-2 hvr-wobble-horizontal">
                         <div class="row no-gutters">
                             <div class="col-md-2">
                                 {% if post.featured_image %}
@@ -154,14 +154,19 @@
                       </div>
                     {% endfor %}
                 </div>
-            </div>
-            
+            </div>           
         </div>
     </section> 
 </main>
-<script>
+
+{% block extra_js%}
+<script type="text/javascript">
+$(document).ready(function() {
     $('.carousel').carousel({
-  interval: 2000,
-})
+    interval: 2000,
+    });  
+}); 
 </script>
-{% endblock content %} 
+{% endblock %}
+
+{% endblock content %}

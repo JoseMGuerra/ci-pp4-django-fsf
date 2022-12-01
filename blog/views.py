@@ -231,7 +231,7 @@ def posts_management(request):
 
 def post_backend_delete(request, slug):
     """
-    Delete a post
+    Delete a post in the backend
     """
     post = get_object_or_404(Post, slug=slug)
 
