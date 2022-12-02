@@ -2,7 +2,61 @@
 
 # Work in progress
 
-## User Stories and Epics
+## Wireframes
+
+- <details>
+  <summary>Blog homepage</summary>
+
+  - ![blog index](media/readme_images/balsamic-blog-index.png)
+  - ![blog index mobile](media/readme_images/balsamic-mobile-blog-index.png)
+
+</details>
+
+- <details>
+  <summary>Blog post list page</summary>
+
+  - ![blog posts](media/readme_images/balsamic-posts.png)
+  - ![blog posts](media/readme_images/balsamic-mobile-posts.png)
+
+</details>
+
+- <details>
+  <summary>Blog post detail page</summary>
+
+  - ![blog post detail](media/readme_images/balsamic-post-detail.png)
+  - ![blog mobile post detail](media/readme_images/balsamic-mobile-post-detail.png)
+
+</details>
+
+- <details>
+  <summary>Blog posts management page</summary>
+
+  - ![blog posts management](media/readme_images/balsamic-posts-management.png)
+
+</details>
+
+- <details>
+  <summary>Blog user profile page</summary>
+
+  - ![blog user profile](media/readme_images/balsamic-user-profile.png)
+
+</details>
+
+- <details>
+  <summary>Blog Sign In form</summary>
+
+  - ![blog Sign In form](media/readme_images/balsamic-sign-in.png)
+
+</details>
+
+- <details>
+  <summary>Blog Sign Up form</summary>
+
+  - ![blog Sign Up form](media/readme_images/balsamic-sign-up.png)
+
+</details>
+
+## Epics and User Stories
 
 ### Epics
 
