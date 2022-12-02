@@ -11,22 +11,6 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 
-def posts_by_category(request, category_slug):
-    categories = Category.objects.all()
-    posts = Post.objects.filter(status="published", approved=True)
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        posts = posts.filter(category=category)
-
-    template = "blog/category/posts_by_category.html"
-    context = {
-        "categories": categories,
-        "posts": posts,
-        "category": category,
-    }
-    return render(request, template, context)
-
-
 def post_list(request):
     """
     Display all posts
@@ -173,83 +157,3 @@ def post_like(request, slug, *args, **kwargs):
 
     return HttpResponseRedirect(reverse("blog:post-detail", args=[slug]))
 
-
-def post_comment(request, slug):
-    """
-    Create a new comment
-    """
-    post = get_object_or_404(
-        Post, slug=slug, status="published", approved=True)
-    comment = None
-
-    form = CommentForm(data=request.POST or None)
-    if request.method == "POST":
-        if form.is_valid():
-            form.instance.user = request.user
-            form.instance.email = request.user.email
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.save()
-            return redirect(reverse("blog:post-detail", kwargs={
-                "slug": post.slug
-            }))
-    else:
-        form = CommentForm()
-
-    template = 'blog/post/post_detail.html'
-    context = {
-        "post": post,
-        "comment": comment,
-        "form": form,
-    }
-    return render(request, template, context)
-
-
-def posts_management(request):
-    """
-    Display all posts
-    """
-    post_list = Post.objects.all()
-    paginator = Paginator(post_list, 5)
-    page = request.GET.get("page")
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-
-    template = ["blog/backend/posts_management.html"]
-    context = {
-        "page_title": "Posts Management",
-        "posts": posts,
-        "page": page,
-    }
-    return render(request, template, context)
-
-
-def post_backend_delete(request, slug):
-    """
-    Delete a post in the backend
-    """
-    post = get_object_or_404(Post, slug=slug)
-
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-        post.delete()
-        messages.success(
-            request, "You post has been deleted.")
-        if not request.user.is_staff:
-            return redirect('profile')
-        else:
-            return redirect("blog:posts-management")
-    else:
-        form = PostForm(instance=post)
-
-    template = "blog/backend/post_backend_delete.html"
-    context = {
-        "form_type": "Delete",
-        "post": post,
-        "form": form,
-    }
-    return render(request, template, context)

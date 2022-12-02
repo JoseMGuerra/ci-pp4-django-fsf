@@ -65,32 +65,29 @@
             </div>
         </div>
         <div class="col-md-4 card mb-4 mt-3 ">
-            <div class="card-body">
-                {% if comment %}
-                <div class="alert alert-success" role="alert" id="msg" aria-label="Success">
-                    Thank you for your comment.
-                </div>
-                {% else%}
-                    {% if user.is_authenticated %}
-                        {% if post.approved == True %}
+            <div class="card-body">              
+                {% if user.is_authenticated %}
+                    {% if post.approved == True %}
+                        {% if comment %}
+                        <div class="alert alert-success" role="alert" id="msg" aria-label="Success">
+                            Thank you for your comment.
+                        </div>
+                        {% endif %} 
                         {% include 'blog/includes/comment_form.html' %}
-                        {% endif %}
-                    {% else %}
-                    <p>
-                        <strong>Would you like to leave a comment?.</strong> Already have an account? Then please
-                        <a href="{% url 'account_login' %}">
-                        <strong class="second-color h5">Sign In</strong>
-                        </a>
-                    </p>
-                    <p>
-                    If you don't have an account please 
-                    <a href="{% url 'account_signup' %}">
-                        <strong class="second-color h5">Sign Up</strong>
-                    </a> to create one.
-                    </p>
-
                     {% endif %}
-                    
+                {% else %}
+                <p>
+                    <strong>Would you like to leave a comment?.</strong> Already have an account? Then please
+                    <a href="{% url 'account_login' %}">
+                    <strong class="second-color h5">Sign In</strong>
+                    </a>
+                </p>
+                <p>
+                If you don't have an account please 
+                <a href="{% url 'account_signup' %}">
+                    <strong class="second-color h5">Sign Up</strong>
+                </a> to create one.
+                </p>
                 {% endif %}
             </div>
         </div>
