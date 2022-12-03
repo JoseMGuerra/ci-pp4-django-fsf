@@ -4,9 +4,10 @@ from django.shortcuts import (
     redirect,
     reverse,
     )
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post, Comment, Category
-from .forms import PostForm, CommentForm
+from .forms import AdminPostForm, PostForm, CommentForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
@@ -35,6 +36,9 @@ def post_list(request):
 
 
 def post_detail(request, slug):
+    """
+    Display a single post and a comment form
+    """
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(approved=True)
     form = CommentForm()
@@ -54,11 +58,20 @@ def post_detail(request, slug):
     return render(request, template, context)
 
 
+@login_required
 def post_create(request):
     """
     Create a new post
     """
-    form = PostForm(request.POST or None, request.FILES or None)
+    if request.user.is_staff:
+        form = AdminPostForm(
+            request.POST or None,
+            request.FILES or None)
+    else:
+        form = PostForm(
+            request.POST or None,
+            request.FILES or None)
+
     author = request.user
 
     if request.method == "POST":
@@ -84,21 +97,29 @@ def post_create(request):
     return render(request, template, context)
 
 
+@login_required
 def post_update(request, slug):
     """
     Update the post
     """
     post = get_object_or_404(Post, slug=slug)
-    form = PostForm(
-        request.POST or None,
-        request.FILES or None,
-        instance=post
-        )
-    author = request.user
+
+    if request.user.is_staff:
+        form = AdminPostForm(
+            request.POST or None,
+            request.FILES or None,
+            instance=post)
+    else:
+        form = PostForm(
+            request.POST or None,
+            request.FILES or None,
+            instance=post)
+
+    if (request.user != post.author) and not request.user.is_staff:
+        return redirect(reverse("homepage"))
 
     if request.method == "POST":
         if form.is_valid():
-            form.instance.author = author
             form.save()
             messages.success(
                 request, "Your post has been successfully updated.")
@@ -117,6 +138,7 @@ def post_update(request, slug):
     return render(request, template, context)
 
 
+@login_required
 def post_delete(request, slug):
     """
     Delete a post
@@ -141,6 +163,7 @@ def post_delete(request, slug):
     return render(request, template, context)
 
 
+@login_required
 def post_like(request, slug, *args, **kwargs):
     """
     LKes a post
@@ -156,4 +179,3 @@ def post_like(request, slug, *args, **kwargs):
             request, "Thank you for liking the post.")
 
     return HttpResponseRedirect(reverse("blog:post-detail", args=[slug]))
-

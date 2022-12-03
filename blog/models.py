@@ -53,7 +53,7 @@ class Post(models.Model):
     status = models.CharField(
         max_length=10, choices=Status.choices, default=Status.DRAFT)
     featured_image = models.ImageField(
-        upload_to="media/images/", blank=True, null=True, default="placeholder")
+        upload_to="media/images/", default="placeholder")
     approved = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(

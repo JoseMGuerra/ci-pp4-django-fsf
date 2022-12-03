@@ -13,9 +13,25 @@ class PostForm(forms.ModelForm):
             'content',
             'category',
             'featured_image',
-            'approved',
             'status',
             ]
+
+
+class AdminPostForm(PostForm):
+    """
+    AdminForm for posts
+    """
+    class Meta:
+        model = Post
+        fields = [
+            'title',
+            'content',
+            'category',
+            'featured_image',
+            'approved',
+            'featured',
+            'status',
+        ]
 
 
 class CommentForm(forms.ModelForm):

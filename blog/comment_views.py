@@ -4,17 +4,19 @@ from django.shortcuts import (
     redirect,
     reverse,
     )
+from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import CommentForm
 from django.contrib import messages
 
 
+@login_required
 def post_comment(request, slug):
     """
     Create a new comment
     """
     post = get_object_or_404(
-        Post, slug=slug, status="published", approved=True)
+        Post, slug=slug, approved=True)
     comment = None
     form = CommentForm(data=request.POST or None)
     if request.method == "POST":

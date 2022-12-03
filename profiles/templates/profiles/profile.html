@@ -11,9 +11,9 @@
         <div class="col-md-4">
             <h1 class="display-5 text-center">My Profile</h1>
             {% if "placeholder" in profile.profile_image.url %}
-            <img class="mx-auto d-block img-fluid rounded-circle" src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1669992014/media/profile_images/user-profile_vqaiyv.png" width="150" height="150">
+            <img class="mx-auto d-block img-fluid rounded-circle" src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1669992014/media/profile_images/user-profile_vqaiyv.png" width="200" height="200">
             {% else %}
-            <img class="mx-auto d-block img-fluid rounded-circle" src="{{ profile.profile_image.url }}" width="150" height="150">           
+            <img class="mx-auto d-block img-fluid rounded-circle" src="{{ profile.profile_image.url }}" width="200" height="200">           
             {% endif %}
             <p class="text-center"><a class="btn btn-update  mt-2" role="button" href="{% url 'change-image' %}">Change Image
             </a>

@@ -4,11 +4,11 @@ from django.shortcuts import (
     redirect,
     reverse,
     )
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment, Category
+from .forms import PostForm, CommentForm
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 def posts_management(request):
