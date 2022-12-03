@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from .models import UserProfile
@@ -7,6 +8,7 @@ from blog.models import Post
 from blog.forms import PostForm
 
 
+@login_required
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     my_posts = Post.objects.filter(author=request.user)
@@ -30,6 +32,7 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
 def change_image(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     form = UserProfileForm(request.POST, request.FILES, instance=profile)

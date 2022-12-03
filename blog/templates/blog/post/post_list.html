@@ -19,13 +19,7 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             {% if post.featured_image %}
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img src="#" width="100%">
-                                {% else %}
-                                <a href="{{ post.get_absolute_url }}">
-                                <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
-                                </a>
-                                {% endif %}
+                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
                             {% endif %}
                         </div>
                         <div class="col-md-8">
@@ -98,13 +92,7 @@
                         </div>
                         <div class="col-md-4">
                             {% if post.featured_image %}
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img src="#" width="100%">
-                                {% else %}
-                                <a href="{{ post.get_absolute_url }}">
-                                <img src="{{ post.featured_image.url }}" width="100%">
-                                </a>
-                                {% endif %}
+                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
                             {% endif %}
                         </div>
                     </div>

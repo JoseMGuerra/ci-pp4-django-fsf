@@ -13,10 +13,8 @@
         <div class="col-md-8 offset-md-2">
             <h1 class="thin text-center">Post Detail</h1>
             <div class="card">                
-                {% if "placeholder" in post.featured_image.url %}
-                <img class="mx-auto d-block img-fluid" src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1669722777/media/images/Welcome-messages-hola_zpvn9z.jpg" width="300" height="300">
-                {% else %}
-                <img class="img-fluid mt-3 mb-3" src="{{ post.featured_image.url }}" alt="{{ post.featured_image.url }}" width="600">         
+                {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
                 {% endif %}                              
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
