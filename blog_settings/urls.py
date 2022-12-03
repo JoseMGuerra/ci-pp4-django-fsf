@@ -20,6 +20,7 @@ from django.conf import settings
 from django.views.generic.base import RedirectView
 from django.conf.urls.static import static
 from home.views import home_view
+from .views import handler403, handler404, handler405, handler500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,3 +38,8 @@ if settings.DEBUG:
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler403 = 'blog_settings.views.handler403'
+handler404 = 'blog_settings.views.handler404'
+handler405 = 'blog_settings.views.handler405'
+handler500 = 'blog_settings.views.handler500'

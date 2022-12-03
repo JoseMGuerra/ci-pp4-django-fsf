@@ -42,7 +42,7 @@ html {
 
 .bg-gradient-primary-to-secondary {
     background-color: #0061f2 !important;
-    background-image: linear-gradient(135deg, #2220b3 0%, rgba(0, 179, 179, 0.796) 100%) !important;
+    background-image: linear-gradient(135deg, #2220b3 0%, rgba(0, 179, 179, 0.50) 100%) !important;
 }
 
 .bg-prime {
