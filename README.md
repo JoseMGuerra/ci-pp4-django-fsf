@@ -82,6 +82,8 @@
   - Vote posts: As a `Site User` I want be able to `up/downvote a post` so that `I can interact with the content`
   - [US #33](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/33)
     - Custom error pages: As a `Site Admin/ User` I want be able to `have custom error pages with a return button` so that `I can return to the homepage if an error occurred`
+  - [US #34](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/34)
+    - As a `Site User` I want be able to `send emails` so that `I can ask questions and make suggestions`
 
 </details>
 
