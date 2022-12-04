@@ -80,6 +80,8 @@
   - [US #32](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/32)
     - Add picture to post: As as `Site User` I want be able to `upload a picture` so that `I can add a visual representation of my post`
   - Vote posts: As a `Site User` I want be able to `up/downvote a post` so that `I can interact with the content`
+  - [US #33](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/33)
+    - Custom error pages: As a `Site Admin/ User` I want be able to `have custom error pages with a return button` so that `I can return to the homepage if an error occurred`
 
 </details>
 

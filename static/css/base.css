@@ -194,7 +194,7 @@ footer i {
 /* ----------------------------------------- allauth forms formatting */
 
 .allauth-form-inner-content p {
-    margin-top: 1.5rem;
+    margin-top: 3rem;
     /* mt-4 */
     color: #1e1e24;
 }
@@ -242,6 +242,12 @@ footer i {
     -webkit-transition-property: transform;
 
 }
+
+.verification-sent,
+.sign-out {
+    margin: 3rem auto;
+}
+
 
 .form-btn,
 .nav-search-form button,
@@ -303,7 +309,7 @@ footer i {
 
 /* Skew https://ianlunn.github.io/Hover/ */
 .hvr-skew {
-    display: inline-block;
+    /* display: inline-block; */
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);

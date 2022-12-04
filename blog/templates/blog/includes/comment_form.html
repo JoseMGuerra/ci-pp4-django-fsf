@@ -3,7 +3,6 @@
 
 <h3 class="thin">Leave a comment:</h3>
 <p>Posting as: {{ user.username }}</p>
-
 <form  action="{% url 'blog:post-comment' slug=post.slug %}" method="POST">
     {% csrf_token %}
     {{ form | crispy }}

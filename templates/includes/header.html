@@ -3,7 +3,7 @@
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <a class="navbar-brand brand" href="{% url 'homepage' %}">
+      <a class="navbar-brand brand" href="{% url 'home:homepage' %}">
         <img src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1670066868/media/images/favicon_logo.png" width="40" height="40" alt="logo">
         <small class="text-black50">My</small><strong class="h2 prime-color">C</strong>oding<strong class="h2 second-color">B</strong>log</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#indexNavbar" aria-controls="indexNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="indexNavbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'home:homepage' %}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{% url 'blog:post-list' %}">Blog</a>

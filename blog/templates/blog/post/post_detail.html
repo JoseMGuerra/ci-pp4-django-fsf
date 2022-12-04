@@ -76,11 +76,6 @@
             <div class="card-body">              
                 {% if user.is_authenticated %}
                     {% if post.approved == True %}
-                        {% if comment %}
-                        <div class="alert alert-success" role="alert" id="msg" aria-label="Success">
-                            Thank you for your comment.
-                        </div>
-                        {% endif %} 
                         {% include 'blog/includes/comment_form.html' %}
                     {% endif %}
                 {% else %}
