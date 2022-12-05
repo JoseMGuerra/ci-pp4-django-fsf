@@ -39,7 +39,7 @@ def contact(request):
         if form.is_valid():
             cd = form.cleaned_data
             name = cd.get('name')
-            email = cd.get('email')
+            email = request.user.email
             content = cd.get('content')
             recipient = cd.get('email')
             subject = 'My Coding Blog Enquiry'
@@ -47,6 +47,7 @@ def contact(request):
             html = render_to_string("home/emails/contact_form.html", {
                 "name": name,
                 "email": email,
+                "recipient": recipient,
                 "content": content,
             })
             if name and email and content and recipient \
@@ -55,8 +56,8 @@ def contact(request):
                     send_mail(
                         subject,
                         message,
-                        settings.EMAIL_HOST_USER,
-                        [recipient],
+                        recipient,
+                        [settings.EMAIL_HOST_USER],
                         fail_silently=False,
                         html_message=html
                         )
