@@ -23,5 +23,17 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Gitpod Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "HookyQR.beautify",
+   "cSpell.words": [
+      "allauth",
+      "ASGI",
+      "cloudinary",
+      "eventyret",
+      "formulahendry",
+      "hookyqr",
+      "keymap",
+      "rudge",
+      "socialaccount",
+      "toolsai"
+   ]
 }

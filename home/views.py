@@ -41,7 +41,7 @@ def contact(request):
             name = cd.get('name')
             email = cd.get('email')
             content = cd.get('content')
-            recipient = cd.get('email')
+            recipient = request.user.email
             subject = 'My Coding Blog Enquiry'
             message = 'Email sent through Gmail'
             html = render_to_string("home/emails/contact_form.html", {
@@ -55,8 +55,8 @@ def contact(request):
                     send_mail(
                         subject,
                         message,
-                        settings.EMAIL_HOST_USER,
-                        [recipient],
+                        recipient,
+                        [settings.EMAIL_HOST_USER],
                         fail_silently=False,
                         html_message=html
                         )
