@@ -18,8 +18,10 @@
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="post placeholder image" class="img-fluid rounded">
+                            {% else %}
+                            <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid rounded">
                             {% endif %}
                         </div>
                         <div class="col-md-8">
@@ -30,26 +32,24 @@
                                     </a>
                                 </h3>
                                 <p class="card-text">
-                                    {{ post.content | linebreaks | truncatewords:15 | safe  }}  
-                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>more</strong>
-                                </a>
+                                    {{ post.content | linebreaks | truncatewords:15 | safe }}  
+                                    <a class="post-link d-inline" href="{{ post.get_absolute_url }}"><strong>read full post</strong>
+                                    </a>
                                 </p>
                                 <p class="card-text">
-                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
-                                    </small>
-                                </p>
-                                <p class="card-text text-muted h6">Created by {{ post.author }} on
-                                    {{ post.created_on|date:"D d M Y" }}
+                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago<br>
+                                    Created by {{ post.author }} on
+                                    {{ post.created_on|date:"D d M Y" }}<br>
                                     <i class="far fa-heart"></i>  
-                                    {{ post.number_of_likes }}
-                                    <span class="text-secondary ml-2">
+                                    {{ post.number_of_likes }}</small>
+                                    <small class="text-secondary ml-2 mb-3">
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
-                                    </span><br>
-                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">
-                                        <span class="badge badge-info ">
-                                            {{ post.category }}
-                                        </span>
+                                    </small><br>
+                                    <span><a href="{{ post.category.get_absolute_url }}">
+                                    <span class="badge category-badge">
+                                        {{ post.category }}
+                                    </span>
                                     </a></span>
                                 </p>
                             </div>
@@ -66,24 +66,23 @@
                                         {{ post.title }}
                                     </a>
                                 </h3>
-                                <p class="card-text">{{ post.content | linebreaks | truncatewords:15 | safe }}  
-                                    <a class="post-link" href="{{ post.get_absolute_url }}"><strong>more</strong>
+                                <p class="card-text">
+                                    {{ post.content | linebreaks | truncatewords:15 | safe }}  
+                                    <a class="post-link d-inline" href="{{ post.get_absolute_url }}"><strong>read full post</strong>
                                     </a>
                                 </p>
                                 <p class="card-text">
-                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
-                                    </small>
-                                </p>
-                                <p class="card-text text-muted h6">Created by {{ post.author }} on
-                                    {{ post.created_on|date:"D d M Y" }}
+                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago<br>
+                                    Created by {{ post.author }} on
+                                    {{ post.created_on|date:"D d M Y" }}<br>
                                     <i class="far fa-heart"></i>  
-                                    {{ post.number_of_likes }}
-                                    <span class="text-secondary ml-2">
+                                    {{ post.number_of_likes }}</small>
+                                    <small class="text-secondary ml-2">
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
-                                    </span><br>
-                                    <span><a class="prime-color" href="{{ post.category.get_absolute_url }}">
-                                    <span class="badge badge-info ">
+                                    </small><br>
+                                    <span><a href="{{ post.category.get_absolute_url }}">
+                                    <span class="badge category-badge">
                                         {{ post.category }}
                                     </span>
                                     </a></span>
@@ -91,8 +90,10 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" class="img-fluid rounded">
+                            {% else %}
+                            <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid rounded">
                             {% endif %}
                         </div>
                     </div>

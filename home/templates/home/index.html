@@ -30,16 +30,17 @@
                             {% else %}
                                 <div class="carousel-item">
                             {% endif %} 
-
-                            {% if post.featured_image %}
-                            <a href="{{ post.get_absolute_url }}">
-                            <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image.url }}" width="100%">
-                            </a>
+                            {% if "placeholder" in post.featured_image.url %}
+                                <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="post placeholder image" class="img-fluid rounded">
+                                {% else %}
+                                <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid rounded">
                             {% endif %}
+                            </a>
+                            </a>
                              
                             <div class="carousel-caption d-none d-md-block">
-                                <h5 class="display-4 bg-light text-red pr-1 rounded">
-                                    <strong>{{ post.title }}</strong></h5>
+                                <h2 class="display-4 bg-light pr-1 rounded text-red">
+                                    <strong>{{ post.title }}</strong></h2>
                                 <p>
                                     <span class="badge bg-light text-red">Author: {{ post.author }}</span>
                                 </p>
@@ -77,11 +78,13 @@
                         <div class="card shadow-sm p-3 mb-5 mt-4 bg-white rounded hvr-float">
                             <div class="image-container">
                                 <a href="{{ post.get_absolute_url }}">
-                                {% if post.featured_image %}
-                                <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image.url }}" width="100%">
+                                    {% if "placeholder" in post.featured_image.url %}
+                                    <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="post placeholder image" class="img-fluid rounded">
+                                    {% else %}
+                                    <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid rounded">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="category">
+                                    <p class="badge category-badge">
                                         {{ post.category }}
                                     </p>
                                 </div>
@@ -91,7 +94,7 @@
                             </a>
                             <p class="card-text">
                                 {{ post.content | linebreaks | truncatewords:15 | safe }}
-                                <a class="post-link" href="{{ post.get_absolute_url }}"><strong>more</strong></a>
+                                <a class="post-link" href="{{ post.get_absolute_url }}"><strong>Read full post</strong></a>
                             </p>
                         </div>
                         <div class="card-footer bg-light">
@@ -144,19 +147,21 @@
             <div class="row fourth-row">
                 <div class="col">
                     {% for post in most_recent %}
-                    <div class="card shadow p-3 mb-5 bg-white rounded mb-2 hvr-skew">
+                    <div class="card shadow p-3 mb-5 bg-white rounded mb-2 hvr-forward">
                         <div class="row no-gutters">
                             <div class="col-md-2">
-                            {% if post.featured_image %}
-                            <a href="{{ post.get_absolute_url }}">
-                            <img src="{{ post.featured_image.url }}" alt="{{ post.featured_image.url }}" width="100%">
-                            </a>
-                            {% endif %}
+                                <a href="{{ post.get_absolute_url }}">
+                                {% if "placeholder" in post.featured_image.url %}
+                                    <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="post placeholder image" class="img-fluid rounded">
+                                    {% else %}
+                                    <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid     rounded">
+                                {% endif %}
+                                </a>
                             </div>
                             <div class="col-md-9">
                             <div class="card-body">
                                 <a href="{{ post.get_absolute_url }}">
-                              <h5 class="card-title post-link text-center">{{ post.title }} <span class="badge badge-info recent-badge">New</span></h5></a>
+                              <h5 class="card-title post-link text-center">{{ post.title }} <span class="badge category-badge recent-badge">New</span></h5></a>
                               <p class="card-text"><small class="text-black50">{{ post.created_on | timesince}} ago</small></p>
                             </div>
                           </div>

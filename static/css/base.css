@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates&display=swap');
+
 html {
     height: 100%;
 }
@@ -40,6 +42,10 @@ html {
     color: #B30000;
 }
 
+.navbar-text {
+    color: #1e1e24 !important;
+}
+
 .bg-gradient-primary-to-secondary {
     background-color: #0061f2 !important;
     background-image: linear-gradient(135deg, #2220b3 0%, rgba(0, 179, 179, 0.50) 100%) !important;
@@ -79,22 +85,26 @@ h6,
     font-weight: 300;
 }
 
+.nav-link {
+    color: rgba(31, 31, 36, .9) !important;
+}
+
 .nav-link:hover {
     text-decoration: none;
     color: #00b3b3 !important;
 }
 
 .page-link {
-    color: #00B3B3
-}
-
-.page-link:hover {
     color: #2220B3
 }
 
+.page-link:hover {
+    color: #00b3b3
+}
+
 .page-active {
-    background-color: #f0a400 !important;
-    border-color: #f0a400 !important;
+    background-color: #2220B3 !important;
+    border-color: #2220B3 !important;
 }
 
 .post-link {
@@ -121,13 +131,19 @@ h6,
     bottom: 5%;
     min-width: 30%;
     left: -4px;
-    background-color: #00b3b3;
 }
 
-.category {
-    color: white;
-    margin: 4px;
+.category-badge {
+    color: #fafafa;
+    background-color: #2220B3 !important;
     text-transform: uppercase;
+    padding: 6px !important;
+}
+
+.category-badge:hover {
+    color: #1e1e24;
+    background-color: #f0a400 !important;
+    border-color: #f0a400;
 }
 
 .recent-badge {
@@ -155,10 +171,9 @@ h6,
 
 footer,
 footer a,
-footer h6,
 footer i {
     text-align: center;
-    color: rgba(30, 30, 36, 0.50);
+    color: rgba(31, 31, 36, .65);
 }
 
 footer a:hover {
@@ -240,25 +255,10 @@ footer i {
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     -webkit-transition-property: transform;
+    transition-property: transform;
 
 }
 
-.verification-sent,
-.sign-out {
-    margin: 3rem auto;
-}
-
-
-.form-btn,
-.nav-search-form button,
-.nav-search-form input[type='submit'] {
-    color: #fafafa;
-    background-color: #2220B3;
-    border: 1px solid #2220B3;
-}
-
-.nav-search-form button:hover,
-.nav-search-form [type='submit']:hover,
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {
     color: #00b3b3;
@@ -270,12 +270,28 @@ footer i {
     transform: translateX(4px);
 }
 
+.allauth-form-inner-content a {
+    color: var(--info);
+}
+
+.verification-sent,
+.sign-out {
+    margin: 3rem auto;
+}
+
+/*-------------------------------------- Buttons */
+
+.form-btn {
+    color: #fafafa;
+    background-color: #2220B3;
+    border: 1px solid #2220B3;
+}
+
 .form-btn:hover {
     color: #00b3b3;
     background-color: #fafafa;
     border-color: #00b3b3;
 }
-
 
 .btn-update {
     color: #00b3b3;
@@ -289,11 +305,6 @@ footer i {
     border: 1px solid #00b3b3;
 }
 
-.allauth-form-inner-content a {
-    color: var(--info);
-}
-
-/* ----------------------------------------- Likes */
 .btn-like {
     color: #B30000;
     border: none;
@@ -305,26 +316,6 @@ footer i {
     color: #B30000;
     background: transparent;
     border: none;
-}
-
-/* Skew https://ianlunn.github.io/Hover/ */
-.hvr-skew {
-    /* display: inline-block; */
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-}
-
-.hvr-skew:hover,
-.hvr-skew:focus,
-.hvr-skew:active {
-    -webkit-transform: skew(-5deg);
-    transform: skew(-5deg);
 }
 
 /* Float https://ianlunn.github.io/Hover/ */
@@ -480,4 +471,24 @@ footer i {
 .hvr-icon-forward:active .hvr-icon {
     -webkit-transform: translateX(4px);
     transform: translateX(4px);
+}
+
+/* Forward */
+.hvr-forward {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+
+.hvr-forward:hover,
+.hvr-forward:focus,
+.hvr-forward:active {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
 }

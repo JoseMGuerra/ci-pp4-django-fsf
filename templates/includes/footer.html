@@ -3,26 +3,31 @@
     <footer class="container-fluid mt-4">
         <div id="footer-details" class="row">
           <div class="col-sm-4 order-12">
-            <h6>About</h6>
+            <span class="text-uppercase">About</span>
             <p class="inline-block"><small>
               For Educational purpose only<br>
               Developed by Jose Guerra</small>
             </p>
           </div>
           <div class="col-sm-4">
-            <h6>Menu</h6>
+            <span class="text-uppercase">Menu</span>
             <div class="menus">
               <ul class="list-unstyled">
                 {% if request.user.is_authenticated %}
                 <li> <a href="{% url 'account_logout' %}">Log out</a></li>
                 <li> <a href="{% url 'profile' %}">Profile</a></li>
-                {% endif %}
                 <li> <a href="{% url 'home:contact' %}">Contact</a></li>
+                {% else %}
+                <li> <a href="{% url 'home:homepage' %}">home</a></li>
+                <li> <a href="{% url 'blog:post-list' %}">blog</a></li>
+                <li> <a href="{% url 'account_login' %}">sign in</a></li>
+                <li> <a href="{% url 'account_signup' %}">sign up</a></li>
+                {% endif %}
               </ul>
             </div>
           </div>
           <div class="col-sm-4 order-1">
-            <h6>Social</h6>
+            <span class="text-uppercase">Social</span>
             <ul class="list-inline social-links">
               <li class="list-inline-item">
                 <a href="#" target="_blank">

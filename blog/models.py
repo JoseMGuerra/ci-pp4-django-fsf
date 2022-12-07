@@ -17,7 +17,7 @@ class Category(models.Model):
 
     class Meta:
         """
-        Set the order of categories by ascending order 
+        Set the order of categories by ascending order
         Set the plural name for category
         """
         ordering = ["name"]

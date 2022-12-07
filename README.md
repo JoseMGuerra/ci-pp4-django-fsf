@@ -154,12 +154,13 @@
   - [Elephant PostgreSQL:](https://www.elephantsql.com/) The database used for this application.
   - [HTML Validator:](https://validator.w3.org/) Check your code for HTML validation.
   - [JSHint:](https://jshint.com/) Check code for JavaScript validation.
-  - [Lucidchart:](https://www.lucidchart.com/pages/) Used to create the site map.
+  - [CI Python Linter](https://pep8ci.herokuapp.com/) Check code for python pep8 validation.
   - [Tiny PNG:](https://tinypng.com/) Compressing images to smaller sizes.
-  - [Unsplash:](https://unsplash.com/photos/NtkCemIfaiU) Hero image, Man fishing on river at daytime, Chris Sarsgard.
+  - [Unsplash:](https://unsplash.com/photos/NtkCemIfaiU) Stock images.
   - [W3 CSS Validator:](https://jigsaw.w3.org/css-validator/) Check your code for CSS validation.
+  - [Gauger:](https://gauger.io/fonticon/) Used to create the favicon Logo, create beautiful favicon with ease.
+  - [Lucidchart:](https://www.lucidchart.com/pages/) Used to create the site map.
   <!-- - [Google Maps:](https://mapsplatform.google.com/) Google Maps Embed API used in footer section -->
-  <!-- - [Gauger:](https://gauger.io/fonticon/) To create the favicon, create beautiful favicon with ease. -->
   <!-- - [Materialize Colors:](https://materializecss.com/color.html) Used to create the main colour palette. -->
   <!-- - [SVG Backgrounds:](https://svgbackgrounds.com/) Scalable Vector Graphic used in the featurette section. Should the background image fail there is a fallback background colour set so the page still functions. -->
   <!-- - [SVG Wave Generator:](https://softr.io/tools/svg-wave-generator/) Used to generate a gradient SVG wave used in the hero section. -->

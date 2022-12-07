@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <a class="navbar-brand brand" href="{% url 'home:homepage' %}">
         <img src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1670066868/media/images/favicon_logo.png" width="40" height="40" alt="logo">
-        <small class="text-black50">My</small><strong class="h2 prime-color">C</strong>oding<strong class="h2 second-color">B</strong>log</a>
+        <small class="text-black75">J's</small><strong class="h2 prime-color">C</strong>oding<strong class="h2 second-color">S</strong>pot</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#indexNavbar" aria-controls="indexNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>     
@@ -20,6 +20,8 @@
           {% if request.user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'blog:post-create' %}" class="nav-link ">Add Post</a>
             </li>           
+            <li class="nav-item"><a href="{% url 'home:contact' %}" class="nav-link ">Contact</a>
+            </li>           
           {% else %}                   
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
@@ -31,11 +33,11 @@
           </ul>       
           {% if user.is_authenticated %}
           <ul class="navbar-nav justify-content-end">
-            <li class="nav-item">
-              <span class="navbar-text">
+            <li class="nav-item navbar-text">
+        
                 <i class="far fa-user-circle"></i>
                 {{ user.username }}
-            </span>
+            
             </li>
             {% if request.user.is_staff %}
             <li>

@@ -17,8 +17,10 @@
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="default_image" width="100%">
+                            {% if "placeholder" in post.featured_image.url %}
+                                <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="placeholder category image" width="100%" height="auto">
+                                {% else %}
+                                <img src="{{ post.featured_image.url }}" alt="featured category image" width="100%" height="auto">
                             {% endif %}
                         </div>
                         <div class="col-md-8">
@@ -29,22 +31,21 @@
                                     </a>
                                 </h3>
                                 <p class="card-text">
-                                    {{ post.content |truncatewords:40 | safe }}  
-                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>Read more</strong>
+                                    {{ post.content |truncatewords:15 | safe }}  
+                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>Read full post</strong>
                                 </a>
                                 </p>
                                 <p class="card-text">
-                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago
-                                    </small>
-                                </p>
-                                <p class="card-text text-muted h6">Created by {{ post.author }} on
-                                    {{ post.created_on|date:"D d M Y" }}
+                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago<br>
+                                    Created by {{ post.author }} on
+                                    {{ post.created_on|date:"D d M Y" }}<br>
                                     <i class="far fa-heart"></i>  
-                                    {{ post.number_of_likes }}
-                                    <span class="text-secondary ml-2">
+                                    {{ post.number_of_likes }}</small>
+                                    <small class="text-secondary ml-2">
                                         <i class="fa-regular fa-comments"></i> 
                                          {{ post.comments.count }}  
-                                    </span>
+                                    </small>
+                                    </a></span>
                                 </p>
                             </div>
                         </div>

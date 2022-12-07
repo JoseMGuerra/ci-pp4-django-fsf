@@ -8,18 +8,18 @@
 
 <div class="container h-100">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-4">
             <h1 class="display-5 text-center">My Profile</h1>
             {% if "placeholder" in profile.profile_image.url %}
-            <img class="mx-auto d-block img-fluid rounded-circle" src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1669992014/media/profile_images/user-profile_vqaiyv.png" width="200" height="200">
+            <img src="https://res.cloudinary.com/hefzzbfmw/image/upload/v1670352833/media/profile_images/default.png" class="img-fluid img-thumbnail rounded-circle" alt="user default profile image">
             {% else %}
-            <img class="mx-auto d-block img-fluid rounded-circle" src="{{ profile.profile_image.url }}" width="200" height="200">           
+            <img src="{{ profile.profile_image.url }}" class="img-fluid img-thumbnail rounded-circle" alt="user profile image">           
             {% endif %}
-            <p class="text-center"><a class="btn btn-update  mt-2" role="button" href="{% url 'change-image' %}">Change Image
+            <p class="text-center"><a class="btn form-btn mt-2" role="button" href="{% url 'change-image' %}">Change Image
             </a>
             </p>
         </div>
-        <div class="col-md-8 mt-4">
+        <div class="col-sm-8 mt-4">
             <p class="h1 text-center">{{ profile.user }}</p>
         </div>  
     </div>
