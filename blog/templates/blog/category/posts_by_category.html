@@ -1,60 +1,46 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% load crispy_forms_tags %}
-{% load cloudinary %}
-
-{% block extra_title %}{{ post.category.name }}{% endblock %}
-
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% load cloudinary %} {% block extra_title %}{{ post.category.name }}{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h1 class="mb-4 thin text-center">{{ category.name }}</h1>
-
-            {% for post in posts %}
-                
-                <div class="card mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            {% if "placeholder" in post.featured_image.url %}
-                                <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="placeholder category image" width="100%" height="auto">
-                                {% else %}
-                                <img src="{{ post.featured_image.url }}" alt="featured category image" width="100%" height="auto">
-                            {% endif %}
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h3 class="card-title">
-                                    <a class="post-link" href="{{ post.get_absolute_url }}">
-                                        {{ post.title }}
-                                    </a>
-                                </h3>
-                                <p class="card-text">
-                                    {{ post.content |truncatewords:15 | safe }}  
-                                    <a class="post-link " href="{{ post.get_absolute_url }}"><strong>Read full post</strong>
-                                </a>
-                                </p>
-                                <p class="card-text">
-                                    <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago<br>
-                                    Created by {{ post.author }} on
-                                    {{ post.created_on|date:"D d M Y" }}<br>
-                                    <i class="far fa-heart"></i>  
-                                    {{ post.number_of_likes }}</small>
-                                    <small class="text-secondary ml-2">
-                                        <i class="fa-regular fa-comments"></i> 
-                                         {{ post.comments.count }}  
-                                    </small>
-                                    </a></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-            {% endfor %}
-        </div>
+      <div class="col-md-8 mt-3 offset-md-2">
+        <h1 class="mb-4 thin text-center">{{ category.name }}</h1> {% for post in posts %} <div class="card mb-3">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              {% if "placeholder" in post.featured_image.url %} <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="placeholder category image" width="100%" height="auto">
+              {% else %}
+              <img src="{{ post.featured_image.url }}" alt="featured category image" width="100%" height="auto">
+              {% endif %} </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title">
+                  <a class="post-link" href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                  </a>
+                </h3>
+                <p class="card-text">
+                  {{ post.content |truncatewords:15 | safe }}
+                  <a class="post-link " href="{{ post.get_absolute_url }}">
+                    <strong>Read full post</strong>
+                  </a>
+                </p>
+                <p class="card-text">
+                  <small class="text-muted">Last updated {{ post.updated_on | timesince }} ago <br> Created by {{ post.author }} on {{ post.created_on|date:"D d M Y" }}
+                    <br>
+                    <i class="far fa-heart"></i>
+                    {{ post.number_of_likes }}
+                  </small>
+                  <small class="text-secondary ml-2">
+                    <i class="fa-regular fa-comments"></i>
+                    {{ post.comments.count }}
+                  </small>
+                  </a>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> {% endfor %}
+      </div>
     </div>
-</div>
-
-{% endblock content %}
+  </div>
+  {% endblock content %}

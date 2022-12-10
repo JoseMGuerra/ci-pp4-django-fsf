@@ -1,99 +1,83 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
-{% load cloudinary %}
-{% block extra_title %}{{ page_title }}{% endblock %}
-
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load cloudinary %} {% block extra_title %}{{ page_title }}{% endblock %}
 {% block content %}
-
 <div class="container h-100">
     <div class="row">
-        <div class="col-sm-4">
-            <h1 class="display-5 text-center">My Profile</h1>
-            <div class="text-center">
+      <div class="col-md-4">
+        <h1 class="display-5 text-center">My Profile</h1>
+        <div class="text-center">
             {% if "placeholder" in profile.profile_image.url %}
-            <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670446713/media/profile_images/default.png" class="img-fluid img-thumbnail rounded-circle" alt="user default profile image" width="200" height="200">
+            <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670446713/media/profile_images/default.png" class="img-fluid img-thumbnail rounded-circle" alt="user default profile image" width="150" height="150">
             {% else %}
-            <img src="{{ profile.profile_image.url }}" class="img-fluid img-thumbnail rounded-circle" alt="user profile image">           
-            {% endif %}
-            </div>
-            <p class="text-center"><a class="btn form-btn mt-2" role="button" href="{% url 'change-image' %}">Change Image
-            </a>
-            </p>
-        </div>
-        <div class="col-sm-8 mt-4">
-            <p class="h1 text-center">{{ profile.user }}</p>
-        </div>  
+            <img src="{{ profile.profile_image.url }}" class="img-fluid img-thumbnail rounded-circle" alt="user profile image" width="150" height="150">
+            {% endif %}</div>
+        <p class="text-center">
+          <a class="btn form-btn mt-2" role="button" href="{% url 'profile-settings' %}">Profile settings </a>
+        </p>
+      </div>
+      <div class="col-md-8 mt-4">
+        <p class="h1 text-center">{{ profile.user }}</p>
+      </div>
     </div>
-</div>
-<div class="container h-100">
+  </div>
+  <div class="container h-100">
     <div class="row">
-        <div class="col-md-12">
-            <div class="table-responsive">
-                <table class="table table-hover text-center">
-                    <thead class="thead prime-color bg-second">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Date created</th>
-                            <th scope="col">Likes</th>
-                            <th scope="col">Comments</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Approved</th>
-                            <th scope="col">Update</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% if request.user.is_authenticated %}
-                            {% for post in posts %}
-                            {% if post.status == 'draft' %}
-                            <tr class="table-danger">
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td><a href="{{ post.get_absolute_url }}" class="post-link">
-                                {{ post.title }}</a></td>
-                                <td>{{ post.created_on|date:"D d M Y" }}</td>
-                                <td>{{ post.number_of_likes }}</td>
-                                <td>{{ post.comments.count }}</td>
-                                <td>{{ post.status }}</td>
-                                <td>{{ post.approved }}</td>
-                                <td>
-                                    <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-backend-delete' slug=post.slug %}">Delete
-                                    </a>
-                            </td>
-                            </tr>
-                            {% else %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td><a href="{{ post.get_absolute_url }}" class="post-link">
-                                {{ post.title }}</a></td>
-                                <td>{{ post.created_on|date:"D d M Y" }}</td>
-                                <td>{{ post.number_of_likes }}</td>
-                                <td>{{ post.comments.count }}</td>
-                                <td>{{ post.status }}</td>
-                                <td>{{ post.approved }}</td>
-                                <td>
-                                    <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update
-                                    </a>
-                                </td>
-                                <td> 
-                                    <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-backend-delete' slug=post.slug %}">Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            {% endif %}
-                        {% endfor %}
-                        {% endif %}
-                    </tbody>
-                </table>
-            </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-hover text-center">
+            <thead class="thead prime-color bg-second">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Date created</th>
+                <th scope="col">Likes</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Status</th>
+                <th scope="col">Approved</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody> {% if request.user.is_authenticated %} 
+              {% for post in posts %} {% if post.status == 'draft' %} 
+              <tr class="table-danger">
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>
+                  <a href="{{ post.get_absolute_url }}" class="post-link">
+                    {{ post.title }}</a>
+                </td>
+                <td>{{ post.created_on|date:"D d M Y" }}</td>
+                <td>{{ post.number_of_likes }}</td>
+                <td>{{ post.comments.count }}</td>
+                <td>{{ post.status }}</td>
+                <td>{{ post.approved }}</td>
+                <td>
+                  <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update </a>
+                </td>
+                <td>
+                  <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-backend-delete' slug=post.slug %}">Delete </a>
+                </td>
+              </tr> {% else %} <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>
+                  <a href="{{ post.get_absolute_url }}" class="post-link">
+                    {{ post.title }}</a>
+                </td>
+                <td>{{ post.created_on|date:"D d M Y" }}</td>
+                <td>{{ post.number_of_likes }}</td>
+                <td>{{ post.comments.count }}</td>
+                <td>{{ post.status }}</td>
+                <td>{{ post.approved }}</td>
+                <td>
+                  <a class="btn btn-update btn-sm" role="button" href="{% url 'blog:post-update' post.slug %}">Update </a>
+                </td>
+                <td>
+                  <a class="btn btn-outline-danger btn-sm" role="button" href="{% url 'blog:post-backend-delete' slug=post.slug %}">Delete </a>
+                </td>
+              </tr>
+              {% endif %} {% endfor %} {% endif %}
+            </tbody>
+          </table>
         </div>
-    </div>
-    {% include 'blog/includes/paginator.html' with page=posts %}
-</div>
-
-{% endblock %}
+      </div>
+    </div> {% include 'blog/includes/paginator.html' with page=posts %}
+  </div> {% endblock %}

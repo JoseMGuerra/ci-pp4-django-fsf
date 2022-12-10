@@ -7,52 +7,52 @@
 - <details>
   <summary>Blog homepage</summary>
 
-  - ![blog index](media/readme_images/balsamic-blog-index.png)
-  - ![blog index mobile](media/readme_images/balsamic-mobile-blog-index.png)
+  - ![blog index](readme_images/balsamic-blog-index.png)
+  - ![blog index mobile](readme_images/balsamic-mobile-blog-index.png)
 
 </details>
 
 - <details>
   <summary>Blog post list page</summary>
 
-  - ![blog posts](media/readme_images/balsamic-posts.png)
-  - ![blog posts](media/readme_images/balsamic-mobile-posts.png)
+  - ![blog posts](readme_images/balsamic-posts.png)
+  - ![blog posts](readme_images/balsamic-mobile-posts.png)
 
 </details>
 
 - <details>
   <summary>Blog post detail page</summary>
 
-  - ![blog post detail](media/readme_images/balsamic-post-detail.png)
-  - ![blog mobile post detail](media/readme_images/balsamic-mobile-post-detail.png)
+  - ![blog post detail](readme_images/balsamic-post-detail.png)
+  - ![blog mobile post detail](readme_images/balsamic-mobile-post-detail.png)
 
 </details>
 
 - <details>
   <summary>Blog posts management page</summary>
 
-  - ![blog posts management](media/readme_images/balsamic-posts-management.png)
+  - ![blog posts management](readme_images/balsamic-posts-management.png)
 
 </details>
 
 - <details>
   <summary>Blog user profile page</summary>
 
-  - ![blog user profile](media/readme_images/balsamic-user-profile.png)
+  - ![blog user profile](readme_images/balsamic-user-profile.png)
 
 </details>
 
 - <details>
   <summary>Blog Sign In form</summary>
 
-  - ![blog Sign In form](media/readme_images/balsamic-sign-in.png)
+  - ![blog Sign In form](readme_images/balsamic-sign-in.png)
 
 </details>
 
 - <details>
   <summary>Blog Sign Up form</summary>
 
-  - ![blog Sign Up form](media/readme_images/balsamic-sign-up.png)
+  - ![blog Sign Up form](readme_images/balsamic-sign-up.png)
 
 </details>
 
@@ -144,6 +144,7 @@
     <summary>Software and Web Applications</summary>
 
   - [Am I Responsive:](http://ami.responsivedesign.is) Checking the responsiveness.
+  - [Code Beautify:](https://codebeautify.org/) Used to beautify html code.
   - [Balsamiq:](https://balsamiq.com/) Used to create the wireframes.
   - [Chrome DevTools:](https://developer.chrome.com/docs/devtools/) Used to test the response on different screen sizes, debugging and to generate a Lighthouse report to analyze page load.
   - [Font Awesome:](https://fontawesome.com/) Used throughout the site to add icons for aesthetic and UX purposes.
@@ -160,11 +161,7 @@
   - [W3 CSS Validator:](https://jigsaw.w3.org/css-validator/) Check your code for CSS validation.
   - [Gauger:](https://gauger.io/fonticon/) Used to create the favicon Logo, create beautiful favicon with ease.
   - [Lucidchart:](https://www.lucidchart.com/pages/) Used to create the site map.
-  <!-- - [Google Maps:](https://mapsplatform.google.com/) Google Maps Embed API used in footer section -->
-  <!-- - [Materialize Colors:](https://materializecss.com/color.html) Used to create the main colour palette. -->
-  <!-- - [SVG Backgrounds:](https://svgbackgrounds.com/) Scalable Vector Graphic used in the featurette section. Should the background image fail there is a fallback background colour set so the page still functions. -->
-  <!-- - [SVG Wave Generator:](https://softr.io/tools/svg-wave-generator/) Used to generate a gradient SVG wave used in the hero section. -->
-  <!-- - [Writer:](https://writer.com/grammar-checker/) Free Grammar Check. -->
+  - [Contrast Checker](https://webaim.org/resources/contrastchecker/) Tool to check the contrast ratio.
 
 </details>
 
@@ -200,7 +197,6 @@
       git clone <url> <where to clone>
 
 ## DEBUGING
-
 
 ---
 

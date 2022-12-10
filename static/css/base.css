@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates&display=swap');
-
 html {
     height: 100%;
 }
@@ -7,11 +5,11 @@ html {
 /* ---------------------------------- Colors */
 
 .prime-color {
-    color: #2220B3;
+    color: #2220b3;
 }
 
 .second-color {
-    color: #00B3B3;
+    color: #00b3b3;
 }
 
 .text-black {
@@ -23,23 +21,23 @@ html {
 }
 
 .text-black50 {
-    color: rgba(30, 30, 36, 0.50);
+    color: rgba(30, 30, 36, 0.5);
 }
 
 .text-black25 {
-    color: rgba(30, 30, 36, 0.25)
+    color: rgba(30, 30, 36, 0.25);
 }
 
 .text-black10 {
-    color: rgba(30, 30, 36, 0.10)
+    color: rgba(30, 30, 36, 0.1);
 }
 
 .text-black5 {
-    color: rgba(30, 30, 36, 0.05)
+    color: rgba(30, 30, 36, 0.05);
 }
 
 .text-red {
-    color: #B30000;
+    color: #b30000;
 }
 
 .navbar-text {
@@ -48,15 +46,17 @@ html {
 
 .bg-gradient-primary-to-secondary {
     background-color: #0061f2 !important;
-    background-image: linear-gradient(135deg, #2220b3 0%, rgba(0, 179, 179, 0.50) 100%) !important;
+    background-image: linear-gradient(135deg,
+            #2220b3 0%,
+            rgba(0, 179, 179, 0.5) 100%) !important;
 }
 
 .bg-prime {
-    background-color: rgba(34, 32, 179, 0.50) !important;
+    background-color: rgba(34, 32, 179, 0.5) !important;
 }
 
 .bg-second {
-    background-color: rgba(0, 179, 179, 0.50) !important;
+    background-color: rgba(0, 179, 179, 0.5) !important;
 }
 
 .bg-light {
@@ -86,7 +86,7 @@ h6,
 }
 
 .nav-link {
-    color: rgba(31, 31, 36, .9) !important;
+    color: rgba(31, 31, 36, 0.9) !important;
 }
 
 .nav-link:hover {
@@ -95,16 +95,16 @@ h6,
 }
 
 .page-link {
-    color: #2220B3
+    color: #2220b3;
 }
 
 .page-link:hover {
-    color: #00b3b3
+    color: #00b3b3;
 }
 
 .page-active {
-    background-color: #2220B3 !important;
-    border-color: #2220B3 !important;
+    background-color: #2220b3 !important;
+    border-color: #2220b3 !important;
 }
 
 .post-link {
@@ -114,7 +114,7 @@ h6,
 
 .post-link:hover {
     text-decoration: underline;
-    color: #B30000;
+    color: #b30000;
 }
 
 .card {
@@ -135,7 +135,7 @@ h6,
 
 .category-badge {
     color: #fafafa;
-    background-color: #2220B3 !important;
+    background-color: #2220b3 !important;
     text-transform: uppercase;
     padding: 6px !important;
 }
@@ -150,7 +150,6 @@ h6,
     transform: rotate(-15deg);
 }
 
-
 .first-row,
 .second-row,
 .third-row,
@@ -161,19 +160,18 @@ h6,
 .third-row h4,
 .third-row i {
     text-align: center;
-    color: rgba(30, 30, 36, 0.50);
+    color: rgba(30, 30, 36, 0.5);
 }
 
 .third-row i {
     font-size: 3rem;
-
 }
 
 footer,
 footer a,
 footer i {
     text-align: center;
-    color: rgba(31, 31, 36, .65);
+    color: rgba(31, 31, 36, 0.65);
 }
 
 footer a:hover {
@@ -189,9 +187,7 @@ footer i:hover {
 footer i {
     padding: 1rem 0.5rem;
     font-size: 1.5rem;
-
 }
-
 
 /* ------------------------------------------- Wrappers */
 
@@ -206,7 +202,7 @@ footer i {
     background-color: #00000080;
 }
 
-/* ----------------------------------------- allauth forms formatting */
+/* ---------------------------- allauth forms formatting */
 
 .allauth-form-inner-content p {
     margin-top: 3rem;
@@ -219,16 +215,16 @@ footer i {
     border-radius: 5px;
 }
 
-.allauth-form-inner-content label:not([for='id_remember']) {
+.allauth-form-inner-content label:not([for="id_remember"]) {
     display: none;
 }
 
 .allauth-form-inner-content input::placeholder {
-    color: rgba(31, 31, 36, 0.50);
+    color: rgba(31, 31, 36, 0.5);
 }
 
 .allauth-form-inner-content button,
-.allauth-form-inner-content input[type='submit'] {
+.allauth-form-inner-content input[type="submit"] {
     /* btn */
     display: inline-block;
     font-weight: 400;
@@ -239,9 +235,9 @@ footer i {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #2220B3;
-    border: 1px solid #2220B3;
-    padding: .75rem 1rem;
+    background-color: #2220b3;
+    border: 1px solid #2220b3;
+    padding: 0.75rem 1rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 5px;
@@ -256,11 +252,10 @@ footer i {
     transition-duration: 0.3s;
     -webkit-transition-property: transform;
     transition-property: transform;
-
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {
+.allauth-form-inner-content input[type="submit"]:hover {
     color: #00b3b3;
     background-color: #fafafa;
     border-color: #00b3b3;
@@ -283,8 +278,8 @@ footer i {
 
 .form-btn {
     color: #fafafa;
-    background-color: #2220B3;
-    border: 1px solid #2220B3;
+    background-color: #2220b3;
+    border: 1px solid #2220b3;
 }
 
 .form-btn:hover {
@@ -306,14 +301,14 @@ footer i {
 }
 
 .btn-like {
-    color: #B30000;
+    color: #b30000;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #B30000;
+    color: #b30000;
     background: transparent;
     border: none;
 }
@@ -415,7 +410,6 @@ footer i {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
-
 
 /* Icon Grow https://ianlunn.github.io/Hover/ */
 .hvr-icon-grow {

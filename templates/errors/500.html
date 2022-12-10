@@ -1,24 +1,18 @@
-{% extends 'errors/errors_base.html' %}
-{% load static %}
-{% load cloudinary %}
-
-{% block content %}
+{% extends 'errors/errors_base.html' %} {% load static %} {% load cloudinary %} {% block content %}
 <div class="container-wrapper bg-gradient-primary-to-secondary">
-
-<div class="container">
-    <div class="row">
+    <div class="container">
+      <div class="row">
         <div class="col-md-6 my-auto form-container text-center rounded mx-auto my-2 py-2">
-            <h1>Error 500: Internal Server Error. <i class="fas fa-undo"></i></h1>
-            <div>
-                <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670439311/media/images/error_500.jpg" alt="server error" width="img-fluid">
-            </div>
-            <div>
-                <a href="{% url 'home:homepage' %}" class="btn btn-warning btn-lg mt-3">
-                    Bring me back home
-                </a>
-            </div>
+          <h1>Error 500: Internal Server Error. <i class="fas fa-undo"></i>
+          </h1>
+          <div>
+            <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670439311/media/images/error_500.jpg" alt="server error" width="img-fluid">
+          </div>
+          <div>
+            <a href="{% url 'home:homepage' %}" class="btn btn-warning btn-lg mt-3"> Bring me back home </a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-{% endblock %}
+  </div>
+  {% endblock %}

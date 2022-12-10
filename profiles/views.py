@@ -33,19 +33,19 @@ def profile(request):
 
 
 @login_required
-def change_image(request):
+def profile_settings(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     form = UserProfileForm(request.POST, request.FILES, instance=profile)
     if request.method == "POST":
         if form.is_valid():
             form.save()
             messages.success(
-                request, "Your profile image has been successfully updated.")
+                request, "Your profile has been successfully updated.")
             return redirect(reverse("profile"))
         else:
             form = UserProfileForm(instance=profile)
 
-    template = "profiles/change_image.html"
+    template = "profiles/profile_settings.html"
     context = {
         "page_title": "Profile Image",
         "profile": profile,

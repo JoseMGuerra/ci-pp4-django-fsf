@@ -1,57 +1,55 @@
 {% load static %}
-
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
       <a class="navbar-brand brand" href="{% url 'home:homepage' %}">
         <img src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1670066868/media/images/favicon_logo.png" width="40" height="40" alt="logo">
-        <small class="text-black75">J's</small><strong class="h2 prime-color">C</strong>oding<strong class="h2 second-color">S</strong>pot</a>
+        <small class="text-black75">J's</small>
+        <strong class="h2 prime-color">C</strong>oding <strong class="h2 second-color">S</strong>pot </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#indexNavbar" aria-controls="indexNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>     
+      </button>
       <div class="collapse navbar-collapse" id="indexNavbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home:homepage' %}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'home:homepage' %}">Home <span class="sr-only">(current)</span>
+            </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:post-list' %}">Blog</a>
+            <a class="nav-link" href="{% url 'blog:post-list' %}">Blog</a>
           </li>
-          {% if request.user.is_authenticated %}
-            <li class="nav-item"><a href="{% url 'blog:post-create' %}" class="nav-link ">Add Post</a>
-            </li>           
-            <li class="nav-item"><a href="{% url 'home:contact' %}" class="nav-link ">Contact</a>
-            </li>           
-          {% else %}                   
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
-            </li>
-            {% endif %}
-          </ul>       
-          {% if user.is_authenticated %}
-          <ul class="navbar-nav justify-content-end">
-            <li class="nav-item navbar-text">
-        
-                <i class="far fa-user-circle"></i>
-                {{ user.username }}
-            
-            </li>
-            {% if request.user.is_staff %}
-            <li>
-              <a class="nav-link navbar-text" href="{% url 'blog:posts-management' %}" >Blog Management</a>
-            </li>
-              {% endif %}
-            <li class="nav-item">
-              <a class="nav-link navbar-text" href="{% url 'profile' %}">My Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link navbar-text" href="{% url 'account_logout' %}">Log Out</a>
-            </li>
-          </ul>
+          {% if request.user.is_authenticated %} <li class="nav-item">
+            <a href="{% url 'blog:post-create' %}" class="nav-link ">Add Post</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'home:contact' %}" class="nav-link ">Contact</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+          </li>
           {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav justify-content-end">
+          <li class="nav-item navbar-text">
+            <i class="fas fa-user-circle"></i> Hello {{ user.username }}
+          </li>
+          {% if request.user.is_staff %} <li>
+            <a class="nav-link navbar-text" href="{% url 'blog:posts-management' %}">Blog Management</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link navbar-text" href="{% url 'profile' %}">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text" href="{% url 'account_logout' %}">Log Out</a>
+          </li>
+        </ul>
+        {% endif %}
       </div>
     </div>
   </nav>

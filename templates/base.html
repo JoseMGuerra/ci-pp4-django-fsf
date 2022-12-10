@@ -1,15 +1,13 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
     <!-- Head -->
   {% include 'includes/head.html' %}
-
+    <!-- ./ head-->
   <body class="d-flex flex-column h-100">
-
     <!-- Header -->
     {% include 'includes/header.html' %}
-
+    <!-- ./ header-->
     <!-- Messages -->
     {% if messages %}
     <div class="container message-container">
@@ -27,26 +25,22 @@
       </div>
     </div>
     {% endif %}
-
+    <!-- ./ messages -->
    {% block page_header %}
     {% endblock %}
-
     {% block content %}
     <!-- Content goes here -->
     {% endblock %}
-
-
     <!-- Footer-->
-    {% include 'includes/footer.html' %}     
-    
+    {% include 'includes/footer.html' %} 
+    <!-- ./ footer -->   
     <script>
         setTimeout(()=>{
             let messages = document.getElementById("msg");
             let alert = new bootstrap.Alert(messages);
             alert.close();
         },3000);
-    </script>
-    
+    </script>   
   {% block extra_js %}
   {% endblock %}
 </body>
