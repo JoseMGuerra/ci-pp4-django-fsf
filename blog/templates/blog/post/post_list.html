@@ -9,8 +9,10 @@
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4"> 
-              {% if "placeholder" in post.featured_image.url %} <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="post placeholder image" class="img-fluid rounded"> 
-              {% else %} <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid rounded"> 
+              {% if "placeholder" in post.featured_image.url %} 
+              <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="post placeholder image" class="img-fluid rounded"> 
+              {% else %} 
+              <img src="{{ post.featured_image.url }}" alt="post featured image" class="img-fluid rounded"> 
               {% endif %} </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -47,7 +49,8 @@
             </div>
           </div>
         </div>
-      </article> {% else %} 
+      </article> 
+      {% else %} 
       <article>
         <div class="card mb-3">
           <div class="row no-gutters">
@@ -90,7 +93,8 @@
               {% endif %} </div>
           </div>
         </div>
-      </article> {% endif %} {% endfor %}
+      </article> 
+      {% endif %} {% endfor %}
     </div>
   </div> {% include 'blog/includes/paginator.html' with page=posts %}
 </div> {% endblock content %}

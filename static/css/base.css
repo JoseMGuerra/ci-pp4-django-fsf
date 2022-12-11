@@ -9,7 +9,11 @@ html {
 }
 
 .second-color {
-    color: #00b3b3;
+    color: #d1921c;
+}
+
+.primeLight-color {
+    color: #4DB5FF;
 }
 
 .text-black {
@@ -52,18 +56,27 @@ html {
 }
 
 .bg-prime {
-    background-color: rgba(34, 32, 179, 0.5) !important;
+    background-color: #2220b3 !important;
 }
 
 .bg-second {
-    background-color: rgba(0, 179, 179, 0.5) !important;
+    background-color: #d1921c80 !important;
+}
+
+.bg-primeLight {
+    background-color: #4DB5FF;
 }
 
 .bg-light {
-    background-color: rgba(240, 164, 0, 0.749) !important;
+    background-color: hsla(41, 79%, 46%, 0.847) !important;
+}
+
+.bg-logo-green {
+    background-color: #00b3b3;
 }
 
 body {
+    position: relative;
     font-family: Montserrat, sans-serif;
     color: #1e1e24;
     padding-top: 4.5rem;
@@ -87,19 +100,20 @@ h6,
 
 .nav-link {
     color: rgba(31, 31, 36, 0.9) !important;
+    font-size: 1.125rem;
 }
 
 .nav-link:hover {
     text-decoration: none;
-    color: #00b3b3 !important;
+    color: #d1921c !important;
 }
 
 .page-link {
-    color: #2220b3;
+    color: #4DB5FF;
 }
 
 .page-link:hover {
-    color: #00b3b3;
+    color: #4DB5FF;
 }
 
 .page-active {
@@ -114,7 +128,7 @@ h6,
 
 .post-link:hover {
     text-decoration: underline;
-    color: #b30000;
+    color: #4745ac;
 }
 
 .card {
@@ -142,8 +156,8 @@ h6,
 
 .category-badge:hover {
     color: #1e1e24;
-    background-color: #f0a400 !important;
-    border-color: #f0a400;
+    background-color: #d1921c !important;
+    border-color: #d1921c;
 }
 
 .recent-badge {
@@ -165,6 +179,7 @@ h6,
 
 .third-row i {
     font-size: 3rem;
+    color: #d1921c;
 }
 
 footer,
@@ -176,12 +191,12 @@ footer i {
 
 footer a:hover {
     text-decoration: underline;
-    color: #00b3b3 !important;
+    color: #d1921c !important;
 }
 
 footer i:hover {
     text-decoration: none;
-    color: #00b3b3 !important;
+    color: #d1921c !important;
 }
 
 footer i {

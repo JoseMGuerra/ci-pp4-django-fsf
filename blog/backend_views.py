@@ -15,7 +15,7 @@ def posts_management(request):
     """
     Display all posts
     """
-    post_list = Post.objects.all()
+    post_list = Post.objects.filter(status="published")
     paginator = Paginator(post_list, 5)
     page = request.GET.get("page")
     try:

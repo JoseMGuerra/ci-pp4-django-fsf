@@ -160,5 +160,5 @@ if not DEBUG:
     EMAIL_USE_TLS = True
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    EMAIL_HOST_USER = 'mycodingblog@email.com'
-    DEFAULT_FROM_EMAIL = 'mycodingblog@email.com'
+    EMAIL_HOST_USER = 'jcodingspot@email.com'
+    DEFAULT_FROM_EMAIL = 'jcodingspot@email.com'

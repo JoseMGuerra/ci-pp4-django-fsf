@@ -9,17 +9,19 @@
         <div class="container-fluid">
           <a class="navbar-brand brand" href="{% url 'home:homepage' %}">
             <img src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1670066868/media/images/favicon_logo.png" width="40" height="40" alt="logo">
-            <small class="text-black50">My</small>
-            <strong class="h2 prime-color">C</strong>oding <strong class="h2 second-color">B</strong>log </a>
+            <small class="text-black50">J's</small>
+            <strong class="h2 prime-color">C</strong>oding <strong class="h2 second-color">S</strong>pot </a>
         </div>
       </nav>
     </header>
-    {% block page_header %} {% endblock %}
+    {% block page_header %} 
+    {% endblock %}
+
     {% block content %}
     <!-- Content goes here -->
     {% endblock %}
-    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script> {% block extra_js %} {% endblock %}
+
+    {% block extra_js %} 
+    {% endblock %}
   </body>
 </html>

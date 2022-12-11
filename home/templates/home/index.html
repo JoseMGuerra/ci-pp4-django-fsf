@@ -27,11 +27,11 @@
                   </a> 
                   {% endif %}
                    <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4 bg-light pr-1 rounded text-red">
+                    <h2 class="pr-1 rounded bg-primeLight text-black75">
                       <strong>{{ post.title }}</strong>
                     </h2>
                     <p>
-                      <span class="badge bg-light text-red">Author: {{ post.author }}</span>
+                      <span class="badge bg-primeLight text-black">Author: {{ post.author }}</span>
                     </p>
                   </div>
                   <button class="carousel-control-prev" type="button" data-target="#carouselHero" data-slide="prev">
@@ -77,18 +77,18 @@
                 </div>
               </div>
               <div class="card-body">
-                <h5 class="card-title">
+                <h3 class="card-title">
                   <a class="post-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                </h5>
+                </h3>
                 <p class="card-text">
                   {{ post.content | linebreaks | truncatewords:15 | safe }}
                   <a class="post-link" href="{{ post.get_absolute_url }}">
                     <strong>Read full post</strong>
                   </a>
               </div>
-              <div class="card-footer bg-light">
+              <div class="card-footer bg-primeLight">
                 <p class="card-text">
-                  <small class="text-red"> Updated: {{ post.updated_on | timesince }} ago </small>
+                  <small class="text-black"> Updated: {{ post.updated_on | timesince }} ago </small>
                 </p>
               </div>
             </div> 
@@ -145,13 +145,13 @@
               </div>
               <div class="col-md-9">
                 <div class="card-body">
-                  <h5 class="card-title text-center">
+                  <h3 class="card-title text-center">
                     <a class="post-link" href="{{ post.get_absolute_url }}">
                       {{ post.title }}</a>
                     <span class="badge category-badge recent-badge">New</span>
-                  </h5>
+                  </h3>
                   <p class="card-text">
-                    <small class="text-black50">
+                    <small class="text-black">
                       {{ post.created_on | timesince}} ago</small>
                   </p>
                 </div>
