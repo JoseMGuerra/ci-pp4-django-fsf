@@ -26,7 +26,7 @@ def post_comment(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.success(request, "You have commented in a post.")
+            messages.success(request, "Your comment it's been reviewed.")
 
             return redirect(reverse("blog:post-detail", kwargs={
                 "slug": post.slug

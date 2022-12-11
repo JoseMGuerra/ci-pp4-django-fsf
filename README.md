@@ -1,6 +1,15 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-# Work in progress
+![CS logo](readme_images/favicon.ico)
+
+## Am I Responsive?
+
+- <details>
+  <summary>Blog homepage</summary>
+  
+  - ![am i responsive](readme_images/am-i-responsive.png)
+
+  </details>
 
 ## Wireframes
 
@@ -164,6 +173,10 @@
   - [Contrast Checker](https://webaim.org/resources/contrastchecker/) Tool to check the contrast ratio.
 
 </details>
+
+## Testing
+
+- [Testing](TESTING.md)
 
 ## Deployment
 
