@@ -58,6 +58,7 @@ class Post(models.Model):
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(
         User, related_name='blogpost_likes', blank=True)
+    like_count = models.BigIntegerField(default="0")
 
     class Meta:
         """Set the order of posts by descending date """

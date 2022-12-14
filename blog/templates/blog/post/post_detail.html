@@ -86,4 +86,43 @@
     </div>
   </div>
   {% include 'blog/includes/delete_modal.html' %}
+  <script>
+    $(document).ready(function(){
+      $("#like-form").submit(function(e){
+        e.preventDefault();
+        const post_slug = $('.btn-like').val();
+        const csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+        const url = $(this).attr('action');
+
+        $.ajax({
+          method: "POST",
+          url: url,
+          headers: {'X-CSRFToken': csrftoken},
+          data: {
+            "post_slug": post_slug
+          },
+
+          success: function(response)
+          {
+            if (response.liked === true){
+              $("#post_id").addClass("btn-like");
+            } else{
+              $("#post_id").removeClass("btn-like");
+            };
+            // remove django post-number-of-likes
+            $("#post_id").removeClass("like-count")
+            like = $("#like-count").text(response.likes_count + " Likes");
+            parseInt(like);
+          },
+
+          error: function(response)
+          {
+            console.log("Failed ", response);
+          },
+
+        });
+      });     
+    })
+  </script>
+
   {% endblock content %}

@@ -217,6 +217,11 @@ footer i {
     background-color: #00000080;
 }
 
+.message-container {
+    position: fixed;
+    z-index: 9999;
+}
+
 /* ---------------------------- allauth forms formatting */
 
 .allauth-form-inner-content p {
