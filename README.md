@@ -211,6 +211,9 @@
 
 ## DEBUGING
 
+    TypeError: $(...).modal is not a function
+    solution: place bootstrap script in base.html head tag.
+
 ---
 
 Happy coding!

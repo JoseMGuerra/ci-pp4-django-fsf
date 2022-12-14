@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post, Comment, Category
 from .forms import AdminPostForm, PostForm, CommentForm
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
 
 def post_list(request):
@@ -169,13 +169,20 @@ def post_like(request, slug, *args, **kwargs):
     LKes a post
     """
     post = get_object_or_404(Post, slug=slug)
-
-    if post.likes.filter(id=request.user.id).exists():
-        post.likes.remove(request.user)
-
-    else:
-        post.likes.add(request.user)
-        messages.success(
-            request, "Thank you for liking the post.")
+    liked = False
+    if request.method == "POST":
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+            liked = False
+        else:
+            post.likes.add(request.user)
+            liked = True
+            messages.success(
+                request, "Liked!")
+        data = {
+            "liked": liked,
+            "likes_count": post.likes.count(),
+        }
+        return JsonResponse(data, safe=False)
 
     return HttpResponseRedirect(reverse("blog:post-detail", args=[slug]))
