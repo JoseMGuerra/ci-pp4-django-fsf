@@ -9,7 +9,7 @@
         <img src="{{ profile.profile_image.url }}" class="img-fluid img-thumbnail rounded-circle" alt="user profile image" width="150" height="150">
         {% endif %} </div>
         <div class="col-md-7">
-        <h1 class="mb-4 text-center">Profile Settings</h1>
+        <h1 class="mb-4 text-center second-color">Profile Settings</h1>
         {% if user.is_authenticated %}
         <form method="POST" action="." enctype="multipart/form-data">
             {% csrf_token %} {{ form | crispy }}

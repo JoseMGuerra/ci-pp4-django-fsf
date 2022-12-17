@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-8 mt-3 offset-md-2">
-        <h1 class="mb-4 thin text-center">{{ category.name }}</h1> {% for post in posts %} <div class="card mb-3">
+        <h1 class="mb-4 thin text-center second-color">{{ category.name }}</h1> {% for post in posts %} <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
               {% if "placeholder" in post.featured_image.url %} <img src="https://res.cloudinary.com/devjosemgr/image/upload/v1670438999/media/placeholder.webp" alt="placeholder category image" width="100%" height="auto">
