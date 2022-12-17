@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% load cloudinary %} {% block extra_title %} {{ page_title }} {% endblock %}
 {% block content %}
 <main>
-  <section class="container-wrapper">
+  <section class="container-wrapper skew-wrapper-orange">
     <div class="container">
       <div class="row first-row">
         <div class="col-md-8 offset-md-2">
@@ -51,9 +51,9 @@
       </div>
   </section>
   <section class="container-wrapper">
-    <div class="container mt-5">
+    <div class="container mt-4 pt-4">
       <div>
-        <h2 class="thin mb-2 text-center">Featured Posts</h2>
+        <h2 class="thin mb-2 text-center prime-color">Featured Posts</h2>
       </div>
       <div class="row second-row">
         <div class="col-md-12">
@@ -98,7 +98,7 @@
       </div>
     </div>
   </section>
-  <section class="container-wrapper">
+  <section class="container-wrapper mb-2">
     <div class="container">
       <div class="row third-row">
         <div class="col">
@@ -126,10 +126,10 @@
       </div>
     </div>
   </section>
-  <section class="container-wrapper">
-    <div class="container mt-5">
+  <section class="container-wrapper skew-wrapper-blue">
+    <div class="container mt-4">
       <div>
-        <h2 class="thin mb-2 text-center">Most Recent</h2>
+        <h2 class="thin text-white pt-3 mb-2 text-center">Most Recent</h2>
       </div>
       <div class="row fourth-row">
         <div class="col"> 
@@ -148,7 +148,7 @@
                   <h3 class="card-title text-center">
                     <a class="post-link" href="{{ post.get_absolute_url }}">
                       {{ post.title }}</a>
-                    <span class="badge category-badge recent-badge">New</span>
+                    <span class="badge recent-badge">New</span>
                   </h3>
                   <p class="card-text">
                     <small class="text-black">

@@ -1,17 +1,52 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-![CS logo](readme_images/favicon.ico)
+# PP4 - Blog Project - Full Stack Python + Django Framework
 
-## Am I Responsive?
+![am i responsive](readme_images/am-i-responsive.gif)
+
+## User Experience (UX)
+
+### Colours
 
 - <details>
-  <summary>Blog homepage</summary>
-  
-  - ![am i responsive](readme_images/am-i-responsive.png)
+  <summary>Complementary colours palette</summary>
+
+   Blue was chosen as the main colour to use throughout the project because it will transmit calm, reliability and trust. Orange is used as the main accent colour transmiting  energy and vitality. Green is the other accent colour meaning cleanliness and luck.
+
+  ![complementary color palette](readme_images/complementary_color_palette.jpeg)
+
+</details>
+
+- <details>
+  <summary>Typography colour palette</summary>
+
+  Typography is based on the main theme colour, mix with black and with progressive decresed opacity.
+
+  ![typography color](readme_images/typography_color_palette.jpeg)
+
+</details>
+
+### Typography
+
+- <details>
+  <summary>Montserrat Alternates font</summary>
+
+  - The main font used for this project is [Montserrat alternates](https://fonts.google.com/specimen/Montserrat+Alternates). The old posters and signs in the traditional Montserrat neighborhood of Buenos Aires inspired Julieta Ulanovsky to create this font in 2010. It is a sans serif font with excellent readability.
+
+    ![montserrat alternates](readme_images/montserrat-alternates.png)
 
   </details>
 
-## Wireframes
+- <details>
+  <summary>Lato font</summary>
+
+  - For headings the font used is [Lato](https://fonts.google.com/specimen/Lato) (“Lato” means “Summer” in Polish). It is a sans serif font by Warsaw-based designer Łukasz Dziedzic.
+
+    ![lato font](readme_images/lato-font.png)
+
+</details>
+
+### Wireframes
 
 - <details>
   <summary>Blog homepage</summary>
@@ -65,6 +100,45 @@
 
 </details>
 
+### Project Diagram
+
+- <details>
+  <summary>Project Diagram</summary>
+
+  - ![Project Diagram](readme_images/Blog-diagram.png)
+
+</details>
+
+### Database relationships diagram
+
+- <details>
+  <summary>Post relationship</summary>
+
+  - ![Post relationship](readme_images/post-relationships.png)
+
+  </details>
+
+- <details>
+  <summary>Comment relationship</summary>
+
+  - ![Comment relationship](readme_images/comment-relationships.png)
+
+  </details>
+
+- <details>
+  <summary>Category relationship</summary>
+
+  - ![Category relationship](readme_images/category-relationships.png)
+
+  </details>
+
+- <details>
+  <summary>User Profile relationship</summary>
+
+  - ![User Profile relationship](readme_images/user-profile-relationships.png)
+
+  </details>
+  
 ## Epics and User Stories
 
 ### Epics
@@ -144,8 +218,8 @@
   - [Cloudinary:](https://cloudinary.com/) Used to store all blog images and uploaded images.
   - [Summernote:](https://github.com/summernote/django-summernote) To provide a WYSIWYG editor for customizing new blog content and add images.
   - [Pillow:](https://pillow.readthedocs.io/en/stable/) The Python Imaging Library adds image processing capabilities to your Python interpreter.
-  <!-- - [Coverage:](https://coverage.readthedocs.io/en/latest/index.html) Used for measuring code coverage of Python test files. -->
-  <!-- - [Jest:](https://jestjs.io/) A delightful JavaScript Testing Framework, used for automated tests. -->
+  - [Coverage:](https://coverage.readthedocs.io/en/latest/index.html) Used for measuring code coverage of Python test files. -->
+  - [Jest:](https://jestjs.io/) A delightful JavaScript Testing Framework, used for automated tests.
 
 </details>
 
@@ -159,7 +233,7 @@
   - [Font Awesome:](https://fontawesome.com/) Used throughout the site to add icons for aesthetic and UX purposes.
   - [Git:](https://git-scm.com/) Git open source software for distributed version control.
   - [GitHub:](https://github.com/) Internet hosting service for software development and version control using Git.
-  - [Google Fonts:](https://fonts.google.com/) Used to import fonts family [Montserrat](https://fonts.google.com/specimen/Montserrat) which is used as main font throughout the site and [Lato](https://fonts.google.com/specimen/Lato) font used for headings.
+  - [Google Fonts:](https://fonts.google.com/) Used to import fonts family [Montserrat](https://fonts.google.com/specimen/Montserrat+Alternates) which is used as main font throughout the site and [Lato](https://fonts.google.com/specimen/Lato) font used for headings.
   - [Heroku:](https://www.heroku.com/) For deployment and hosting of the application.
   - [Elephant PostgreSQL:](https://www.elephantsql.com/) The database used for this application.
   - [HTML Validator:](https://validator.w3.org/) Check your code for HTML validation.

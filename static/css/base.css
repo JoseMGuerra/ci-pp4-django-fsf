@@ -2,79 +2,6 @@ html {
     height: 100%;
 }
 
-/* ---------------------------------- Colors */
-
-.prime-color {
-    color: #2220b3;
-}
-
-.second-color {
-    color: #d1921c;
-}
-
-.primeLight-color {
-    color: #4DB5FF;
-}
-
-.text-black {
-    color: #1e1e24;
-}
-
-.text-black75 {
-    color: rgba(31, 31, 36, 0.75);
-}
-
-.text-black50 {
-    color: rgba(30, 30, 36, 0.5);
-}
-
-.text-black25 {
-    color: rgba(30, 30, 36, 0.25);
-}
-
-.text-black10 {
-    color: rgba(30, 30, 36, 0.1);
-}
-
-.text-black5 {
-    color: rgba(30, 30, 36, 0.05);
-}
-
-.text-red {
-    color: #b30000;
-}
-
-.navbar-text {
-    color: #1e1e24 !important;
-}
-
-.bg-gradient-primary-to-secondary {
-    background-color: #0061f2 !important;
-    background-image: linear-gradient(135deg,
-            #2220b3 0%,
-            rgba(0, 179, 179, 0.5) 100%) !important;
-}
-
-.bg-prime {
-    background-color: #2220b3 !important;
-}
-
-.bg-second {
-    background-color: #d1921c80 !important;
-}
-
-.bg-primeLight {
-    background-color: #4DB5FF;
-}
-
-.bg-light {
-    background-color: hsla(41, 79%, 46%, 0.847) !important;
-}
-
-.bg-logo-green {
-    background-color: #00b3b3;
-}
-
 body {
     position: relative;
     font-family: Montserrat, sans-serif;
@@ -95,8 +22,100 @@ h6,
 }
 
 .thin {
+    font-family: Lato, sans-serif;
     font-weight: 300;
 }
+
+/* ---------------------------------- Colors */
+
+.prime-color {
+    color: #2220b3;
+}
+
+.second-color {
+    color: #ff7700;
+}
+
+.primeLight-color {
+    color: #4DB5FF;
+}
+
+.logo-green {
+    color: #00b3b3;
+}
+
+/* ---------------------------------- Text */
+
+.text-black {
+    color: rgb(30, 30, 36);
+}
+
+.text-black75 {
+    color: rgba(30, 30, 36, 0.749);
+}
+
+.text-black50 {
+    color: rgba(30, 30, 36, 0.502);
+}
+
+.text-black25 {
+    color: rgba(30, 30, 36, 0.251);
+}
+
+.text-black10 {
+    color: rgba(30, 30, 36, 0.102);
+}
+
+.text-black5 {
+    color: rgba(30, 30, 36, 0.051);
+}
+
+.text-red {
+    color: #b30000;
+}
+
+.text-white {
+    color: #fafafa;
+}
+
+.navbar-text {
+    color: #1e1e24;
+}
+
+/* ---------------------------------- Background Colours */
+
+.bg-gradient-primary-to-secondary {
+    background-color: #0061f2 !important;
+    background-image: linear-gradient(135deg,
+            #2220b3 0%,
+            #ff770080 100%) !important;
+}
+
+.bg-prime {
+    background-color: #2220b3 !important;
+}
+
+.bg-second {
+    background-color: #ff770080 !important;
+}
+
+.bg-primeLight {
+    background-color: #4DB5FF;
+}
+
+.bg-light {
+    background-color: hsla(41, 79%, 46%, 0.847) !important;
+}
+
+.bg-logo-green {
+    background-color: #00b3b3;
+}
+
+.bg-white {
+    background-color: #fafafa;
+}
+
+/* ---------------------------------- Links */
 
 .nav-link {
     color: rgba(31, 31, 36, 0.9) !important;
@@ -105,7 +124,7 @@ h6,
 
 .nav-link:hover {
     text-decoration: none;
-    color: #d1921c !important;
+    color: #ff7700 !important;
 }
 
 .page-link {
@@ -131,6 +150,28 @@ h6,
     color: #4745ac;
 }
 
+footer,
+footer a,
+footer i {
+    text-align: center;
+    color: rgba(31, 31, 36, 0.65);
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #ff7700 !important;
+}
+
+footer i:hover {
+    text-decoration: none;
+    color: #ff7700 !important;
+}
+
+footer i {
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+}
+
 .card {
     border: none;
     background-color: transparent;
@@ -149,18 +190,22 @@ h6,
 
 .category-badge {
     color: #fafafa;
-    background-color: #2220b3 !important;
+    background-color: #2220b3;
     text-transform: uppercase;
-    padding: 6px !important;
+    padding: 6px;
 }
 
 .category-badge:hover {
     color: #1e1e24;
-    background-color: #d1921c !important;
-    border-color: #d1921c;
+    background-color: #ff7700;
+    border-color: #ff7700;
 }
 
 .recent-badge {
+    color: #1e1e24;
+    background-color: #ff7700;
+    text-transform: uppercase;
+    padding: 6px;
     transform: rotate(-15deg);
 }
 
@@ -179,29 +224,7 @@ h6,
 
 .third-row i {
     font-size: 3rem;
-    color: #d1921c;
-}
-
-footer,
-footer a,
-footer i {
-    text-align: center;
-    color: rgba(31, 31, 36, 0.65);
-}
-
-footer a:hover {
-    text-decoration: underline;
-    color: #d1921c !important;
-}
-
-footer i:hover {
-    text-decoration: none;
-    color: #d1921c !important;
-}
-
-footer i {
-    padding: 1rem 0.5rem;
-    font-size: 1.5rem;
+    color: #ff7700;
 }
 
 /* ------------------------------------------- Wrappers */
@@ -220,6 +243,76 @@ footer i {
 .message-container {
     position: fixed;
     z-index: 9999;
+}
+
+/* ------------------------------------------- Skew Wrappers */
+
+/* https://www.viget.com/articles/angled-edges-with-css-masks-and-transforms/ */
+
+.skew-wrapper-orange {
+    background: #ff7700;
+    position: relative;
+    z-index: 1;
+}
+
+.skew-wrapper-orange:after {
+    background: inherit;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(-1.5deg);
+    transform-origin: 100%;
+    z-index: -1;
+}
+
+.skew-wrapper-blue {
+    background: #2220b3;
+    position: relative;
+    z-index: 1;
+}
+
+.skew-wrapper-blue:before {
+    background: inherit;
+    top: 0;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(1.5deg);
+    transform-origin: 100%;
+    z-index: -1;
+}
+
+.skew-wrapper-blue:after {
+    background: inherit;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(-1.5deg);
+    transform-origin: 100%;
+    z-index: -1;
+}
+
+/* ----------------------------  forms formatting */
+
+.forms,
+.forms h4,
+.forms p {
+    color: #fafafa !important;
+}
+
+.forms a:hover {
+    color: #ff7700;
 }
 
 /* ---------------------------- allauth forms formatting */
@@ -255,8 +348,8 @@ footer i {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #2220b3;
-    border: 1px solid #2220b3;
+    background-color: #00b3b3;
+    border: 1px solid #00b3b3;
     padding: 0.75rem 1rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -298,8 +391,8 @@ footer i {
 
 .form-btn {
     color: #fafafa;
-    background-color: #2220b3;
-    border: 1px solid #2220b3;
+    background-color: #00b3b3;
+    border: 1px solid #00b3b3;
 }
 
 .form-btn:hover {

@@ -143,6 +143,22 @@
   
   </details>
 
+## JsHint
+
+- <details>
+  <summary>Jshint ajax likes</summary>
+
+  - ![jshint ajax likes](readme_images/jshint-likeajax.png)
+
+  </details>
+
+- <details>
+  <summary>Jshint messages setTimeOut</summary>
+
+  - ![Jshint messages setTimeOut](readme_images/jshint-messages-settimeout.png)
+
+  </details>
+
 ## Lighthouse testing
 
 - <details>

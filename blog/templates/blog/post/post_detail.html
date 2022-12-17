@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-        <h1 class="thin text-center mb-4">Post Detail</h1>
+        <h1 class="thin text-center mb-4 second-color">Post Detail</h1>
         <article>
           <div class="card">
             {% if "placeholder" in post.featured_image.url %} 
@@ -108,10 +108,10 @@
               $("#post_id").addClass("btn-like");
             } else{
               $("#post_id").removeClass("btn-like");
-            };
+            }
             // remove django post-number-of-likes
-            $("#post_id").removeClass("like-count")
-            like = $("#like-count").text(response.likes_count + " Likes");
+            $("#post_id").removeClass("like-count");
+            let like = $("#like-count").text(response.likes_count + " Likes");
             parseInt(like);
           },
 
@@ -122,7 +122,7 @@
 
         });
       });     
-    })
+    });
   </script>
 
   {% endblock content %}
