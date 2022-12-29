@@ -18,7 +18,6 @@ from django.urls import include, path
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.conf import settings
 from django.views.generic.base import RedirectView
-from django.conf.urls.static import static
 from .views import handler403, handler404, handler405, handler500
 
 urlpatterns = [
@@ -31,12 +30,6 @@ urlpatterns = [
         RedirectView.as_view(url=staticfiles_storage.url('favicon.ico'))),
     path('', include('home.urls')),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(
-        settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler403 = 'blog_settings.views.handler403'
 handler404 = 'blog_settings.views.handler404'

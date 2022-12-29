@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, PageNotAnInteger
 from django.contrib import messages
 from .models import UserProfile
 from .forms import UserProfileForm
@@ -19,8 +19,6 @@ def profile(request):
         posts = paginator.page(page)
     except PageNotAnInteger:
         posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
 
     template = "profiles/profile.html"
     context = {

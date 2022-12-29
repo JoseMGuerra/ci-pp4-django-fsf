@@ -21,7 +21,7 @@ urlpatterns = [
         'posts/backend/management/',
         backend_views.posts_management, name='posts-management'),
     path(
-        'posts/<slug>/backend/post_backend_delete/',
+        'posts/backend/post_backend_delete/<slug>/',
         backend_views.post_backend_delete, name='post-backend-delete'),
     path(
         'post/category/<category_slug>/',
