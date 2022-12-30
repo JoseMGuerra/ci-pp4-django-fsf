@@ -34,13 +34,6 @@
     <!-- Footer-->
     {% include 'includes/footer.html' %} 
     <!-- ./ footer -->   
-    <script>
-        setTimeout(()=>{
-            let messages = document.getElementById("msg");
-            let alert = new bootstrap.Alert(messages);
-            alert.close();
-        },3000);
-    </script>   
   {% block extra_js %}
   {% endblock %}
 </body>

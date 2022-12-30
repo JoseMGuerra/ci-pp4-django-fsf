@@ -284,3 +284,19 @@
   - ![Admin / Staff post management manual testing](readme_images/registered-user-post-management-manual-testing.png)
   
   </details>
+
+## Automated Tests
+
+- <details>
+  <summary>Jest-Test Remove flash message alert</summary>
+
+  - ![Jest-Test Remove flash message alert](readme_images/test-jest-remove-flash-message.png)
+  
+  </details>
+
+- <details>
+  <summary>Unit Testing coverage</summary>
+
+  - ![Unittest TestCase coverage]()
+  
+  </details>

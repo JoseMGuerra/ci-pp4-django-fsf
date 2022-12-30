@@ -4,6 +4,17 @@
 
 ![am i responsive](readme_images/am-i-responsive.gif)
 
+## About
+
+Blog Project is a web app with a home page and a navigation bar,
+with a registration and login system using Django's built-in authentication views,
+Registerd users are allowed to send emails to the site's owner using Django's built-in email functionality and the smtplib library.
+It has implemented a database model for posts that includes fields like title, content, author, and date.
+It has a form for creating and editing posts that allows users to submit their own posts or update their own posts.
+It is implemented a view and template for displaying a list of all posts, with each post linking to a detail page for that post.
+On the detail page for each post, display the post's content and allow users to add comments and post's likes.
+Registered users are also allowed to delete or update their own posts, but not the posts of other users.
+
 ## User Experience (UX)
 
 ### Colours

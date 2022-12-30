@@ -87,8 +87,8 @@
   </div>
   {% include 'blog/includes/delete_modal.html' %}
   <script>
-    $(document).ready(function(){
-      $("#like-form").submit(function(e){
+    $(function(){
+      $("#like-form").on('submit', function(e){
         e.preventDefault();
         const post_slug = $('.btn-like').val();
         const csrftoken = $('input[name=csrfmiddlewaretoken]').val();
