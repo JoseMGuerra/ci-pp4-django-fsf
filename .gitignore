@@ -1,5 +1,4 @@
 # CI 
-README.md
 core.Microsoft*
 core.mongo*
 core.python*
@@ -51,6 +50,7 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
+.coveragerc
 .coverage.*
 .cache
 nosetests.xml

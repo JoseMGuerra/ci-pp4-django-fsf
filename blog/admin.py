@@ -31,31 +31,15 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on', 'category', 'featured')
     actions = [
-        'published',
-        'draft',
         'featured',
-        'unfeatured',
         'approved',
-        'disapproved',
         ]
-
-    def published(self, request, queryset):
-        queryset.update(status="published")
-
-    def draft(self, request, queryset):
-        queryset.update(status="draft")
 
     def featured(self, request, queryset):
         queryset.update(featured=True)
 
-    def unfeatured(self, request, queryset):
-        queryset.update(featured=False)
-
     def approved(self, request, queryset):
         queryset.update(approved=True)
-
-    def disapproved(self, request, queryset):
-        queryset.update(approved=False)
 
 
 @admin.register(Comment)
@@ -80,10 +64,7 @@ class CommentAdmin(admin.ModelAdmin):
         'body',
     ]
 
-    actions = ['approved', 'disapproved']
+    actions = ['approved']
 
     def approved(self, request, queryset):
         queryset.update(approved=True)
-
-    def disapproved(self, request, queryset):
-        queryset.update(approved=False)

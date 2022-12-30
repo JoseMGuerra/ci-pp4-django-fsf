@@ -4,6 +4,8 @@
 
 ![am i responsive](readme_images/am-i-responsive.gif)
 
+[Live site here](https://ci-pp4-django-blog.herokuapp.com/)
+
 ## About
 
 Blog Project is a web app with a home page and a navigation bar,
@@ -298,6 +300,23 @@ Registered users are also allowed to delete or update their own posts, but not t
 
     TypeError: $(...).modal is not a function
     solution: place bootstrap script in base.html head tag.
+
+## Known Bugs
+
+- No known bugs
+
+## Resources / Credits / Inspiration
+
+- Python documentation
+- Django project documentation
+- Free code camp
+- Stack over flow
+- W3Schools documentation
+- I Think Therefore I Blog walk-through project
+
+## Acknowledgments
+
+Thank you to my mentor Brian Macharia for guiding me, help and feedback.
 
 ---
 

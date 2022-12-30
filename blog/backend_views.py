@@ -4,11 +4,10 @@ from django.shortcuts import (
     redirect,
     reverse,
     )
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, PageNotAnInteger
 from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 
 
 def posts_management(request):
@@ -22,8 +21,6 @@ def posts_management(request):
         posts = paginator.page(page)
     except PageNotAnInteger:
         posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
 
     template = ["blog/backend/posts_management.html"]
     context = {

@@ -295,8 +295,8 @@
   </details>
 
 - <details>
-  <summary>Unit Testing coverage</summary>
+  <summary>Unit Testing coverage report</summary>
 
-  - ![Unittest TestCase coverage]()
+  - ![Unittest TestCase coverage](readme_images/unittest-coverage-report.png)
   
   </details>

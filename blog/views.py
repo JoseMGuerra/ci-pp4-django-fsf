@@ -5,11 +5,11 @@ from django.shortcuts import (
     reverse,
     )
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, PageNotAnInteger
 from .models import Post, Comment, Category
 from .forms import AdminPostForm, PostForm, CommentForm
 from django.contrib import messages
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import JsonResponse
 
 
 def post_list(request):
@@ -23,8 +23,6 @@ def post_list(request):
         posts = paginator.page(page)
     except PageNotAnInteger:
         posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
 
     template = ["blog/post/post_list.html"]
     context = {
@@ -184,5 +182,3 @@ def post_like(request, slug, *args, **kwargs):
             "likes_count": post.likes.count(),
         }
         return JsonResponse(data, safe=False)
-
-    return HttpResponseRedirect(reverse("blog:post-detail", args=[slug]))

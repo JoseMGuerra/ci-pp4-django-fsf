@@ -24,13 +24,13 @@ class Category(models.Model):
         verbose_name = "category"
         verbose_name_plural = "categories"
 
-    def get_absolute_url(self):
-        """ Get the post category absolute url """
-        return reverse("blog:posts-by-category", args=[self.slug])
-
     def __str__(self):
         """Returns category name"""
         return self.name
+
+    def get_absolute_url(self):
+        """ Get the post category absolute url """
+        return reverse("blog:posts-by-category", args=[self.slug])
 
 
 class Post(models.Model):
@@ -73,13 +73,13 @@ class Post(models.Model):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
 
-    def number_of_likes(self):
-        """ Count number of likes """
-        return self.likes.count()
-
     def get_absolute_url(self):
         """ Get the post detail absolute url """
         return reverse("blog:post-detail", args=[self.slug])
+
+    def number_of_likes(self):
+        """ Count number of likes """
+        return self.likes.count()
 
 
 class Comment(models.Model):

@@ -1,5 +1,5 @@
 // Export function when testing with Jest
-module.exports = removeFlashMessage;
+// module.exports = removeFlashMessage;
 
 // Remove flash message alert
 document.addEventListener("DOMContentLoaded", removeFlashMessage);

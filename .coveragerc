@@ -1,0 +1,19 @@
+[run]
+omit=
+    *__init__.py*
+    *tests*
+    *staticfiles*
+    *migrations*
+    *env*
+    *manage.py*
+    *settings.py*
+   
+[report]
+omit =
+    *__init__.py*
+    *tests*
+    *staticfiles*
+    *migrations*
+    *env*
+    *manage.py*
+    *settings.py*
