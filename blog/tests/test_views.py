@@ -235,3 +235,42 @@ class TestViews(TestCase):
             str(response.content, encoding='utf8'),
             {'liked': False, 'likes_count': 0}
         )
+
+    def test_search_view_with_query(self):
+        """
+        Issue a GET request to the search view with query
+        """
+
+        # Send a GET request to the view with a query in the GET parameters
+        response = self.client.get(reverse("blog:search"), {"query": "test"})
+
+        # Check that the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check that the rendered context contains the expected variables
+        self.assertEqual(response.context["page_title"], "Search")
+        self.assertEqual(response.context["query"], "test")
+        # assuming 1 post matches the query
+        self.assertEqual(len(response.context["posts"]), 1)
+
+        # Check that the rendered HTML contains the expected content
+        self.assertContains(response, "test")
+
+    def test_search_view_without_query(self):
+        """
+        Issue a GET request to the search view without query
+        """
+
+        # Send a GET request to the view without a query in the GET parameters
+        response = self.client.get(reverse("blog:search"))
+
+        # Check that the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check that the rendered context contains the expected variables
+        self.assertEqual(response.context["page_title"], "Search")
+        self.assertEqual(response.context["query"], "")
+        self.assertEqual(len(response.context["posts"]), 0)
+
+        # Check that the rendered HTML contains the expected content
+        self.assertContains(response, "No posts matched your query...")

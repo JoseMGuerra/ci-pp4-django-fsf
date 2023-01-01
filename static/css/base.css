@@ -127,6 +127,10 @@ h6,
     color: #ff7700 !important;
 }
 
+.dropdown-menu a:hover {
+    background-color: #1e1e240d;
+}
+
 .page-link {
     color: #4DB5FF;
 }

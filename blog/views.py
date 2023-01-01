@@ -4,6 +4,7 @@ from django.shortcuts import (
     redirect,
     reverse,
     )
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger
 from .models import Post, Comment, Category
@@ -164,7 +165,7 @@ def post_delete(request, slug):
 @login_required
 def post_like(request, slug, *args, **kwargs):
     """
-    LKes a post
+    Likes a post
     """
     post = get_object_or_404(Post, slug=slug)
     liked = False
@@ -182,3 +183,29 @@ def post_like(request, slug, *args, **kwargs):
             "likes_count": post.likes.count(),
         }
         return JsonResponse(data, safe=False)
+
+
+def search(request):
+    """
+    Search for a post
+    """
+    query = request.GET.get("query", "")
+
+    if query:
+        posts = Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(category__name__icontains=query) |
+            Q(author__username__icontains=query)
+        )
+    else:
+        posts = []
+
+    template = "blog/post/search.html"
+    context = {
+        "page_title": "Search",
+        "query": query,
+        "posts": posts,
+        }
+
+    return render(request, template, context)

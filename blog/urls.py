@@ -26,4 +26,5 @@ urlpatterns = [
     path(
         'post/category/<category_slug>/',
         category_views.posts_by_category, name='posts-by-category'),
+    path('search/', views.search, name='search'),
 ]

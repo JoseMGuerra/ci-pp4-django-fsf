@@ -180,6 +180,8 @@ Registered users are also allowed to delete or update their own posts, but not t
     - Custom error pages: As a `Site Admin/ User` I want be able to `have custom error pages with a return button` so that `I can return to the homepage if an error occurred`
   - [US #34](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/34)
     - As a `Site User` I want be able to `send emails` so that `I can ask questions and make suggestions`
+  - [US #35](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/35)
+    - As a `User / Admin` I want to be able to `Search for post` so that `I can find what I am looking for`
 
 </details>
 
