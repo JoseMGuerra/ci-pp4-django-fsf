@@ -39,8 +39,10 @@
             <i class="fas fa-user-circle second-color"></i> <span class="prime-color">Hello {{ user.username }}</span> 
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% if user.is_staff %}
             <a class="nav-link navbar-text d-block" href="{% url 'blog:posts-management' %}">
               Blog Management</a>
+            {% endif %}  
             <a class="nav-link navbar-text d-block" href="{% url 'profile' %}">
               My Profile</a>
             <a class="nav-link navbar-text d-block" href="{% url 'account_logout' %}">

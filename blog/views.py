@@ -18,6 +18,7 @@ def post_list(request):
     Display all posts
     """
     post_list = Post.objects.filter(status="published", approved=True)
+    categories = Category.objects.all()
     paginator = Paginator(post_list, 3)
     page = request.GET.get("page")
     try:
@@ -29,6 +30,7 @@ def post_list(request):
     context = {
         "page_title": "Posts",
         "posts": posts,
+        "categories": categories,
         "page": page,
     }
     return render(request, template, context)

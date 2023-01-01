@@ -154,6 +154,15 @@ h6,
     color: #4745ac;
 }
 
+.cat-link {
+    color: #1e1e24;
+}
+
+.cat-link:hover {
+    text-decoration: underline;
+    color: #4745ac;
+}
+
 footer,
 footer a,
 footer i {
