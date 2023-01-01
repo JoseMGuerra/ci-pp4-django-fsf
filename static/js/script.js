@@ -1,6 +1,3 @@
-// Export function when testing with Jest
-// module.exports = removeFlashMessage;
-
 // Remove flash message alert
 document.addEventListener("DOMContentLoaded", removeFlashMessage);
 
@@ -11,3 +8,5 @@ function removeFlashMessage() {
     alert.close();
   }, 3000);
 }
+// Export function when testing with Jest
+module.exports = removeFlashMessage;

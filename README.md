@@ -265,10 +265,84 @@ Registered users are also allowed to delete or update their own posts, but not t
 
 - [Testing](TESTING.md)
 
-## Deployment
+### Running automated tests
 
 - <details>
-    <summary>Deploy to Heroku</summary>
+    <summary>JavaScript automated tests</summary>
+
+  - The automated javascript test can be executed using Jest as follows:
+
+  - If Jest is not installed then run the command:
+
+          npm install --save-dev jest
+
+  - Jest-environment-jsdom is used as testing environment for Jest allowing to test code that interacts with the DOM using a virtual DOM powered by jsdom.
+  - Jest-environment-jsdom, need to be it installed in your project. This can be done using npm by running the following command:
+
+          npm install --save-dev jest-environment-jsdom
+
+  - Run the js test file using the command :
+
+          npm test
+
+</details>
+
+- <details>
+    <summary>Unit test automated tests</summary>
+
+  - The automated django/python tests are executed using unittest.
+  - Test run using sqlite3 as Db, set DEBUG  to `True` before running tests.
+  - Run the python tests using the command:
+
+          python3 manage.py test
+
+</details>
+
+- <details>
+    <summary>Coverage automated tests</summary>
+
+  - Test coverage for the django/python tests can be reviewed using the coverage tool:
+
+  - If coverage is not installed then run the command:
+
+            pip3 install coverage
+  - Test run using sqlite3 as Db, set DEBUG  to `True` before running tests.
+  - Run the following series of commands to determine test coverage:
+
+          coverage run --source=blog manage.py test
+          coverage report
+          coverage html
+          python3 -m http.server 
+          (coverage results can be viewed in the browser in the htmlcov directory)
+
+  - To exclude certain files or directories from running or from the coverage report, you can use the --omit option in the coverage command:
+
+        coverage run --omit="myapp/migrations/*" manage.py test
+
+  - Alternatively create a .coveragerc folder and add the following:
+
+        [run]
+        omit=
+            *staticfiles*
+            *migrations*
+            *env*
+            *manage.py*
+            *settings.py*
+
+        [report]
+        omit =
+            *staticfiles*
+            *migrations*
+            *env*
+            *manage.py*
+            *settings.py*
+
+</details>
+
+## Deployment to Heroku
+
+- <details>
+    <summary>Process</summary>
 
   - On Heroku create an account and log in.
   - Click `new` and `create new app`.
@@ -290,33 +364,163 @@ Registered users are also allowed to delete or update their own posts, but not t
 
 </details>
 
-## Clone the repository
+## Set up ElephantSQL as Database for this application
 
-- Open your termninal and enter this command:
+- <details>
+    <summary>Process</summary>
 
-      git clone <url> <where to clone>
+  - Go to the ElephantSQL website (https://www.elephantsql.com/) and create an account.
+
+  - After creating an account, you will be able to create a new PostgreSQL database. Choose the plan that best fits your needs and click "Create new instance".
+
+  - Give your database a name and select a region. You can also choose a database version if you have a specific version in mind.
+
+  - Once the database is created, you will see the database details page. Here, you can find the connection details for your database, including the hostname, port, database name, and username.
+
+  - To connect to the database, you will need a PostgreSQL client. There are many different clients available, such as pgAdmin and psql. Choose a client and follow the instructions to connect to your database using the connection details provided.
+
+  - Once you are connected to the database, you can start creating tables and inserting data. You can also use SQL commands to manage and query the data in your database.
+
+</details>
+
+## Set Up Cloudinary to host images used by the application
+
+- <details>
+    <summary>Process</summary>
+
+  - Sign up for a Cloudinary account at https://cloudinary.com/users/register/free.
+
+  - After you have signed up, you will be taken to the dashboard. In the dashboard, click on the "Settings" tab and then click on the "Security" tab.
+
+  - In the "Security" tab, you will see your "Cloud Name", "API Key", and "API Secret". These will be needed later to authenticate your Django application with Cloudinary.
+
+  - Install the Cloudinary Python library by running the following command:
+
+        pip install cloudinary
+
+  - Add the following code to your Django settings file to configure the Cloudinary library with your account credentials:
+
+        CLOUDINARY_CLOUD_NAME = "your_cloud_name"
+        CLOUDINARY_API_KEY = "your_api_key"
+        CLOUDINARY_API_SECRET = "your_api_secret"
+
+  - Log in to Heroku and go to the Application Configuration page for the application. Click on Settings and click on the "Reveal Config Vars" button and add the following:
+  
+        KEY: CLOUDINARY_URL
+        VALUE: cloudinary://CLOUDINARY_API_KEY:CLOUDINARY_API_SECRET@CLOUDINARY_CLOUD_NAME
+
+  - Add the Cloudinary library to your Django project by adding 'cloudinary' to the INSTALLED_APPS list in your Django settings file:
+
+        INSTALLED_APPS = [    ...    'cloudinary',]
+
+  - Run the following command to apply the changes to your Django project:
+
+        python manage.py migrate
+
+  - You are now ready to use Cloudinary in your Django project. To use Cloudinary to manage and serve your  media files, you can use the CloudinaryField field in your Django models.
+
+  - For example, to create a model with a Cloudinary image field, you can do the following:
+
+        from django.db import models
+        from cloudinary.models import CloudinaryField
+
+        class MyModel(models.Model):
+
+        name = models.CharField(max_length=255)
+        image = CloudinaryField('image')
+
+  - You can then use the image field just like any other Django field to store and retrieve images from Cloudinary.
+
+</details>
+
+## Set Up Gmail in Django
+
+- <details>
+    <summary>Process</summary>
+
+  - Install the django-email-backend package by running the following command:
+
+          pip install django-email-backend
+
+  - In your Django settings file (typically settings.py), add the following lines to configure the email backend:
+
+          EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+          EMAIL_HOST = 'smtp.gmail.com'
+          EMAIL_PORT = 587
+          EMAIL_USE_TLS = True
+          EMAIL_HOST_USER = 'your-gmail-username@gmail.com'
+          EMAIL_HOST_PASSWORD = 'your-gmail-password'
+
+  - Make sure that you have enabled "Less secure app access" in your Gmail account settings. To do this, go to your Google Account settings, click on "Security" and then scroll down to "Third-party apps with account access." Make sure that "Allow less secure apps" is turned on.
+
+  - Test the email backend by sending a test email from your Django application. You can do this by using Django's built-in send_mail function, like this:
+
+          from django.core.mail import send_mail
+
+          send_mail(
+          'Subject here',
+          'Here is the message.',
+          'from@example.com',
+          ['to@example.com'],
+          fail_silently=False,
+          )
+
+  - If everything is set up correctly, this should send a test email to the specified address using your Gmail account as the email backend.
+
+</details>
+
+## Clone a Github repository
+
+- <details>
+    <summary>Process</summary>
+
+  - To clone a repository from GitHub, you will need to have Git installed on your computer. If you don't already have Git installed, you can download it from the official website (https://git-scm.com/).
+
+  - Once you have Git installed, open a terminal window and navigate to the location where you want to store the repository on your local machine. Then, use the following command to clone the repository:
+
+        git clone https://github.com/USERNAME/REPOSITORY.git
+
+  - Replace "USERNAME" with the GitHub username of the owner of the repository, and replace "REPOSITORY" with the name of the repository you want to clone.
+
+  - For example, if you want to clone this repository the command would be:
+
+        git clone https://github.com/JoseMGuerra/ci-pp4-django-fsf <where to clone>
+
+  - This will create a new directory on your local machine with the same name as the repository, and download all the files from the repository into that directory.
+
+  - You can also use a graphical Git client, such as GitHub Desktop, to clone a repository from GitHub. With GitHub Desktop, you can simply enter the URL of the repository and choose a local directory to clone the repository to.
+
+</details>
 
 ## DEBUGING
 
-    TypeError: $(...).modal is not a function
-    solution: place bootstrap script in base.html head tag.
+- <details>
+    <summary>Modal error</summary>
+
+        TypeError: $(...).modal is not a function
+        solution: place bootstrap script in base.html head tag.
+
+    ![jquery error](readme_images/modal-error.png)
+
+</details>
 
 ## Known Bugs
 
-- No known bugs
+- Currently no known bugs
 
 ## Resources / Credits / Inspiration
 
 - Python documentation
 - Django project documentation
+- Code with Stein
+- Corey Schafer
 - Free code camp
 - Stack over flow
-- W3Schools documentation
 - I Think Therefore I Blog walk-through project
 
 ## Acknowledgments
 
-Thank you to my mentor Brian Macharia for guiding me, help and feedback.
+Thank you to my mentor Brian Macharia for his help and invaluable feedback.
 
 ---
 

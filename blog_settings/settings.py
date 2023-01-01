@@ -20,9 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', "")
 
-DEBUG = os.environ.get('DEBUG')
+DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), 'localhost']
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost']
+else:
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME'), 'localhost']
+
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
@@ -114,6 +118,7 @@ else:
     DATABASES = {
         'default':
             dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
         }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
