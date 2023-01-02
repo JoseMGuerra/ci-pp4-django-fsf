@@ -52,8 +52,8 @@ class TestViews(TestCase):
 
         # data for post create success
         self.form_data = {
-            'title': 'Test Post',
-            'content': 'This is a test post.',
+            'title': 'test title',
+            'content': 'test content',
             'status': 'published',
         }
 

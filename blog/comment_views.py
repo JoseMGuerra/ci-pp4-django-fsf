@@ -13,7 +13,14 @@ from django.contrib import messages
 @login_required
 def post_comment(request, slug):
     """
-    Create a new comment
+    Handle the creation and submission of a new comment.
+
+    Parameters:
+        request (HttpRequest): The incoming request object.
+        slug (str): The unique slug identifier for the post.
+
+    Returns:
+        HttpResponse: The rendered template response.
     """
     post = get_object_or_404(
         Post, slug=slug, approved=True)

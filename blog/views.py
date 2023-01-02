@@ -15,7 +15,13 @@ from django.http import JsonResponse
 
 def post_list(request):
     """
-    Display all posts
+    Display a list of published and approved posts, paginated.
+
+    Parameters:
+        request (HttpRequest): the HTTP request object
+
+    Returns:
+        HttpResponse: the HTTP response object with the rendered template
     """
     post_list = Post.objects.filter(status="published", approved=True)
     categories = Category.objects.all()
@@ -38,7 +44,14 @@ def post_list(request):
 
 def post_detail(request, slug):
     """
-    Display a single post and a comment form
+    Display a single post and a comment form.
+
+    Parameters:
+        request (HttpRequest): The HTTP request made to the view.
+        slug (str): The slug identifier for the post.
+
+    Returns:
+        HttpResponse: The rendered HTML template for the post detail page.
     """
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(approved=True)
@@ -62,7 +75,25 @@ def post_detail(request, slug):
 @login_required
 def post_create(request):
     """
-    Create a new post
+    Create a new post.
+
+    If the request method is POST, and the form data is valid,
+    a new post will be created with the provided data. The form
+    used depends on whether the
+    user making the request is an administrator.
+    If the user is a staff member, the post will be visible to staff
+    users only.
+    If the user is not a staff member,
+    the post will be visible to all users.
+
+    If the request method is GET, or the form data is invalid,
+    the form will be rendered for the user to fill out and submit.
+
+    Args:
+        request: An HTTP request object.
+
+    Returns:
+        An HTTP response object with the appropriate status code and content.
     """
     if request.user.is_staff:
         form = AdminPostForm(
@@ -101,8 +132,25 @@ def post_create(request):
 @login_required
 def post_update(request, slug):
     """
-    Update the post
+    Update an existing blog post.
+
+    This view handles POST requests to update a blog post with a given slug. It
+    first retrieves the post to be updated from the database and then renders a
+    form for the user to edit the post. The form used depends on whether the
+    user making the request is an administrator. If the request method is POST,
+    the form is validated and, if valid, the post is updated and a success
+    message is displayed to the user. If the form is invalid or the request
+    method is not POST, the form is re-rendered with the existing post data.
+
+    Parameters:
+        request: an HTTP POST request to update the post.
+        slug: a string representing the unique slug for the post.
+
+    Returns:
+        An HTTP response containing the rendered form for updating the post or
+        a redirect to the updated post detail page.
     """
+
     post = get_object_or_404(Post, slug=slug)
 
     if request.user.is_staff:
@@ -117,7 +165,7 @@ def post_update(request, slug):
             instance=post)
 
     if (request.user != post.author) and not request.user.is_staff:
-        return redirect(reverse("homepage"))
+        return redirect(reverse("home:homepage"))
 
     if request.method == "POST":
         if form.is_valid():
@@ -142,7 +190,21 @@ def post_update(request, slug):
 @login_required
 def post_delete(request, slug):
     """
-    Delete a post
+    Delete a post with the given slug.
+
+    Accepts a POST request with a slug parameter and deletes the post
+    with the given slug from the database.
+    On GET request, render a confirmation form.
+
+    Parameters:
+        request: the request object
+        slug: the slug of the post to delete
+
+    Returns:
+        On a POST request:
+            A redirect to the post list page
+        On a GET request:
+            A rendered form template to confirm the post deletion
     """
     post = get_object_or_404(Post, slug=slug)
 
@@ -167,7 +229,22 @@ def post_delete(request, slug):
 @login_required
 def post_like(request, slug, *args, **kwargs):
     """
-    Likes a post
+    Handles a POST request to like a blog post.
+
+    Parameters:
+        request (HttpRequest): The request object containing the POST data.
+        slug (str): The slug of the post to be liked.
+        *args: Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
+
+    Returns:
+        JsonResponse: A JSON response containing the new value of
+        'liked' (True if the post was liked, False otherwise)
+        and the new number of likes. If the request method is not a
+        POST request, returns an HTTP 405 (Method Not Allowed) response.
+
+    Raises:
+        Http404: If no post with the specified slug exists.
     """
     post = get_object_or_404(Post, slug=slug)
     liked = False
@@ -189,7 +266,13 @@ def post_like(request, slug, *args, **kwargs):
 
 def search(request):
     """
-    Search for a post
+    Search for a post based on a search query.
+
+    Parameters:
+        request (HttpRequest): The request object.
+
+    Returns:
+        HttpResponse: The response object with the search results.
     """
     query = request.GET.get("query", "")
 

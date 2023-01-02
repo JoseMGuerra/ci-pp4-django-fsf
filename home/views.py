@@ -11,7 +11,15 @@ from .forms import ContactForm
 
 def home_view(request):
     """
-    Home view function
+    Display the home page of the web app, featuring the three most
+    recent and three most featured blog posts.
+
+    Parameters:
+        request (HttpRequest): The request made to the server.
+
+    Returns:
+        HttpResponse: The rendered home page template, with the most
+        recent and featured blog posts in the context.
     """
     featured_post_list = Post.objects.filter(
         approved=True, featured=True, status="published"
@@ -31,7 +39,17 @@ def home_view(request):
 @login_required
 def contact(request):
     """
-    Contact form
+    Handle the contact form submission.
+
+    Display a blank form when called with an HTTP GET request.
+    When called with an HTTP POST request, validate the form data
+    and send an email if the form is valid.
+
+    Args:
+        request: An HTTP request object.
+
+    Returns:
+        An HTTP response object containing the contact form.
     """
     form = ContactForm()
     if request.method == 'POST':

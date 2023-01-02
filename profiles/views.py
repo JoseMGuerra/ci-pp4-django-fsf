@@ -10,6 +10,17 @@ from blog.forms import PostForm
 
 @login_required
 def profile(request):
+    """
+    Handle requests to the /profile/ URL, and render the profile template.
+
+    Displays the user's profile, as well as a paginated list of posts.
+
+    Parameters:
+        request (HttpRequest): The incoming request.
+
+    Returns:
+        HttpResponse: The rendered template, containing the profile and posts.
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
     my_posts = Post.objects.filter(author=request.user)
 
@@ -32,6 +43,16 @@ def profile(request):
 
 @login_required
 def profile_settings(request):
+    """
+    Allow a user to update their profile settings,
+    including their profile image.
+
+    Parameters:
+        request (HttpRequest): The incoming request.
+
+    Returns:
+        HttpResponse: The rendered response.
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
     form = UserProfileForm(request.POST, request.FILES, instance=profile)
     if request.method == "POST":

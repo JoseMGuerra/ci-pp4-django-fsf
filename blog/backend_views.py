@@ -12,7 +12,15 @@ from django.contrib import messages
 
 def posts_management(request):
     """
-    Display all posts
+    Display a list of published blog posts, paginated.
+
+    Parameters:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object containing the
+        rendered template.
+
     """
     post_list = Post.objects.filter(status="published")
     paginator = Paginator(post_list, 5)
@@ -33,7 +41,15 @@ def posts_management(request):
 
 def post_backend_delete(request, slug):
     """
-    Delete a post in the backend
+    Handle the deletion of a blog post through the backend of
+    the web application.
+
+    Parameters:
+        request (HttpRequest): The HTTP request made to the server.
+        slug (str): The unique identifier for the post to be deleted.
+
+    Returns:
+        HttpResponse: The HTTP response to be sent back to the client.
     """
     post = get_object_or_404(Post, slug=slug)
 
