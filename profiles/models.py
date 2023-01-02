@@ -10,3 +10,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(
         upload_to='media/profile_images', default='profile_images/default')
+
+    def __str__(self):
+        """Returns User's name"""
+        return self.user.username

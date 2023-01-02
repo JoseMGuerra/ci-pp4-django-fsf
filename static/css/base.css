@@ -336,6 +336,10 @@ footer i {
     color: #1e1e24;
 }
 
+.allauth-form-inner-content h1 {
+    color: #ff7700 !important;
+}
+
 .allauth-form-inner-content input {
     border-color: #1e1e24;
     border-radius: 5px;

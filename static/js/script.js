@@ -9,4 +9,4 @@ function removeFlashMessage() {
   }, 3000);
 }
 // Export function when testing with Jest
-module.exports = removeFlashMessage;
+// module.exports = removeFlashMessage;

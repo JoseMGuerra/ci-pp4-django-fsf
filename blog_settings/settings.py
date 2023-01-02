@@ -29,15 +29,17 @@ else:
 
 
 INSTALLED_APPS = [
-    'home.apps.HomeConfig',
-    'blog.apps.BlogConfig',
-    'profiles.apps.ProfilesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    # Installed apps
+    'home.apps.HomeConfig',
+    'blog.apps.BlogConfig',
+    'profiles.apps.ProfilesConfig',
+    # 3rd party
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -90,6 +93,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
+
+# directly logs the user out
+ACCOUNT_LOGOUT_ON_GET = True
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/profiles/'
