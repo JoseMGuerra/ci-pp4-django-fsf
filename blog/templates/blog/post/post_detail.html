@@ -22,9 +22,9 @@
                 <br> 
                 {% if not user.is_authenticated %} <i class="far fa-heart"></i>
                 {{ post.number_of_likes }}
-                <span class="text-secondary ml-2">
+                <span class="text-secondary ml-3">
                   <i class="fa-regular fa-comments"></i>
-                  {{ post.comments.count }}
+                  {{ comments.count }}
                 </span>
                 {% endif %}
               </p>
