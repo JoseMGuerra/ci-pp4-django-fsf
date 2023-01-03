@@ -63,7 +63,7 @@ def post_detail(request, slug):
 
     template = "blog/post/post_detail.html"
     context = {
-        "page_title": "Post",
+        "page_title": "Post Detail",
         "comments": comments,
         "form": form,
         "post": post,

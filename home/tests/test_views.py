@@ -35,6 +35,20 @@ class HomeViewTestCase(TestCase):
         self.assertIn('featured_post_list', response.context)
         self.assertIn('most_recent', response.context)
 
+    def test_about_view(self):
+        """Test the about page view"""
+        # Send a GET request to the about page
+        response = self.client.get(reverse('home:about'))
+
+        # Check that the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check that the rendered context contains the correct page title
+        self.assertEqual(response.context['page_title'], "About")
+
+        # Check that the correct template is used
+        self.assertTemplateUsed(response, 'home/about.html')
+
     def test_contact_view(self):
         # Log in as the test user
         self.client.login(username='testuser', password='abc123')

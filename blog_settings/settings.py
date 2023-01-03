@@ -94,9 +94,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 
-# directly logs the user out
-ACCOUNT_LOGOUT_ON_GET = True
-
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/profiles/'
 LOGOUT_REDIRECT_URL = '/'

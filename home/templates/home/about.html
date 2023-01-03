@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% load cloudinary %} {% block extra_title %} {{ page_title }} {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="thin text-center mb-4 second-color">{{ page_title }}</h1>
+        <article>
+          <p>Hello and welcome to my coding spot! My name is Jose and I am currently a coding student.</p>
+
+          <p>This blog web app is part of my learning journey and it is my first full stack project.</p>
+
+          <p>Here, you can expect to find posts about my journey as a coding student, including my progress, challenges, and successes. I will also be sharing coding tips, resources, and tutorials that have helped me along the way.</p>
+
+          <p>I hope that by sharing my experiences and knowledge, I can help others who are also learning to code and pursuing a career in technology.</p>
+
+          <p>I hope to not only document my own progress, but also provide helpful resources and tips for other coding students or anyone interested in learning how to code.</p>
+
+          <p>Contributions are welcome from registered users! If you are a registered user, you can create a new post and make comments to share your own coding experiences and knowledge with the community.</p>
+
+          <p> If you don't have an account please <a href="{% url 'account_signup' %}">
+            <strong class="second-color h5">Sign Up</strong>
+          </a> to create one. </p>
+
+          <p>Thank you for joining me on this journey!</p>
+        </article>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

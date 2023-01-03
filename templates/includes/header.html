@@ -3,7 +3,6 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
       <a class="navbar-brand brand" href="{% url 'home:homepage' %}">
-        <img src="https://res.cloudinary.com/hb3yqhqej/image/upload/v1670066868/media/images/favicon_logo.png" width="35" height="35" alt="logo">
         <small class="text-black75">J's</small>
         <strong class="h2 prime-color">C</strong>oding <strong class="h2 second-color">S</strong>pot </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#indexNavbar" aria-controls="indexNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,8 +20,9 @@
           {% if request.user.is_authenticated %} <li class="nav-item">
             <a href="{% url 'blog:post-create' %}" class="nav-link ">Add Post</a>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'home:contact' %}" class="nav-link ">Contact</a>
+          <li>
+            <a class="nav-link navbar-text d-block" href="{% url 'account_logout' %}">
+            Log Out</a>
           </li>
           {% else %}
           <li class="nav-item">
@@ -45,8 +45,6 @@
             {% endif %}  
             <a class="nav-link navbar-text d-block" href="{% url 'profile' %}">
               My Profile</a>
-            <a class="nav-link navbar-text d-block" href="{% url 'account_logout' %}">
-              Log Out</a>
           </div>
         </div>
         {% endif %}

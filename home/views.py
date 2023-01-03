@@ -36,6 +36,18 @@ def home_view(request):
     return render(request, template, context)
 
 
+def about_view(request):
+    """
+    Render the about page template
+    """
+    template = ["home/about.html"]
+    context = { 
+        "page_title": "About",
+    }
+
+    return render(request, template, context)
+
+
 @login_required
 def contact(request):
     """
