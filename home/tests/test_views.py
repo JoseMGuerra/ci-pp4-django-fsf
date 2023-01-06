@@ -75,3 +75,15 @@ class HomeViewTestCase(TestCase):
             'recipient': '',
             'content': 'Test message'
         })
+
+    def test_contact_view_form_GET(self):
+        # Log in as the test user
+        self.client.login(username='testuser', password='abc123')
+
+        # Send a GET request to the contact return empty form
+        response = self.client.get(reverse('home:contact'), {
+            'name': '',
+            'email': '',
+            'recipient': '',
+            'content': ''
+        })
