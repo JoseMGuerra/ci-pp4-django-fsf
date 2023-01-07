@@ -34,7 +34,7 @@ def post_list(request):
 
     template = ["blog/post/post_list.html"]
     context = {
-        "page_title": "Posts",
+        "page_title": "Coding Articles",
         "posts": posts,
         "categories": categories,
         "page": page,
@@ -63,7 +63,7 @@ def post_detail(request, slug):
 
     template = "blog/post/post_detail.html"
     context = {
-        "page_title": "Post Detail",
+        "page_title": "Coding Article Detail",
         "comments": comments,
         "form": form,
         "post": post,
@@ -122,7 +122,7 @@ def post_create(request):
 
     template = "blog/post/post_create.html"
     context = {
-        "page_title": "Add",
+        "page_title": "Add Post",
         "form_type": "Add",
         "form": form,
     }
@@ -180,7 +180,7 @@ def post_update(request, slug):
 
     template = "blog/post/post_create.html"
     context = {
-        "page_title": "Update",
+        "page_title": "Update Post",
         "form_type": "Update",
         "form": form,
     }
@@ -288,7 +288,7 @@ def search(request):
 
     template = "blog/post/search.html"
     context = {
-        "page_title": "Search",
+        "page_title": "Search Coding Article",
         "query": query,
         "posts": posts,
         }

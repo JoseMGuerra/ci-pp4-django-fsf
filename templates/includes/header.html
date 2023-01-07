@@ -3,7 +3,7 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
       <a class="navbar-brand brand" href="{% url 'home:homepage' %}">
-        <small class="text-black75">J's</small>
+        <small class="text-black75">J/G</small>
         <strong class="h2 prime-color">C</strong>oding <strong class="h2 second-color">S</strong>pot </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#indexNavbar" aria-controls="indexNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,6 +30,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home:about' %}">About</a>
           </li>
           {% endif %}
         </ul>

@@ -5,13 +5,13 @@
       <span class="text-uppercase">Extras</span>
       <ul class="list-unstyled mt-2">
         {% if request.user.is_authenticated %}  <li>
-          <a href="{% url 'home:about' %}">About</a>
+          <a href="{% url 'home:about' %}">about</a>
         </li>
         <li>
-          <a href="{% url 'home:contact' %}">Contact</a>
+          <a href="{% url 'home:contact' %}">contact</a>
         </li>
         {% else %} <li>
-          <a href="{% url 'home:about' %}">About</a>
+          <a href="{% url 'home:about' %}">about</a>
         </li>     
         {% endif %}
       </ul>
@@ -21,10 +21,16 @@
       <div class="menus">
         <ul class="list-unstyled mt-2">
           {% if request.user.is_authenticated %} <li>
-            <a href="{% url 'account_logout' %}">Log out</a>
+            <a href="{% url 'account_logout' %}">log out</a>
           </li>
           <li>
-            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'profile' %}">profile</a>
+          </li>
+          <li>
+            <a href="{% url 'home:homepage' %}">home</a>
+          </li>
+          <li>
+            <a href="{% url 'blog:post-list' %}">blog</a>
           </li>
           {% else %}
           <li>
@@ -47,19 +53,19 @@
       <span class="text-uppercase">Social</span>
       <ul class="list-inline social-links mt-2">
         <li class="list-inline-item">
-          <a href="https://www.facebook.com/profile.php?id=100089031528048" target="_blank">
+          <a href="https://www.facebook.com/profile.php?id=100089031528048" target="_blank" aria-label="Visit our facebook page (opens in a new tab)">
             <i class="fab fa-facebook" aria-hidden="true"></i>
             <span class="sr-only">Facebook</span>
           </a>
         </li>
         <li class="list-inline-item social-links">
-          <a href="https://github.com/JoseMGuerra/ci-pp4-django-fsf" target="_blank">
+          <a href="https://github.com/JoseMGuerra/ci-pp4-django-fsf" target="_blank" rel="noopener" aria-label="Visit my github page (opens in a new tab)">
             <i class="fab fa-github" aria-hidden="true"></i>
             <span class="sr-only">Github</span>
           </a>
         </li>
         <li class="list-inline-item social-links">
-          <a href="https://www.linkedin.com/in/josem-guerra/" target="_blank">
+          <a href="https://www.linkedin.com/in/josem-guerra/" target="_blank" rel="noopener" aria-label="Visit my linkedin page (opens in a new tab)">
             <i class="fab fa-linkedin" aria-hidden="true"></i>
             <span class="sr-only">LinkedIn</span>
           </a>
