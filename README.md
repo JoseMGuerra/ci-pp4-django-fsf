@@ -4,7 +4,7 @@
 
 ![am i responsive](readme_images/am-i-responsive.gif)
 
-[Live site here](https://ci-pp4-django-blog.herokuapp.com/)
+[Live site here](https://jg-coding-spot.herokuapp.com/)
 
 ## About
 
