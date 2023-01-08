@@ -248,7 +248,8 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check that the rendered context contains the expected variables
-        self.assertEqual(response.context["page_title"], "Search")
+        self.assertEqual(
+            response.context["page_title"], "Search Coding Article")
         self.assertEqual(response.context["query"], "test")
         # assuming 1 post matches the query
         self.assertEqual(len(response.context["posts"]), 1)
@@ -268,7 +269,8 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Check that the rendered context contains the expected variables
-        self.assertEqual(response.context["page_title"], "Search")
+        self.assertEqual(
+            response.context["page_title"], "Search Coding Article")
         self.assertEqual(response.context["query"], "")
         self.assertEqual(len(response.context["posts"]), 0)
 

@@ -41,7 +41,7 @@ def about_view(request):
     Render the about page template
     """
     template = ["home/about.html"]
-    context = { 
+    context = {
         "page_title": "About",
     }
 

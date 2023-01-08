@@ -110,19 +110,19 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-error',
 }
 
-# if DEBUG:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-DATABASES = {
-    'default':
-        dj_database_url.parse(os.environ.get('DATABASE_URL'))
-
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
+else:
+    DATABASES = {
+        'default':
+            dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
+        }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -17,6 +17,337 @@ It is implemented a view and template for displaying a list of all posts, with e
 On the detail page for each post, display the post's content and allow users to add comments and post's likes.
 Registered users are also allowed to delete or update their own posts, but not the posts of other users.
 
+## Features
+
+### Navigation Bar
+
+The navigation bar is featured across all pages.
+
+- <details>
+    <summary>Navbar</summary>
+
+  Common navbar features:
+
+  - Logo: Displays website brand name at the top left.
+  - Search bar: The search bar allows readers to easily find specific topics or code examples on your blog.
+
+  ![navbar anonymous user](readme_images/navbar-anonymous-user.png)
+
+  For anonymous users:
+
+  - Home: Takes the user to the homepage of the website.
+  - Blog: Displays a list of blog articles.
+  - Sign in/Sign up: Allows users to create an account or log in to an existing account.
+  - About: Provides information about the website.
+
+  ![navbar registered user](readme_images/navbar-registered-user.png)
+
+  For registered users:
+
+  - Add Post: Allows the user to create a new post.
+  - Logout: Allows the user to log out of their account.
+  - Profile: Provides a personalized overview of the user's account, including any recent activity or updates.
+  - Profile settings: Allows the user to customize their account settings, such as changing their profile picture.
+
+  For staff:
+
+    ![navbar staff view](readme_images/navbar-staff.png)
+
+- <details>
+  <summary>Collapsed Navbar</summary>
+
+  ![navbar registered collapsed](readme_images/navbar-collapsed.png)
+
+</details>
+
+</details>
+
+### Home Page
+
+#### home page carousel
+
+- Positioned at the top of the home page, this welcome the user as they visit the site.
+It displays the image of the featured articles
+
+- <details>
+  <summary>Carousel image</summary>
+
+  ![home page carousel](readme_images/homepage-carusel.gif)
+
+</details>
+
+#### home page featured articles
+
+- Positioned bellow the homepage carousel, this displays three featured articles.
+Each article links to the detail page and the category page for that post.
+
+- <details>
+  <summary>Featured articles</summary>
+
+  ![home page featured articles](readme_images/homepage-featured-articles.png)
+
+</details>
+
+#### home page icons section
+
+- Positioned after the featured articles, there are three custom styled animated icons.
+Each icon visually explains the main purpose of the website.
+
+- <details>
+  <summary>Animated icons</summary>
+
+  ![home page animated icons](readme_images/homepage-animated-icons.gif)
+
+</details>
+
+#### home page featured articles
+
+- Positioned bellow the animated icons, this displays the three most recent articles.
+Each article links to the detail page for that post.
+
+- <details>
+  <summary>Recent articles</summary>
+
+  ![home page recent articles](readme_images/homepage-recent-articles.png)
+
+</details>
+
+### Footer
+
+The footer is featured across all pages.
+
+- <details>
+    <summary>Footer</summary>
+
+  For anonymous users:
+
+  - Home: Takes the user to the homepage of the website.
+  - Blog: Displays a list of blog articles.
+  - Sign in/Sign up: Allows users to create an account or log in to an existing account.
+  - About: Provides information about the website.
+  - Social links:
+    - Facebook custom make account.
+    - Github website repository.
+    - Linkedin developer's account.
+
+  ![footer anonymous user](readme_images/footer-anonymous-user.png)
+
+  For registered users:
+
+  - Logout: Allows the user to log out of their account.
+  - Profile: Provides a personalized overview of the user's account, including any recent activity or updates.
+  - Home: Takes the user to the homepage of the website.
+  - Blog: Displays a list of blog articles.
+    - Social links:
+    - Facebook custom make account.
+    - Github website repository.
+    - Linkedin developer's account.
+  - About: Provides information about the website.
+  - Contact: Users are allowed to send emails to the site's owner.
+
+  ![footer registered user](readme_images/footer-registered-user.png)
+
+</details>
+
+### Posts or Articles List Page
+
+- <details>
+    <summary>Articles page</summary>
+
+  The articles page has a pagination feature set to three posts per page for a better user experience.
+  It features a z-shaped design pattern that traces the route the human eye travels when they read.
+  Each article links to the detail page and the category page for that post. Each article also displays useful
+  information for the user like number of likes and comments, name of the author, date of creation and update date.
+  
+  ![articles page](readme_images/article-list.png)
+
+  </details>
+
+### Articles Detail Page
+
+- <details>
+    <summary>Article detail page</summary>
+
+  The article detail page show everything about the post.
+  Each article page displays useful information for the user like number of likes and comments, name of the author, date of creation and update date.
+  Each article links to the articles list page and the category page that the post belong to.
+  Registered users that are logged in are allowed to leave comments and like/unlike a post. Comments will be displayed in the article page once approved
+  by the site owner or authorized staff member.
+  The page features an update and delete buttons that allows a registered user to update or delete their own posts.
+  Staff members are allowed to update or delete any post.
+
+  ![articles detail page](readme_images/article-detail-page.png)
+
+  </details>
+
+### Add a New Post
+
+- <details>
+    <summary>Add a new post form</summary>
+
+  Registered users that are logged in are allowed to create new posts.
+
+  Form fields are:
+  - Title
+  - Content
+  - Category
+  - Featured image
+  - Status
+
+  ![Add a new post page](readme_images/add-post-form.png)
+
+  Staff members are also allowed to create new posts, with added form fields:
+
+  - Approved
+  - Featured
+
+  ![approved featured fields](readme_images/approved-featured-form-fields.png)
+
+  </details>
+
+### Update Post Page
+
+- <details>
+    <summary>Update post page</summary>
+
+  Registered users that are logged in are allowed to update their own posts.
+  The page features an update and delete buttons that allows a registered user to update or delete their own posts.
+
+  Allow to update fields are:
+  - Title
+  - Content
+  - Category
+  - Featured image
+  - Status
+
+  Staff members are allowed to update or delete any post as well as approve / disapprove  or feature / unfeature a post.
+
+  Staff members are also allowed to update this fields:
+  - Approved
+  - Featured
+
+  ![update post page](readme_images/update-post-page.png)
+
+  </details>
+
+### Delete Post
+
+- <details>
+    <summary>Delete Post</summary>
+
+  The website features a delete confirmation modal that prompts the user to confirm the irreversible deletion of a post.
+
+  ![delete post](readme_images/delete-confirmation-modal.png)
+
+  </details>
+
+### Profile Page
+
+- <details>
+    <summary>Profile page</summary>
+
+  After the user is logged in, it is redirected to their profile page. The profile page allows the registered user to manage their own posts.
+  The profile page has a pagination feature set to five posts per page.
+  Each page displays a table with information about the user's articles:
+  - number of posts
+  - post title ( links to article detail page )
+  - date created
+  - number of likes
+  - number of comments
+  - article status ( published / draft)
+  - approved / disapproved
+  - update button
+  - delete button
+
+  ![profile page](readme_images/myprofile-page.png)
+
+  </details>
+
+### Post Management Page
+
+- <details>
+    <summary>Management page</summary>
+
+  Staff members have access to the management page.
+  The management page has a pagination feature set to ten posts per page.
+  Each page displays a table with information about the every published article:
+  - number of posts
+  - post title ( links to article detail page )
+  - date created
+  - number of likes
+  - number of comments
+  - article status ( published / draft)
+  - approved / disapproved
+  - update button
+  - delete button
+
+  ![post management page](readme_images/posts-management-page.png)
+
+  </details>
+
+### Contact site owner
+
+- <details>
+    <summary>Contact form</summary>
+
+  Registered users that are logged in are allowed to contact the site owner via contact form.
+
+  Form fields are:
+  - Name
+  - Email
+  - Content
+
+  ![Contact form](readme_images/contact-form-feature.png)
+
+  Received email inbox detail
+
+  ![email inbox detail](readme_images/email-inbox-enquiry.png)
+
+  </details>
+
+### Search Articles
+
+- <details>
+    <summary>Search articles</summary>
+  
+  The search function searches by title, content, category and author.
+  The placeholder text hints the user to find post.
+
+  ![Search page](readme_images/search-post-feature.png)
+
+  </details>
+
+## Search Engine Optimization (SEO)
+
+In order to improve the visibility of the site in a search engine's unpaid results
+the following has been implemented:
+
+- html semantic tags
+- meta keywords tag
+- xml sitemap
+- robots.txt
+- google ownership verification
+
+- <details>
+    <summary>SEO detail</summary>
+
+  - xml sitemap
+
+  ![xml sitemaps](readme_images/xml-sitemaps.png)
+
+  - sitemap schema
+  ![xml sitemaps schema](readme_images/sitemap-schema.png)
+
+  - robots txt file
+
+  ![robots txt file](readme_images/robots-txt.png)
+
+  - seo meta tags
+
+  ![seo meta tags](readme_images/seo-meta-tags.png)
+
+  </details>
+
 ## User Experience (UX)
 
 ### Colours
@@ -161,12 +492,16 @@ Registered users are also allowed to delete or update their own posts, but not t
 
   - [US #10](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/10)
     - Create a post: As a `Site User / Admin` given that `I am registered` I want be able to `create a post` so that `I can add content to the blog`
+    - [Add a new post](#add-a-new-post)
   - [US #1](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/1)
     - View post list: As a `Site User` I want be able to `view a list of posts` so that `I can select one to read`
+    - [Posts or articles list page](#posts-or-articles-list-page)
   - [US #2](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/2)
     - Open a post: As a `Site User` I want be able to `click on a post` so that `I can read the full text`
+    - [articles detail page](#articles-detail-page)
   - [US #12](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/12)
     - Update and Delete a post: As a `Site User / Admin` I want be able to `update a post I created` so that `I can make changes or delete a post`
+    - [Update post page](#update-post-page)
   - [US #11](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/11)
     - Create drafts: As a `Site User / Admin` I want be able to `create draft posts` so that `I can finish writing the content later`
   - [US #14](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/14)
@@ -175,13 +510,17 @@ Registered users are also allowed to delete or update their own posts, but not t
     - Like / Unlike: As a `Site User` I want be able to `like or unlike a post` so that `I can interact with the content`
   - [US #32](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/32)
     - Add picture to post: As as `Site User` I want be able to `upload a picture` so that `I can add a visual representation of my post`
-  - Vote posts: As a `Site User` I want be able to `up/downvote a post` so that `I can interact with the content`
   - [US #33](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/33)
     - Custom error pages: As a `Site Admin/ User` I want be able to `have custom error pages with a return button` so that `I can return to the homepage if an error occurred`
   - [US #34](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/34)
     - As a `Site User` I want be able to `send emails` so that `I can ask questions and make suggestions`
   - [US #35](https://github.com/JoseMGuerra/ci-pp4-django-fsf/issues/35)
     - As a `User / Admin` I want to be able to `Search for post` so that `I can find what I am looking for`
+    - [Search articles](#search-articles)
+
+  TO BE IMPLEMENTED:
+
+  - Vote posts: As a `Site User` I want be able to `up/downvote a post` so that `I can interact with the content`
 
 </details>
 
@@ -258,8 +597,9 @@ Registered users are also allowed to delete or update their own posts, but not t
   - [Unsplash:](https://unsplash.com/photos/NtkCemIfaiU) Stock images.
   - [W3 CSS Validator:](https://jigsaw.w3.org/css-validator/) Check your code for CSS validation.
   - [Gauger:](https://gauger.io/fonticon/) Used to create the favicon Logo, create beautiful favicon with ease.
-  - [Lucidchart:](https://www.lucidchart.com/pages/) Used to create the site map.
+  - [Lucidchart:](https://www.lucidchart.com/pages/) Used to create the site diagram.
   - [Contrast Checker](https://webaim.org/resources/contrastchecker/) Tool to check the contrast ratio.
+  - [xml sitemaps](https://www.xml-sitemaps.com/) Used to create the xml sitemap.
 
 </details>
 
