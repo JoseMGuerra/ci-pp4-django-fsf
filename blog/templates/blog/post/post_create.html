@@ -11,8 +11,8 @@
           <div class="col-md-6 offset-md-3">
             <h1 class="mb-4 text-center second-color"> {{ form_type }} Post</h1>
             {% if user.is_authenticated %} 
-            <form method="POST" action="." enctype="multipart/form-data">
-                {% csrf_token %} {{ form | crispy }}
+            <form method="POST" action="." enctype="multipart/form-data" >
+                {% csrf_token %} {{ form | crispy | safe }}
               <button class="btn form-btn btn-block" type="submit">
                 {{ form_type }} Post</button>
             </form> 

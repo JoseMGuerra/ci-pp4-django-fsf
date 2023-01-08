@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import Post, Comment, Category
 from django.contrib.auth.decorators import login_required
 
@@ -15,10 +16,12 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
     """
     Post model in admin panel
     """
+    summernote_fields = ('content',)
+
     list_display = (
         'title',
         'status',
@@ -43,10 +46,12 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(SummernoteModelAdmin):
     """
     Comment model in admin panel
     """
+    summernote_fields = ('body',)
+
     list_display = [
         'user',
         'email',

@@ -5,7 +5,7 @@
 </p>
 <p>Posting as: {{ user.username }}</p>
 <form action="{% url 'blog:post-comment' slug=post.slug %}" method="POST">
-  {% csrf_token %} {{ form | crispy }}
+  {% csrf_token %} {{ form | crispy | safe }}
   <button type="submit" class="btn form-btn">Add Comment</button>
 </form>
 <!-- ./ comment form -->

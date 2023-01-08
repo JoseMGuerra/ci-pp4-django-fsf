@@ -17,7 +17,7 @@ class PostForm(forms.ModelForm):
             ]
 
 
-class AdminPostForm(PostForm):
+class AdminPostForm(forms.ModelForm):
     """
     AdminForm for posts
     """
@@ -41,3 +41,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['body']
+
+    def __init__(self, *args, **kwargs):
+        """Remove body label and add placeholder text"""
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['body'].label = ''
+        self.fields['body'].widget.attrs['placeholder'] = 'Add comment here...'

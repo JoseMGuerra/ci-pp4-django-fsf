@@ -47,8 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'crispy_forms',
+    'django_summernote',
 
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+SUMMERNOTE_THEME = 'bs4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,6 +90,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+SUMMERNOTE_THEME = 'bs4'
 
 SITE_ID = 1
 

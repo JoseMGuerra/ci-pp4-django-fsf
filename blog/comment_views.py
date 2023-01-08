@@ -22,29 +22,29 @@ def post_comment(request, slug):
     Returns:
         HttpResponse: The rendered template response.
     """
-    post = get_object_or_404(
-        Post, slug=slug, approved=True)
-    comment = None
-    form = CommentForm(data=request.POST or None)
-    if request.method == "POST":
+    post = get_object_or_404(Post, slug=slug, approved=True)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
         if form.is_valid():
-            form.instance.user = request.user
-            form.instance.email = request.user.email
             comment = form.save(commit=False)
             comment.post = post
-            comment.save()
-            messages.success(request, "Your comment it's been reviewed.")
+            comment.user = request.user
+            comment.email = request.user.email
+            if request.user.is_staff:
+                comment.approved = True
+                comment.save()
+                messages.success(request, "Thank you for your comment.")
+            else:
+                comment.save()
+                messages.success(request, "Your comment it's been reviewed.")
 
-            return redirect(reverse("blog:post-detail", kwargs={
-                "slug": post.slug
-            }))
+            return redirect('blog:post-detail', slug=post.slug)
     else:
         form = CommentForm()
 
-    template = 'blog/post/post_detail.html'
     context = {
-        "post": post,
-        "comment": comment,
-        "form": form,
+        'post': post,
+        'form': form,
     }
-    return render(request, template, context)
+    return render(request, 'blog/post/post_detail.html', context)
